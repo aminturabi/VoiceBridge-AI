@@ -1,0 +1,23 @@
+01:23:05 | INFO    | __main__ | Starting VoiceBridge AI on http://127.0.0.1:8000
+INFO:     Started server process [2144]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:62013 - "GET /api/info HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62014 - "GET /api/info HTTP/1.1" 200 OK
+01:24:20 | INFO    | voicebridge.translation.manager | Translation backend enabled: google
+01:24:22 | INFO    | voicebridge.translation.manager | Translation backend enabled: argos
+01:24:22 | INFO    | voicebridge.lipsync.buffered_backend | Buffered Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+01:24:22 | WARNING | voicebridge.lipsync.manager | Requested lip-sync backend 'demo' unavailable; using 'null'
+01:24:22 | INFO    | voicebridge.lipsync.manager | Lip-sync backend: null
+01:24:22 | INFO    | voicebridge.stt.engine | [EN->AR] Loading Whisper 'tiny' on cuda (float16)...
+01:24:23 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+01:24:23 | WARNING | voicebridge.stt.engine | [EN->AR] Could not load on cuda: CUDA failed with error CUDA driver version is insufficient for CUDA runtime version
+01:24:23 | INFO    | voicebridge.stt.engine | [EN->AR] Loading Whisper 'base' on cpu (int8)...
+01:24:24 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-base/revision/main "HTTP/1.1 200 OK"
+01:24:26 | INFO    | voicebridge.stt.engine | [EN->AR] Whisper ready on cpu
+01:24:26 | INFO    | voicebridge.pipeline.orchestrator | Registered direction EN->AR (speaker=me, source=microphone)
+INFO:     127.0.0.1:64035 - "POST /api/start HTTP/1.1" 200 OK
+01:24:26 | INFO    | voicebridge.audio.capture | Microphone open (VAD chunking)
+INFO:     127.0.0.1:57542 - "WebSocket /ws" [accepted]
+INFO:     connection open

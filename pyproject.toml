@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "voicebridge-ai"
+version = "0.1.0"
+description = "Real-time speech translation with lip-synced talking-head output"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+
+dependencies = [
+    "faster-whisper==1.2.1",
+    "ctranslate2==4.7.1",
+    "deep-translator==1.11.4",
+    "argostranslate==1.9.6",
+    "edge-tts==7.2.8",
+    "sounddevice==0.5.5",
+    "scipy==1.16.2",
+    "numpy==2.2.6",
+    "fastapi==0.136.1",
+    "uvicorn==0.46.0",
+    "pydantic==2.12.5",
+    "websockets==16.0",
+    "PyYAML==6.0.3",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest==8.3.4",
+    "httpx==0.28.1",
+]
+
+[project.scripts]
+voicebridge = "voicebridge.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["voicebridge*"]
+
+[tool.setuptools.package-data]
+"voicebridge.api" = ["static/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,32 @@
+# VoiceBridge AI — pinned runtime dependencies.
+# Install with: pip install -r requirements.txt
+# ffmpeg must also be on PATH (used for audio decode + Wav2Lip muxing).
+
+# --- Speech-to-text ---
+faster-whisper==1.2.1
+ctranslate2==4.7.1
+
+# --- Translation (online + offline fallback) ---
+deep-translator==1.11.4
+argostranslate==1.9.6
+
+# --- Text-to-speech ---
+edge-tts==7.2.8
+
+# --- Audio I/O + DSP ---
+sounddevice==0.5.5
+scipy==1.16.2
+numpy==2.2.6
+
+# --- Web API + meeting UI ---
+fastapi==0.136.1
+uvicorn==0.46.0
+pydantic==2.12.5
+websockets==16.0
+
+# --- Config ---
+PyYAML==6.0.3
+
+# --- Tests (dev) ---
+pytest==8.3.4
+httpx==0.28.1

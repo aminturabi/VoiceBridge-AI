@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VoiceBridge AI</title>
+  <link rel="stylesheet" href="/static/app.css" />
+</head>
+<body>
+  <header>
+    <h1>VoiceBridge <span>AI</span></h1>
+    <div id="status" class="status idle">idle</div>
+  </header>
+
+  <section class="controls">
+    <label>
+      My language
+      <select id="myLang"></select>
+    </label>
+    <span class="arrow">&#8646;</span>
+    <label>
+      Other language
+      <select id="otherLang"></select>
+    </label>
+    <label class="source">
+      Source
+      <select id="sourceKind">
+        <option value="microphone">Microphone (live)</option>
+        <option value="wav">WAV file (demo)</option>
+      </select>
+    </label>
+    <input id="wavPath" class="wav-path hidden" type="text" placeholder="assets/test_en.wav" />
+    <button id="startBtn" class="start">Start call</button>
+    <button id="stopBtn" class="stop" disabled>Stop</button>
+  </section>
+
+  <main class="stage">
+    <div class="participant" id="p-me">
+      <div class="face"><video id="video-me" muted playsinline></video><div class="placeholder">me</div></div>
+      <div class="caption" id="caption-me"></div>
+    </div>
+    <div class="participant" id="p-other">
+      <div class="face"><video id="video-other" muted playsinline></video><div class="placeholder">other</div></div>
+      <div class="caption" id="caption-other"></div>
+    </div>
+  </main>
+
+  <section class="transcript">
+    <h2>Transcript</h2>
+    <ul id="log"></ul>
+  </section>
+
+  <audio id="player"></audio>
+  <script src="/static/app.js"></script>
+</body>
+</html>

@@ -127,7 +127,28 @@ Set `lipsync.backend` in `config.yaml`:
 If the requested backend is unavailable, the manager falls back
 `buffered -> demo -> null` automatically.
 
+## Benchmarking & Performance Monitoring
+
+VoiceBridge AI includes an asynchronous, production-ready benchmarking and hardware monitoring suite:
+
+```bash
+# Run the automated benchmark suite (short, medium, long audio & multi-concurrency calls)
+python -m voicebridge benchmark
+
+# Launch the real-time CLI monitoring dashboard
+python -m voicebridge dashboard
+```
+
+### Metrics Collected
+
+- **Pipeline Stage Latencies (ms)**: Audio Capture, VAD, STT, Sentence Buffer, Translation, TTS, Lip Sync, Playback.
+- **End-to-End Latency Statistics**: Mean, Min, Max, Median, 95th Percentile (P95), Standard Deviation.
+- **Hardware Resources**: CPU %, RAM Growth (MB), GPU % / VRAM (when CUDA enabled), Disk usage.
+- **Throughput**: Requests/sec, Sentences/min, Audio minutes/min, Lip-sync FPS.
+- **Structured Telemetry**: Exported automatically as Markdown (`.md`), JSON (`.json`), and CSV (`.csv`) reports to `logs/reports/` and JSON lines to `logs/performance.jsonl`.
+
 ## Testing
+
 
 ```bash
 python -m pytest

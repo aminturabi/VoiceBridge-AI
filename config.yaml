@@ -1,0 +1,146 @@
+# VoiceBridge AI — central configuration
+# All tunable values live here, not in Python constants.
+
+app:
+  name: "VoiceBridge AI"
+  # Directory (relative to project root) for temporary audio chunks.
+  temp_chunk_dir: "temp_chunks"
+  # Directory for generated TTS + lip-synced output.
+  output_dir: "generated_speech"
+
+logging:
+  # DEBUG | INFO | WARNING | ERROR
+  level: "INFO"
+  # If set, also write logs to this file (relative to project root). null = console only.
+  file: "logs/voicebridge.log"
+
+audio:
+  sample_rate: 16000
+  channels: 1
+  # Fallback fixed-chunk length (seconds) used only when VAD is disabled.
+  chunk_seconds: 4
+  playback:
+    # blocking playback (old playsound behaviour) or non-blocking streamed playback.
+    non_blocking: true
+  vad:
+    enabled: true
+    # Silero VAD (bundled with faster-whisper) parameters.
+    min_silence_duration_ms: 300
+    # Emit a segment once this much speech has accumulated even without a pause.
+    max_segment_seconds: 4
+    # Minimum speech before a segment is worth transcribing.
+    min_segment_seconds: 0.4
+
+stt:
+  # One model is loaded PER DIRECTION (no shared global lock) so the two
+  # directions of a two-way call run in parallel.
+  # Preferred device order; first that loads wins.
+  device_preference: ["cuda", "cpu"]
+  cuda:
+    model_size: "tiny"
+    compute_type: "float16"
+  cpu:
+    model_size: "tiny"
+    compute_type: "int8"
+  transcribe:
+    beam_size: 1
+    temperature: 0.0
+    condition_on_previous_text: false
+    no_speech_threshold: 0.6
+    log_prob_threshold: -1.0
+    compression_ratio_threshold: 2.4
+    vad_filter: true
+    vad_min_silence_duration_ms: 300
+  # Confidence guards to drop silence hallucinations.
+  reliability:
+    max_no_speech_prob: 0.85
+    min_avg_logprob: -1.5
+    max_compression_ratio: 2.8
+
+buffer:
+  # Send text to translation when: sentence-ending punctuation appears,
+  # the buffer reaches the word limit, or the speaker pauses for the timeout.
+  word_limit: 5
+  timeout_seconds: 1.5
+  sentence_endings: [".", "?", "!", "؟", "۔", "।"]
+  noise_phrases:
+    - "thanks for watching"
+    - "thank you for watching"
+    - "please subscribe"
+    - "subscribe"
+
+translation:
+  # Ordered list of backends to try. First success wins.
+  # Options: "google" (deep-translator), "argos" (offline).
+  backends: ["google", "argos"]
+  retry:
+    max_attempts: 3
+    base_delay_seconds: 0.5
+    max_delay_seconds: 4.0
+
+tts:
+  # edge-tts output format.
+  output_format: "mp3"
+
+lipsync:
+  # Backend: "demo" (prerendered, viva-safe), "buffered" (real Wav2Lip on
+  # short segments, near-real-time), or "null" (audio-only passthrough).
+  backend: "demo"
+  # Source face video/image for the talking head (relative to project root).
+  source_face: "assets/faces/speaker.mp4"
+  buffered:
+    # Path to the Wav2Lip checkpoint (user must download).
+    checkpoint: "assets/wav2lip/wav2lip_gan.pth"
+    # Wav2Lip inference batch size (lower = less RAM on CPU).
+    batch_size: 16
+    fps: 25
+  demo:
+    # Pre-rendered lip-synced clip played back in demo mode.
+    prerendered_dir: "assets/prerendered"
+
+api:
+  host: "127.0.0.1"
+  port: 8000
+  # Serves the two-participant meeting UI + WebSocket event stream.
+
+metrics:
+  enabled: true
+  sample_interval_sec: 0.5
+  json_log_path: "logs/performance.jsonl"
+  report_dir: "logs/reports"
+  dashboard:
+    refresh_rate_sec: 0.5
+
+
+# Supported languages. Keyed by short id; add more freely.
+# translation_code = ISO code for NMT; edge_voice = edge-tts voice.
+languages:
+  en:
+    display_name: "English"
+    translation_code: "en"
+    edge_voice: "en-US-JennyNeural"
+  ar:
+    display_name: "Arabic"
+    translation_code: "ar"
+    edge_voice: "ar-SA-ZariyahNeural"
+  ur:
+    display_name: "Urdu"
+    translation_code: "ur"
+    edge_voice: "ur-PK-UzmaNeural"
+  hi:
+    display_name: "Hindi"
+    translation_code: "hi"
+    edge_voice: "hi-IN-SwaraNeural"
+  fr:
+    display_name: "French"
+    translation_code: "fr"
+    edge_voice: "fr-FR-DeniseNeural"
+  es:
+    display_name: "Spanish"
+    translation_code: "es"
+    edge_voice: "es-ES-ElviraNeural"
+
+# Default demo pairing (English <-> Arabic).
+defaults:
+  my_language: "en"
+  other_language: "ar"

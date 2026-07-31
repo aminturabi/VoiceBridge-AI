@@ -1,0 +1,1 @@
+"""VoiceBridge translation stage."""

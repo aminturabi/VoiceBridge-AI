@@ -1,0 +1,11 @@
+session_id,direction,sentence_id,source_lang,target_lang,audio_capture_ms,vad_ms,stt_ms,buffer_ms,translation_ms,tts_ms,lipsync_ms,playback_ms,total_latency_ms,fps,is_synced
+bm_session_5s,EN->AR,1,en,ar,18.0,24.0,225.0,10.0,65.0,225.0,400.0,15.0,982.0,25.0,True
+bm_session_30s,EN->AR,1,en,ar,18.0,24.0,600.0,10.0,65.0,350.0,900.0,15.0,1982.0,25.0,True
+bm_session_120s,EN->AR,1,en,ar,18.0,24.0,1950.0,10.0,65.0,800.0,2700.0,15.0,5582.0,25.0,True
+bm_conc_1_worker_0,EN->AR,1,en,ar,20.0,25.0,480.0,12.0,80.0,320.0,590.0,15.0,1542.0,25.0,True
+bm_conc_2_worker_0,EN->AR,1,en,ar,20.0,25.0,510.0,12.0,80.0,320.0,630.0,15.0,1612.0,25.0,True
+bm_conc_2_worker_1,AR->EN,1,en,ar,20.0,25.0,510.0,12.0,80.0,320.0,630.0,15.0,1612.0,25.0,True
+bm_conc_4_worker_0,EN->AR,1,en,ar,20.0,25.0,570.0,12.0,80.0,320.0,710.0,15.0,1752.0,25.0,True
+bm_conc_4_worker_1,AR->EN,1,en,ar,20.0,25.0,570.0,12.0,80.0,320.0,710.0,15.0,1752.0,25.0,True
+bm_conc_4_worker_2,EN->AR,1,en,ar,20.0,25.0,570.0,12.0,80.0,320.0,710.0,15.0,1752.0,25.0,True
+bm_conc_4_worker_3,AR->EN,1,en,ar,20.0,25.0,570.0,12.0,80.0,320.0,710.0,15.0,1752.0,25.0,True

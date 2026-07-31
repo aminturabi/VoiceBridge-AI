@@ -1,0 +1,115 @@
+{
+  "latency_summary": {
+    "e2e_stats_ms": {
+      "avg_ms": 2032.0,
+      "min_ms": 982.0,
+      "max_ms": 5582.0,
+      "median_ms": 1752.0,
+      "p95_ms": 5582.0,
+      "std_dev_ms": 1274.28,
+      "count": 10
+    },
+    "stage_latencies_ms": {
+      "Audio Capture": 19.4,
+      "VAD": 24.7,
+      "STT": 655.5,
+      "Sentence Buffer": 11.4,
+      "Translation": 75.5,
+      "TTS": 361.5,
+      "Lip Sync": 869.0,
+      "Playback": 15.0
+    }
+  },
+  "throughput_summary": {
+    "requests_per_sec": 10.0,
+    "sentences_per_min": 600.0,
+    "audio_min_per_min": 190.0,
+    "total_sentences": 10,
+    "total_audio_seconds": 190.0,
+    "elapsed_seconds": 1.0
+  },
+  "fps_summary": {
+    "avg_fps": 25.0,
+    "min_fps": 25.0,
+    "max_fps": 25.0,
+    "count": 10
+  },
+  "resource_summary": {
+    "cpu": {
+      "current_percent": 48.0,
+      "avg_percent": 24.0,
+      "peak_percent": 48.0
+    },
+    "memory": {
+      "current_ram_mb": 256.7,
+      "peak_ram_mb": 256.7,
+      "ram_growth_mb": 55.3
+    },
+    "gpu": {
+      "gpu_percent": 0.0,
+      "vram_used_mb": 0.0,
+      "vram_total_mb": 0.0,
+      "gpu_temp_c": 0.0
+    },
+    "disk": {
+      "temp_dir_size_mb": 0.49,
+      "output_dir_size_mb": 0.06
+    }
+  },
+  "model_load_summary": {
+    "total_startup_ms": 0.0,
+    "cache_hits": 0,
+    "cache_misses": 0,
+    "models": []
+  },
+  "bottleneck_analysis": {
+    "slowest_stage": "Lip Sync",
+    "slowest_stage_ms": 869.0,
+    "percentage_of_total": 42.8,
+    "stage_rankings": [
+      {
+        "stage": "Lip Sync",
+        "avg_ms": 869.0,
+        "pct": 42.8
+      },
+      {
+        "stage": "STT",
+        "avg_ms": 655.5,
+        "pct": 32.3
+      },
+      {
+        "stage": "TTS",
+        "avg_ms": 361.5,
+        "pct": 17.8
+      },
+      {
+        "stage": "Translation",
+        "avg_ms": 75.5,
+        "pct": 3.7
+      },
+      {
+        "stage": "VAD",
+        "avg_ms": 24.7,
+        "pct": 1.2
+      },
+      {
+        "stage": "Audio Capture",
+        "avg_ms": 19.4,
+        "pct": 1.0
+      },
+      {
+        "stage": "Playback",
+        "avg_ms": 15.0,
+        "pct": 0.7
+      },
+      {
+        "stage": "Sentence Buffer",
+        "avg_ms": 11.4,
+        "pct": 0.6
+      }
+    ],
+    "recommendations": [
+      "Total end-to-end latency exceeds 2.0s. Run VoiceBridge with GPU hardware or enable concurrent chunk processing."
+    ]
+  }
+}

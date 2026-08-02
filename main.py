@@ -78,10 +78,19 @@ LANGUAGES = {
 }
 
 NOISE_PHRASES = {
+    "thanks",
+    "thank you",
+    "thank you so much",
+    "thank you very much",
     "thanks for watching",
     "thank you for watching",
     "please subscribe",
     "subscribe",
+    "subtitles",
+    "subtitles by",
+    "translated by",
+    "amara org",
+    "bye",
 }
 
 
@@ -122,12 +131,13 @@ def ends_with_sentence_punctuation(text):
 def looks_like_noise(text):
     """Reject empty/noisy Whisper outputs before they enter the buffer."""
     text = clean_text(text)
-    lower_text = text.casefold()
-
     if not text:
         return True
 
-    if lower_text in NOISE_PHRASES:
+    lower_text = text.casefold()
+    stripped_text = re.sub(r"[^\w\s]", "", lower_text).strip()
+
+    if lower_text in NOISE_PHRASES or stripped_text in NOISE_PHRASES:
         return True
 
     if re.fullmatch(r"[\W_]+", text):

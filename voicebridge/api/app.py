@@ -53,10 +53,12 @@ def create_app(config: Config | None = None) -> FastAPI:
     @asynccontextmanager
     async def lifespan(_app: FastAPI):
         broker.bind_loop(asyncio.get_running_loop())
-        yield
-        orch = state["orchestrator"]
-        if orch and orch.is_running:
-            await asyncio.to_thread(orch.stop)
+        try:
+            yield
+        finally:
+            orch = state["orchestrator"]
+            if orch and orch.is_running:
+                await asyncio.to_thread(orch.stop)
 
     app = FastAPI(title=config.get("app.name", "VoiceBridge AI"), lifespan=lifespan)
 
@@ -128,6 +130,7 @@ def create_app(config: Config | None = None) -> FastAPI:
             return JSONResponse({"status": "not running"})
         # stop() joins threads; run off the event loop.
         await asyncio.to_thread(orch.stop)
+        state["orchestrator"] = None
         return JSONResponse({"status": "stopped"})
 
     @app.websocket("/ws")
@@ -141,7 +144,7 @@ def create_app(config: Config | None = None) -> FastAPI:
             while True:
                 payload = await queue_.get()
                 await websocket.send_json(_with_media_urls(payload, _media_url))
-        except WebSocketDisconnect:
+        except (WebSocketDisconnect, asyncio.CancelledError):
             pass
         finally:
             broker.unsubscribe(queue_)

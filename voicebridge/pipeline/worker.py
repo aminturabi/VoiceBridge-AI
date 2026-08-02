@@ -78,7 +78,7 @@ class DirectionWorker:
         self._voice = config.language(spec.target_lang)["edge_voice"]
 
         # Per-direction STT engine (no shared model, no global lock).
-        self._stt = SttEngine(config, label=spec.label)
+        self._stt = SttEngine(config, label=spec.label, source_lang=spec.source_lang)
         self._buffer = SentenceBuffer(config)
 
         self._sentence_queue: "queue.Queue[str]" = queue.Queue()

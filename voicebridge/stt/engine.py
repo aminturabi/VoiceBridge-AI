@@ -35,9 +35,10 @@ class Transcription:
 class SttEngine:
     """Owns a single WhisperModel and transcribes audio files/arrays."""
 
-    def __init__(self, config: Config, label: str = "stt"):
+    def __init__(self, config: Config, label: str = "stt", source_lang: str | None = None):
         self._config = config
         self._label = label
+        self._source_lang = source_lang
         self._thresholds = ReliabilityThresholds.from_config(
             config.get("stt.reliability", {})
         )
@@ -97,6 +98,10 @@ class SttEngine:
     def _raw_transcribe(self, audio_source):
         """Call model.transcribe with configured options, tolerating old versions."""
         opts = self._transcribe_opts
+        kwargs = {}
+        if self._source_lang:
+            kwargs["language"] = self._source_lang
+
         try:
             return self.model.transcribe(
                 str(audio_source),
@@ -112,6 +117,7 @@ class SttEngine:
                 no_speech_threshold=opts.get("no_speech_threshold", 0.6),
                 log_prob_threshold=opts.get("log_prob_threshold", -1.0),
                 compression_ratio_threshold=opts.get("compression_ratio_threshold", 2.4),
+                **kwargs,
             )
         except TypeError:
             # Older faster-whisper may not accept every keyword above.
@@ -121,6 +127,7 @@ class SttEngine:
                 vad_filter=opts.get("vad_filter", True),
                 beam_size=opts.get("beam_size", 5),
                 condition_on_previous_text=opts.get("condition_on_previous_text", False),
+                **kwargs,
             )
 
     def transcribe(self, audio_source) -> Transcription:

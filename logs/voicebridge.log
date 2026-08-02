@@ -165,3 +165,256 @@
 00:24:43 | INFO    | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 1080.0ms (device=cpu, cache_hit=False)
 00:24:43 | INFO    | voicebridge.stt.engine | [AR->EN] Whisper ready on cpu (loaded in 1080.0ms)
 00:24:43 | INFO    | voicebridge.pipeline.worker | [AR->EN] Text-only translation for speaker 'other' (voice disabled)
+00:44:12 | INFO    | __main__ | Starting VoiceBridge AI on http://127.0.0.1:8000
+00:45:07 | INFO    | voicebridge.translation.manager | Translation backend enabled: google
+00:45:08 | INFO    | voicebridge.translation.manager | Translation backend enabled: argos
+00:45:08 | INFO    | voicebridge.lipsync.buffered_backend | Buffered Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+00:45:08 | WARNING | voicebridge.lipsync.manager | Requested lip-sync backend 'demo' unavailable; using 'null'
+00:45:08 | INFO    | voicebridge.lipsync.manager | Lip-sync backend: null
+00:45:08 | INFO    | voicebridge.stt.engine | [EN->AR] Loading Whisper 'tiny' on cuda (float16)...
+00:45:09 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+00:45:09 | WARNING | voicebridge.stt.engine | [EN->AR] Could not load on cuda: CUDA failed with error CUDA driver version is insufficient for CUDA runtime version
+00:45:09 | INFO    | voicebridge.stt.engine | [EN->AR] Loading Whisper 'tiny' on cpu (int8)...
+00:45:09 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+00:45:10 | INFO    | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 698.8ms (device=cpu, cache_hit=False)
+00:45:10 | INFO    | voicebridge.stt.engine | [EN->AR] Whisper ready on cpu (loaded in 698.8ms)
+00:45:10 | INFO    | voicebridge.pipeline.orchestrator | Registered direction EN->AR (speaker=me, source=microphone)
+00:45:10 | INFO    | voicebridge.stt.engine | [AR->EN] Loading Whisper 'tiny' on cuda (float16)...
+00:45:12 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+00:45:12 | WARNING | voicebridge.stt.engine | [AR->EN] Could not load on cuda: CUDA failed with error CUDA driver version is insufficient for CUDA runtime version
+00:45:12 | INFO    | voicebridge.stt.engine | [AR->EN] Loading Whisper 'tiny' on cpu (int8)...
+00:45:12 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+00:45:13 | INFO    | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 816.7ms (device=cpu, cache_hit=True)
+00:45:13 | INFO    | voicebridge.stt.engine | [AR->EN] Whisper ready on cpu (loaded in 816.7ms)
+00:45:13 | INFO    | voicebridge.pipeline.orchestrator | Registered direction AR->EN (speaker=other, source=microphone)
+00:45:13 | INFO    | voicebridge.audio.capture | Microphone open (VAD chunking)
+00:45:13 | INFO    | voicebridge.audio.capture | Microphone open (VAD chunking)
+00:45:27 | INFO    | voicebridge.pipeline.orchestrator | Stopping pipeline...
+00:45:28 | INFO    | voicebridge.pipeline.worker | [AR->EN] Text-only translation for speaker 'other' (voice disabled)
+00:56:32 | INFO    | __main__ | Starting VoiceBridge AI on http://127.0.0.1:8000
+00:56:39 | INFO    | voicebridge.translation.manager | Translation backend enabled: google
+00:56:39 | INFO    | voicebridge.translation.manager | Translation backend enabled: argos
+00:56:39 | INFO    | voicebridge.lipsync.buffered_backend | Buffered Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+00:56:39 | WARNING | voicebridge.lipsync.manager | Requested lip-sync backend 'demo' unavailable; using 'null'
+00:56:39 | INFO    | voicebridge.lipsync.manager | Lip-sync backend: null
+00:56:39 | INFO    | voicebridge.stt.engine | [EN->AR] Loading Whisper 'tiny' on cuda (float16)...
+00:56:41 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+00:56:41 | WARNING | voicebridge.stt.engine | [EN->AR] Could not load on cuda: CUDA failed with error CUDA driver version is insufficient for CUDA runtime version
+00:56:41 | INFO    | voicebridge.stt.engine | [EN->AR] Loading Whisper 'tiny' on cpu (int8)...
+00:56:41 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+00:56:42 | INFO    | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 851.7ms (device=cpu, cache_hit=False)
+00:56:42 | INFO    | voicebridge.stt.engine | [EN->AR] Whisper ready on cpu (loaded in 851.7ms)
+00:56:42 | INFO    | voicebridge.pipeline.orchestrator | Registered direction EN->AR (speaker=me, source=microphone)
+00:56:42 | INFO    | voicebridge.stt.engine | [AR->EN] Loading Whisper 'tiny' on cuda (float16)...
+00:56:42 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+00:56:42 | WARNING | voicebridge.stt.engine | [AR->EN] Could not load on cuda: CUDA failed with error CUDA driver version is insufficient for CUDA runtime version
+00:56:42 | INFO    | voicebridge.stt.engine | [AR->EN] Loading Whisper 'tiny' on cpu (int8)...
+00:56:42 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+00:56:43 | INFO    | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 716.4ms (device=cpu, cache_hit=True)
+00:56:43 | INFO    | voicebridge.stt.engine | [AR->EN] Whisper ready on cpu (loaded in 716.4ms)
+00:56:43 | INFO    | voicebridge.pipeline.orchestrator | Registered direction AR->EN (speaker=other, source=microphone)
+00:56:43 | INFO    | voicebridge.audio.capture | Microphone open (VAD chunking)
+00:56:43 | INFO    | voicebridge.audio.capture | Microphone open (VAD chunking)
+00:56:53 | INFO    | voicebridge.pipeline.worker | [AR->EN] Text-only translation for speaker 'other' (voice disabled)
+00:57:00 | INFO    | voicebridge.pipeline.worker | [AR->EN] Text-only translation for speaker 'other' (voice disabled)
+00:57:03 | INFO    | voicebridge.pipeline.worker | [AR->EN] Text-only translation for speaker 'other' (voice disabled)
+00:57:22 | INFO    | voicebridge.pipeline.worker | [AR->EN] Text-only translation for speaker 'other' (voice disabled)
+00:59:50 | INFO    | httpx | HTTP Request: GET http://testserver/api/info "HTTP/1.1 200 OK"
+00:59:50 | INFO    | httpx | HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+00:59:50 | INFO    | httpx | HTTP Request: POST http://testserver/api/stop "HTTP/1.1 200 OK"
+00:59:50 | INFO    | voicebridge.stt.engine | [AR->EN] Loading Whisper 'tiny' on cuda (float16)...
+00:59:52 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+00:59:52 | WARNING | voicebridge.stt.engine | [AR->EN] Could not load on cuda: CUDA failed with error CUDA driver version is insufficient for CUDA runtime version
+00:59:52 | INFO    | voicebridge.stt.engine | [AR->EN] Loading Whisper 'tiny' on cpu (int8)...
+00:59:52 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+00:59:53 | INFO    | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 729.0ms (device=cpu, cache_hit=False)
+00:59:53 | INFO    | voicebridge.stt.engine | [AR->EN] Whisper ready on cpu (loaded in 729.0ms)
+00:59:53 | INFO    | voicebridge.pipeline.worker | [AR->EN] Text-only translation for speaker 'other' (voice disabled)
+00:59:53 | INFO    | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 1200.0ms (device=cpu, cache_hit=False)
+00:59:53 | INFO    | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 5.0ms (device=cpu, cache_hit=True)
+00:59:53 | INFO    | voicebridge.metrics.reporter | Exported Markdown report -> C:\Users\Amin Khan\AppData\Local\Temp\pytest-of-Amin Khan\pytest-16\test_performance_reporter0\report.md
+00:59:53 | INFO    | voicebridge.metrics.reporter | Exported JSON report -> C:\Users\Amin Khan\AppData\Local\Temp\pytest-of-Amin Khan\pytest-16\test_performance_reporter0\report.json
+00:59:53 | INFO    | voicebridge.metrics.reporter | Exported CSV report -> C:\Users\Amin Khan\AppData\Local\Temp\pytest-of-Amin Khan\pytest-16\test_performance_reporter0\report.csv
+01:01:58 | INFO    | voicebridge.pipeline.worker | [AR->EN] Text-only translation for speaker 'other' (voice disabled)
+01:02:08 | INFO    | voicebridge.pipeline.worker | [AR->EN] Text-only translation for speaker 'other' (voice disabled)
+01:02:10 | INFO    | voicebridge.pipeline.worker | [AR->EN] Text-only translation for speaker 'other' (voice disabled)
+01:02:15 | INFO    | voicebridge.pipeline.worker | [AR->EN] Text-only translation for speaker 'other' (voice disabled)
+01:02:24 | INFO    | voicebridge.pipeline.worker | [AR->EN] Text-only translation for speaker 'other' (voice disabled)
+01:02:30 | INFO    | voicebridge.pipeline.worker | [AR->EN] Text-only translation for speaker 'other' (voice disabled)
+01:03:01 | INFO    | voicebridge.pipeline.worker | [AR->EN] Text-only translation for speaker 'other' (voice disabled)
+01:03:03 | INFO    | voicebridge.pipeline.worker | [AR->EN] Text-only translation for speaker 'other' (voice disabled)
+01:03:56 | INFO    | __main__ | Starting VoiceBridge AI on http://127.0.0.1:8000
+01:04:15 | INFO    | voicebridge.translation.manager | Translation backend enabled: google
+01:04:16 | INFO    | voicebridge.translation.manager | Translation backend enabled: argos
+01:04:16 | INFO    | voicebridge.lipsync.buffered_backend | Buffered Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+01:04:16 | WARNING | voicebridge.lipsync.manager | Requested lip-sync backend 'demo' unavailable; using 'null'
+01:04:16 | INFO    | voicebridge.lipsync.manager | Lip-sync backend: null
+01:04:16 | INFO    | voicebridge.stt.engine | [EN->AR] Loading Whisper 'tiny' on cuda (float16)...
+01:04:17 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+01:04:17 | WARNING | voicebridge.stt.engine | [EN->AR] Could not load on cuda: CUDA failed with error CUDA driver version is insufficient for CUDA runtime version
+01:04:17 | INFO    | voicebridge.stt.engine | [EN->AR] Loading Whisper 'tiny' on cpu (int8)...
+01:04:17 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+01:04:18 | INFO    | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 732.4ms (device=cpu, cache_hit=False)
+01:04:18 | INFO    | voicebridge.stt.engine | [EN->AR] Whisper ready on cpu (loaded in 732.4ms)
+01:04:18 | INFO    | voicebridge.pipeline.orchestrator | Registered direction EN->AR (speaker=me, source=microphone)
+01:04:18 | INFO    | voicebridge.stt.engine | [AR->EN] Loading Whisper 'tiny' on cuda (float16)...
+01:04:18 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+01:04:18 | WARNING | voicebridge.stt.engine | [AR->EN] Could not load on cuda: CUDA failed with error CUDA driver version is insufficient for CUDA runtime version
+01:04:18 | INFO    | voicebridge.stt.engine | [AR->EN] Loading Whisper 'tiny' on cpu (int8)...
+01:04:18 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+01:04:19 | INFO    | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 756.6ms (device=cpu, cache_hit=True)
+01:04:19 | INFO    | voicebridge.stt.engine | [AR->EN] Whisper ready on cpu (loaded in 756.6ms)
+01:04:19 | INFO    | voicebridge.pipeline.orchestrator | Registered direction AR->EN (speaker=other, source=microphone)
+01:04:19 | INFO    | voicebridge.audio.capture | Microphone open (VAD chunking)
+01:04:19 | INFO    | voicebridge.audio.capture | Microphone open (VAD chunking)
+01:10:08 | INFO    | httpx | HTTP Request: GET http://testserver/api/info "HTTP/1.1 200 OK"
+01:10:08 | INFO    | httpx | HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+01:10:08 | INFO    | httpx | HTTP Request: POST http://testserver/api/stop "HTTP/1.1 200 OK"
+01:10:08 | INFO    | voicebridge.stt.engine | [AR->EN] Loading Whisper 'tiny' on cuda (float16)...
+01:10:10 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+01:10:10 | WARNING | voicebridge.stt.engine | [AR->EN] Could not load on cuda: CUDA failed with error CUDA driver version is insufficient for CUDA runtime version
+01:10:10 | INFO    | voicebridge.stt.engine | [AR->EN] Loading Whisper 'tiny' on cpu (int8)...
+01:10:10 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+01:10:10 | INFO    | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 690.2ms (device=cpu, cache_hit=False)
+01:10:10 | INFO    | voicebridge.stt.engine | [AR->EN] Whisper ready on cpu (loaded in 690.2ms)
+01:10:10 | INFO    | voicebridge.pipeline.worker | [AR->EN] Text-only translation for speaker 'other' (voice disabled)
+01:10:10 | INFO    | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 1200.0ms (device=cpu, cache_hit=False)
+01:10:10 | INFO    | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 5.0ms (device=cpu, cache_hit=True)
+01:10:10 | INFO    | voicebridge.metrics.reporter | Exported Markdown report -> C:\Users\Amin Khan\AppData\Local\Temp\pytest-of-Amin Khan\pytest-17\test_performance_reporter0\report.md
+01:10:10 | INFO    | voicebridge.metrics.reporter | Exported JSON report -> C:\Users\Amin Khan\AppData\Local\Temp\pytest-of-Amin Khan\pytest-17\test_performance_reporter0\report.json
+01:10:10 | INFO    | voicebridge.metrics.reporter | Exported CSV report -> C:\Users\Amin Khan\AppData\Local\Temp\pytest-of-Amin Khan\pytest-17\test_performance_reporter0\report.csv
+01:13:50 | INFO    | httpx | HTTP Request: GET http://testserver/api/info "HTTP/1.1 200 OK"
+01:13:50 | INFO    | httpx | HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+01:13:50 | INFO    | httpx | HTTP Request: POST http://testserver/api/stop "HTTP/1.1 200 OK"
+01:13:50 | INFO    | voicebridge.stt.engine | [AR->EN] Loading Whisper 'tiny' on cuda (float16)...
+01:13:51 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+01:13:51 | WARNING | voicebridge.stt.engine | [AR->EN] Could not load on cuda: CUDA failed with error CUDA driver version is insufficient for CUDA runtime version
+01:13:51 | INFO    | voicebridge.stt.engine | [AR->EN] Loading Whisper 'tiny' on cpu (int8)...
+01:13:52 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+01:13:53 | INFO    | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 1409.8ms (device=cpu, cache_hit=False)
+01:13:53 | INFO    | voicebridge.stt.engine | [AR->EN] Whisper ready on cpu (loaded in 1409.8ms)
+01:13:53 | INFO    | voicebridge.pipeline.worker | [AR->EN] Text-only translation for speaker 'other' (voice disabled)
+01:13:53 | INFO    | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 1200.0ms (device=cpu, cache_hit=False)
+01:13:53 | INFO    | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 5.0ms (device=cpu, cache_hit=True)
+01:13:53 | INFO    | voicebridge.metrics.reporter | Exported Markdown report -> C:\Users\Amin Khan\AppData\Local\Temp\pytest-of-Amin Khan\pytest-18\test_performance_reporter0\report.md
+01:13:53 | INFO    | voicebridge.metrics.reporter | Exported JSON report -> C:\Users\Amin Khan\AppData\Local\Temp\pytest-of-Amin Khan\pytest-18\test_performance_reporter0\report.json
+01:13:53 | INFO    | voicebridge.metrics.reporter | Exported CSV report -> C:\Users\Amin Khan\AppData\Local\Temp\pytest-of-Amin Khan\pytest-18\test_performance_reporter0\report.csv
+01:14:38 | INFO    | __main__ | Starting VoiceBridge AI on http://127.0.0.1:8000
+01:21:02 | INFO    | voicebridge.translation.manager | Translation backend enabled: google
+01:21:02 | INFO    | voicebridge.translation.manager | Translation backend enabled: argos
+01:21:02 | INFO    | voicebridge.lipsync.buffered_backend | Buffered Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+01:21:02 | WARNING | voicebridge.lipsync.manager | Requested lip-sync backend 'demo' unavailable; using 'null'
+01:21:02 | INFO    | voicebridge.lipsync.manager | Lip-sync backend: null
+01:21:02 | INFO    | voicebridge.stt.engine | [EN->AR] Loading Whisper 'tiny' on cuda (float16)...
+01:21:03 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+01:21:03 | WARNING | voicebridge.stt.engine | [EN->AR] Could not load on cuda: CUDA failed with error CUDA driver version is insufficient for CUDA runtime version
+01:21:03 | INFO    | voicebridge.stt.engine | [EN->AR] Loading Whisper 'tiny' on cpu (int8)...
+01:21:04 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+01:21:04 | INFO    | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 731.0ms (device=cpu, cache_hit=False)
+01:21:04 | INFO    | voicebridge.stt.engine | [EN->AR] Whisper ready on cpu (loaded in 731.0ms)
+01:21:04 | INFO    | voicebridge.pipeline.orchestrator | Registered direction EN->AR (speaker=me, source=microphone)
+01:21:04 | INFO    | voicebridge.stt.engine | [AR->EN] Loading Whisper 'tiny' on cuda (float16)...
+01:21:05 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+01:21:05 | WARNING | voicebridge.stt.engine | [AR->EN] Could not load on cuda: CUDA failed with error CUDA driver version is insufficient for CUDA runtime version
+01:21:05 | INFO    | voicebridge.stt.engine | [AR->EN] Loading Whisper 'tiny' on cpu (int8)...
+01:21:05 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+01:21:05 | INFO    | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 774.5ms (device=cpu, cache_hit=True)
+01:21:05 | INFO    | voicebridge.stt.engine | [AR->EN] Whisper ready on cpu (loaded in 774.5ms)
+01:21:05 | INFO    | voicebridge.pipeline.orchestrator | Registered direction AR->EN (speaker=other, source=microphone)
+01:21:06 | INFO    | voicebridge.audio.capture | Microphone open (VAD chunking)
+01:21:06 | INFO    | voicebridge.audio.capture | Microphone open (VAD chunking)
+01:21:07 | INFO    | voicebridge.pipeline.orchestrator | Stopping pipeline...
+01:21:09 | INFO    | voicebridge.translation.manager | Translation backend enabled: google
+01:21:09 | INFO    | voicebridge.translation.manager | Translation backend enabled: argos
+01:21:09 | INFO    | voicebridge.lipsync.buffered_backend | Buffered Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+01:21:09 | WARNING | voicebridge.lipsync.manager | Requested lip-sync backend 'demo' unavailable; using 'null'
+01:21:09 | INFO    | voicebridge.lipsync.manager | Lip-sync backend: null
+01:21:09 | INFO    | voicebridge.stt.engine | [EN->AR] Loading Whisper 'tiny' on cuda (float16)...
+01:21:09 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+01:21:09 | WARNING | voicebridge.stt.engine | [EN->AR] Could not load on cuda: CUDA failed with error CUDA driver version is insufficient for CUDA runtime version
+01:21:09 | INFO    | voicebridge.stt.engine | [EN->AR] Loading Whisper 'tiny' on cpu (int8)...
+01:21:09 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+01:21:10 | INFO    | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 673.5ms (device=cpu, cache_hit=True)
+01:21:10 | INFO    | voicebridge.stt.engine | [EN->AR] Whisper ready on cpu (loaded in 673.5ms)
+01:21:10 | INFO    | voicebridge.pipeline.orchestrator | Registered direction EN->AR (speaker=me, source=microphone)
+01:21:10 | INFO    | voicebridge.stt.engine | [AR->EN] Loading Whisper 'tiny' on cuda (float16)...
+01:21:10 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+01:21:10 | WARNING | voicebridge.stt.engine | [AR->EN] Could not load on cuda: CUDA failed with error CUDA driver version is insufficient for CUDA runtime version
+01:21:10 | INFO    | voicebridge.stt.engine | [AR->EN] Loading Whisper 'tiny' on cpu (int8)...
+01:21:10 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+01:21:11 | INFO    | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 738.1ms (device=cpu, cache_hit=True)
+01:21:11 | INFO    | voicebridge.stt.engine | [AR->EN] Whisper ready on cpu (loaded in 738.1ms)
+01:21:11 | INFO    | voicebridge.pipeline.orchestrator | Registered direction AR->EN (speaker=other, source=microphone)
+01:21:11 | INFO    | voicebridge.audio.capture | Microphone open (VAD chunking)
+01:21:11 | INFO    | voicebridge.audio.capture | Microphone open (VAD chunking)
+01:22:31 | INFO    | voicebridge.pipeline.orchestrator | Stopping pipeline...
+01:22:37 | INFO    | voicebridge.translation.manager | Translation backend enabled: google
+01:22:37 | INFO    | voicebridge.translation.manager | Translation backend enabled: argos
+01:22:37 | INFO    | voicebridge.lipsync.buffered_backend | Buffered Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+01:22:37 | WARNING | voicebridge.lipsync.manager | Requested lip-sync backend 'demo' unavailable; using 'null'
+01:22:37 | INFO    | voicebridge.lipsync.manager | Lip-sync backend: null
+01:22:37 | INFO    | voicebridge.stt.engine | [UR->AR] Loading Whisper 'tiny' on cuda (float16)...
+01:22:37 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+01:22:37 | WARNING | voicebridge.stt.engine | [UR->AR] Could not load on cuda: CUDA failed with error CUDA driver version is insufficient for CUDA runtime version
+01:22:37 | INFO    | voicebridge.stt.engine | [UR->AR] Loading Whisper 'tiny' on cpu (int8)...
+01:22:38 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+01:22:38 | INFO    | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 655.1ms (device=cpu, cache_hit=True)
+01:22:38 | INFO    | voicebridge.stt.engine | [UR->AR] Whisper ready on cpu (loaded in 655.1ms)
+01:22:38 | INFO    | voicebridge.pipeline.orchestrator | Registered direction UR->AR (speaker=me, source=microphone)
+01:22:38 | INFO    | voicebridge.stt.engine | [AR->UR] Loading Whisper 'tiny' on cuda (float16)...
+01:22:38 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+01:22:38 | WARNING | voicebridge.stt.engine | [AR->UR] Could not load on cuda: CUDA failed with error CUDA driver version is insufficient for CUDA runtime version
+01:22:38 | INFO    | voicebridge.stt.engine | [AR->UR] Loading Whisper 'tiny' on cpu (int8)...
+01:22:39 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+01:22:39 | INFO    | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 701.3ms (device=cpu, cache_hit=True)
+01:22:39 | INFO    | voicebridge.stt.engine | [AR->UR] Whisper ready on cpu (loaded in 701.3ms)
+01:22:39 | INFO    | voicebridge.pipeline.orchestrator | Registered direction AR->UR (speaker=other, source=microphone)
+01:22:39 | INFO    | voicebridge.audio.capture | Microphone open (VAD chunking)
+01:22:39 | INFO    | voicebridge.audio.capture | Microphone open (VAD chunking)
+01:22:49 | INFO    | voicebridge.pipeline.worker | [AR->UR] Text-only translation for speaker 'other' (voice disabled)
+01:23:12 | INFO    | voicebridge.pipeline.orchestrator | Stopping pipeline...
+01:23:12 | INFO    | voicebridge.audio.capture | Microphone closed
+01:23:14 | INFO    | voicebridge.audio.capture | Microphone closed
+01:25:03 | INFO    | httpx | HTTP Request: GET http://testserver/api/info "HTTP/1.1 200 OK"
+01:25:03 | INFO    | httpx | HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+01:25:03 | INFO    | httpx | HTTP Request: POST http://testserver/api/stop "HTTP/1.1 200 OK"
+01:25:03 | INFO    | voicebridge.stt.engine | [AR->EN] Loading Whisper 'tiny' on cuda (float16)...
+01:25:05 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+01:25:05 | WARNING | voicebridge.stt.engine | [AR->EN] Could not load on cuda: CUDA failed with error CUDA driver version is insufficient for CUDA runtime version
+01:25:05 | INFO    | voicebridge.stt.engine | [AR->EN] Loading Whisper 'tiny' on cpu (int8)...
+01:25:05 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+01:25:05 | INFO    | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 795.3ms (device=cpu, cache_hit=False)
+01:25:05 | INFO    | voicebridge.stt.engine | [AR->EN] Whisper ready on cpu (loaded in 795.3ms)
+01:25:05 | INFO    | voicebridge.pipeline.worker | [AR->EN] Text-only translation for speaker 'other' (voice disabled)
+01:25:05 | INFO    | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 1200.0ms (device=cpu, cache_hit=False)
+01:25:05 | INFO    | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 5.0ms (device=cpu, cache_hit=True)
+01:25:06 | INFO    | voicebridge.metrics.reporter | Exported Markdown report -> C:\Users\Amin Khan\AppData\Local\Temp\pytest-of-Amin Khan\pytest-19\test_performance_reporter0\report.md
+01:25:06 | INFO    | voicebridge.metrics.reporter | Exported JSON report -> C:\Users\Amin Khan\AppData\Local\Temp\pytest-of-Amin Khan\pytest-19\test_performance_reporter0\report.json
+01:25:06 | INFO    | voicebridge.metrics.reporter | Exported CSV report -> C:\Users\Amin Khan\AppData\Local\Temp\pytest-of-Amin Khan\pytest-19\test_performance_reporter0\report.csv
+01:30:36 | INFO    | __main__ | Starting VoiceBridge AI on http://127.0.0.1:8000
+01:32:09 | INFO    | voicebridge.translation.manager | Translation backend enabled: google
+01:32:10 | INFO    | voicebridge.translation.manager | Translation backend enabled: argos
+01:32:10 | INFO    | voicebridge.lipsync.buffered_backend | Buffered Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+01:32:10 | WARNING | voicebridge.lipsync.manager | Requested lip-sync backend 'demo' unavailable; using 'null'
+01:32:10 | INFO    | voicebridge.lipsync.manager | Lip-sync backend: null
+01:32:10 | INFO    | voicebridge.stt.engine | [EN->AR] Loading Whisper 'tiny' on cuda (float16)...
+01:32:11 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+01:32:11 | WARNING | voicebridge.stt.engine | [EN->AR] Could not load on cuda: CUDA failed with error CUDA driver version is insufficient for CUDA runtime version
+01:32:11 | INFO    | voicebridge.stt.engine | [EN->AR] Loading Whisper 'tiny' on cpu (int8)...
+01:32:11 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+01:32:11 | INFO    | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 711.0ms (device=cpu, cache_hit=False)
+01:32:11 | INFO    | voicebridge.stt.engine | [EN->AR] Whisper ready on cpu (loaded in 711.0ms)
+01:32:11 | INFO    | voicebridge.pipeline.orchestrator | Registered direction EN->AR (speaker=me, source=microphone)
+01:32:11 | INFO    | voicebridge.stt.engine | [AR->EN] Loading Whisper 'tiny' on cuda (float16)...
+01:32:12 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+01:32:12 | WARNING | voicebridge.stt.engine | [AR->EN] Could not load on cuda: CUDA failed with error CUDA driver version is insufficient for CUDA runtime version
+01:32:12 | INFO    | voicebridge.stt.engine | [AR->EN] Loading Whisper 'tiny' on cpu (int8)...
+01:32:12 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+01:32:13 | INFO    | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 673.7ms (device=cpu, cache_hit=True)
+01:32:13 | INFO    | voicebridge.stt.engine | [AR->EN] Whisper ready on cpu (loaded in 673.7ms)
+01:32:13 | INFO    | voicebridge.pipeline.orchestrator | Registered direction AR->EN (speaker=other, source=microphone)
+01:32:13 | INFO    | voicebridge.audio.capture | Microphone open (VAD chunking)
+01:32:13 | INFO    | voicebridge.audio.capture | Microphone open (VAD chunking)
+01:32:22 | INFO    | voicebridge.pipeline.worker | [AR->EN] Text-only translation for speaker 'other' (voice disabled)
+01:32:29 | INFO    | voicebridge.pipeline.worker | [AR->EN] Text-only translation for speaker 'other' (voice disabled)
+01:32:43 | INFO    | voicebridge.pipeline.orchestrator | Stopping pipeline...

@@ -114,12 +114,13 @@ el("sourceKind").addEventListener("change", (ev) => {
 });
 
 el("startBtn").addEventListener("click", async () => {
+  const isTwoWay = el("callMode").value === "two_way";
   const body = {
     my_language: el("myLang").value,
     other_language: el("otherLang").value,
     source_kind: el("sourceKind").value,
     wav_path: el("wavPath").value || null,
-    two_way: el("sourceKind").value === "microphone",
+    two_way: isTwoWay,
   };
   const res = await fetch("/api/start", {
     method: "POST",
@@ -137,6 +138,20 @@ el("startBtn").addEventListener("click", async () => {
 });
 
 el("stopBtn").addEventListener("click", async () => {
+  // Stop all active audio/video playback in browser immediately
+  player.pause();
+  player.src = "";
+  ["me", "other"].forEach((panel) => {
+    const video = el(`video-${panel}`);
+    if (video) {
+      video.pause();
+      video.removeAttribute("src");
+      video.load();
+      video.classList.remove("active");
+    }
+    highlight(panel, false);
+  });
+
   await fetch("/api/stop", { method: "POST" });
   setStatus("idle", "idle");
   el("startBtn").disabled = false;

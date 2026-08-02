@@ -18,10 +18,19 @@ DEFAULT_SENTENCE_ENDINGS: tuple[str, ...] = (".", "?", "!", "؟", "۔", "।")
 
 DEFAULT_NOISE_PHRASES: frozenset[str] = frozenset(
     {
+        "thanks",
+        "thank you",
+        "thank you so much",
+        "thank you very much",
         "thanks for watching",
         "thank you for watching",
         "please subscribe",
         "subscribe",
+        "subtitles",
+        "subtitles by",
+        "translated by",
+        "amara org",
+        "bye",
     }
 )
 
@@ -58,11 +67,15 @@ def looks_like_noise(
 ) -> bool:
     """Reject empty/noisy STT outputs before they enter the buffer."""
     text = clean_text(text)
-    lower_text = text.casefold()
-
     if not text:
         return True
-    if lower_text in {p.casefold() for p in noise_phrases}:
+
+    lower_text = text.casefold()
+    # Strip punctuation to accurately catch noise phrases even when punctuated
+    stripped_text = re.sub(r"[^\w\s]", "", lower_text).strip()
+
+    normalized_noise = {p.casefold() for p in noise_phrases}
+    if lower_text in normalized_noise or stripped_text in normalized_noise:
         return True
     if _ONLY_PUNCT.fullmatch(text):
         return True

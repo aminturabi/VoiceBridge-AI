@@ -115,3 +115,53 @@
 03:04:51 | INFO    | voicebridge.metrics.reporter | Exported Markdown report -> C:\Users\Amin Khan\AppData\Local\Temp\pytest-of-Amin Khan\pytest-10\test_performance_reporter0\report.md
 03:04:51 | INFO    | voicebridge.metrics.reporter | Exported JSON report -> C:\Users\Amin Khan\AppData\Local\Temp\pytest-of-Amin Khan\pytest-10\test_performance_reporter0\report.json
 03:04:51 | INFO    | voicebridge.metrics.reporter | Exported CSV report -> C:\Users\Amin Khan\AppData\Local\Temp\pytest-of-Amin Khan\pytest-10\test_performance_reporter0\report.csv
+03:08:17 | INFO    | __main__ | Executing VoiceBridge AI benchmark suite...
+03:08:17 | INFO    | voicebridge.benchmarks.runner | === Starting VoiceBridge AI Benchmark Suite ===
+03:08:17 | INFO    | voicebridge.metrics.resource_monitor | ResourceMonitor started (interval=0.2s)
+03:08:17 | INFO    | voicebridge.benchmarks.runner | Running benchmark scenario: Short Audio (5s)...
+03:08:17 | INFO    | voicebridge.benchmarks.audio_generator | Generated benchmark WAV: benchmark_5s.wav (5.0s)
+03:08:17 | INFO    | voicebridge.benchmarks.runner | Running benchmark scenario: Medium Audio (30s)...
+03:08:17 | INFO    | voicebridge.benchmarks.audio_generator | Generated benchmark WAV: benchmark_30s.wav (30.0s)
+03:08:17 | INFO    | voicebridge.benchmarks.runner | Running benchmark scenario: Long Audio (120s)...
+03:08:17 | INFO    | voicebridge.benchmarks.audio_generator | Generated benchmark WAV: benchmark_120s.wav (120.0s)
+03:08:17 | INFO    | voicebridge.benchmarks.runner | Running concurrency benchmark: 1 concurrent stream(s)...
+03:08:17 | INFO    | voicebridge.benchmarks.runner | Running concurrency benchmark: 2 concurrent stream(s)...
+03:08:17 | INFO    | voicebridge.benchmarks.runner | Running concurrency benchmark: 4 concurrent stream(s)...
+03:08:17 | INFO    | voicebridge.metrics.resource_monitor | ResourceMonitor stopped
+03:08:17 | INFO    | voicebridge.metrics.reporter | Exported Markdown report -> D:\VoiceBridge Ai\logs\reports\benchmark_report_20260801_030817.md
+03:08:17 | INFO    | voicebridge.metrics.reporter | Exported JSON report -> D:\VoiceBridge Ai\logs\reports\benchmark_report_20260801_030817.json
+03:08:17 | INFO    | voicebridge.metrics.reporter | Exported CSV report -> D:\VoiceBridge Ai\logs\reports\benchmark_report_20260801_030817.csv
+03:08:17 | INFO    | voicebridge.benchmarks.runner | === Benchmark Suite Complete ===
+03:08:17 | INFO    | voicebridge.benchmarks.runner | Reports exported to:
+ - D:\VoiceBridge Ai\logs\reports\benchmark_report_20260801_030817.md
+ - D:\VoiceBridge Ai\logs\reports\benchmark_report_20260801_030817.json
+ - D:\VoiceBridge Ai\logs\reports\benchmark_report_20260801_030817.csv
+03:08:24 | INFO    | __main__ | Launching VoiceBridge AI live dashboard...
+03:08:24 | INFO    | voicebridge.metrics.resource_monitor | ResourceMonitor started (interval=0.5s)
+00:24:38 | INFO    | httpx | HTTP Request: GET http://testserver/api/info "HTTP/1.1 200 OK"
+00:24:38 | INFO    | httpx | HTTP Request: GET http://testserver/api/info "HTTP/1.1 200 OK"
+00:24:38 | INFO    | httpx | HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+00:24:38 | INFO    | httpx | HTTP Request: GET http://testserver/api/info "HTTP/1.1 200 OK"
+00:24:38 | INFO    | httpx | HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+00:24:38 | INFO    | httpx | HTTP Request: POST http://testserver/api/stop "HTTP/1.1 200 OK"
+00:24:38 | INFO    | httpx | HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+00:24:38 | INFO    | httpx | HTTP Request: POST http://testserver/api/stop "HTTP/1.1 200 OK"
+00:24:38 | INFO    | httpx | HTTP Request: POST http://testserver/api/stop "HTTP/1.1 200 OK"
+00:24:38 | INFO    | voicebridge.stt.engine | [AR->EN] Loading Whisper 'tiny' on cuda (float16)...
+00:24:38 | INFO    | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 1200.0ms (device=cpu, cache_hit=False)
+00:24:38 | INFO    | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 5.0ms (device=cpu, cache_hit=True)
+00:24:38 | INFO    | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 1200.0ms (device=cpu, cache_hit=False)
+00:24:38 | INFO    | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 5.0ms (device=cpu, cache_hit=True)
+00:24:38 | INFO    | voicebridge.metrics.reporter | Exported Markdown report -> C:\Users\Amin Khan\AppData\Local\Temp\pytest-of-Amin Khan\pytest-14\test_performance_reporter0\report.md
+00:24:38 | INFO    | voicebridge.metrics.reporter | Exported JSON report -> C:\Users\Amin Khan\AppData\Local\Temp\pytest-of-Amin Khan\pytest-14\test_performance_reporter0\report.json
+00:24:38 | INFO    | voicebridge.metrics.reporter | Exported CSV report -> C:\Users\Amin Khan\AppData\Local\Temp\pytest-of-Amin Khan\pytest-14\test_performance_reporter0\report.csv
+00:24:38 | INFO    | voicebridge.metrics.reporter | Exported Markdown report -> C:\Users\Amin Khan\AppData\Local\Temp\pytest-of-Amin Khan\pytest-15\test_performance_reporter0\report.md
+00:24:38 | INFO    | voicebridge.metrics.reporter | Exported JSON report -> C:\Users\Amin Khan\AppData\Local\Temp\pytest-of-Amin Khan\pytest-15\test_performance_reporter0\report.json
+00:24:38 | INFO    | voicebridge.metrics.reporter | Exported CSV report -> C:\Users\Amin Khan\AppData\Local\Temp\pytest-of-Amin Khan\pytest-15\test_performance_reporter0\report.csv
+00:24:41 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+00:24:41 | WARNING | voicebridge.stt.engine | [AR->EN] Could not load on cuda: CUDA failed with error CUDA driver version is insufficient for CUDA runtime version
+00:24:41 | INFO    | voicebridge.stt.engine | [AR->EN] Loading Whisper 'tiny' on cpu (int8)...
+00:24:42 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+00:24:43 | INFO    | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 1080.0ms (device=cpu, cache_hit=False)
+00:24:43 | INFO    | voicebridge.stt.engine | [AR->EN] Whisper ready on cpu (loaded in 1080.0ms)
+00:24:43 | INFO    | voicebridge.pipeline.worker | [AR->EN] Text-only translation for speaker 'other' (voice disabled)

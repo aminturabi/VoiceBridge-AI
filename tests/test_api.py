@@ -73,3 +73,38 @@ def test_broker_delivers_to_subscriber():
         broker.unsubscribe(queue_)
 
     asyncio.run(scenario())
+
+
+def test_worker_speaker_other_text_only(monkeypatch):
+    """Verify that speaker 'other' emits translation event but skips TTS synthesis."""
+    from unittest.mock import MagicMock
+    from voicebridge.pipeline.worker import DirectionWorker, DirectionSpec
+    from voicebridge.config import load_config
+
+    config = load_config()
+    spec = DirectionSpec(source_lang="ar", target_lang="en", speaker="other")
+    mock_trans = MagicMock()
+    mock_trans.translate.return_value = "hello"
+    mock_tts = MagicMock()
+    events = []
+
+    worker = DirectionWorker(
+        config=config,
+        spec=spec,
+        source=None,
+        translation=mock_trans,
+        tts=mock_tts,
+        lipsync=MagicMock(),
+        emit=events.append,
+        stop_event=MagicMock(),
+    )
+
+    worker._process_sentence("مرحبا")
+
+    # Should emit TRANSLATION event
+    assert len(events) == 1
+    assert events[0].type == EventType.TRANSLATION
+    assert events[0].translated_text == "hello"
+    # TTS synthesize should not have been called for speaker 'other'
+    mock_tts.synthesize.assert_not_called()
+

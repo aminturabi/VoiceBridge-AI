@@ -228,7 +228,7 @@ def print_project_flow(my_language, other_language, other_wav_path):
     log(
         "Direction 2: Other "
         f"{other_language['display_name']} speech -> "
-        f"{my_language['display_name']} translated text + voice"
+        f"{my_language['display_name']} translated text (voice disabled, commented out)"
     )
     log("Pipeline A input: microphone")
 
@@ -588,7 +588,21 @@ def tts_worker(context):
             log(f"[{context.direction}] TTS worker stopped.")
             break
 
-        sentence_id, translated_text = item
+        # ONE-WAY VOICE MODE: Only translate MY voice into speech audio.
+        # For second person (OTHER -> ME), translation is text-only (voice generation/playback disabled).
+        if context.direction == "OTHER -> ME":
+            log(f"[{context.direction}] Text-only translation (voice disabled): {translated_text}")
+            # --- UNCOMMENT BELOW CODE IF YOU WANT SECOND PERSON VOICE TRANSLATION LATER ---
+            # try:
+            #     log(f"[{context.direction}] Voice generation for sentence {sentence_id}")
+            #     output_audio = asyncio.run(generate_voice(translated_text, context, sentence_id))
+            #     log(f"[{context.direction}] Playing voice: {output_audio.name}")
+            #     playsound(str(output_audio))
+            # except Exception as error:
+            #     log(f"[{context.direction}] TTS/playback error in sentence {sentence_id}: {error}")
+            # ---------------------------------------------------------------------------------
+            context.translated_queue.task_done()
+            continue
 
         try:
             log(f"[{context.direction}] Voice generation for sentence {sentence_id}")

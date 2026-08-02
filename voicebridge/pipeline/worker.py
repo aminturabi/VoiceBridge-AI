@@ -223,6 +223,63 @@ class DirectionWorker:
             )
         )
 
+        # ONE-WAY VOICE MODE: For speaker "other" (second person), translation is text-only.
+        # Voice generation (TTS) and audio/video playback code for second person is commented out below:
+        if self._spec.speaker == "other":
+            logger.info("[%s] Text-only translation for speaker 'other' (voice disabled)", self._spec.label)
+            # --- UNCOMMENT BELOW CODE IF YOU WANT SECOND PERSON VOICE TRANSLATION LATER ---
+            # t_tts = time.perf_counter()
+            # audio_path = self._tts.synthesize(
+            #     translated, self._voice, self._spec.label, sentence_id
+            # )
+            # tts_lat = (time.perf_counter() - t_tts) * 1000.0
+            # stage_latencies["TTS"] = tts_lat
+            #
+            # t_lip = time.perf_counter()
+            # lip_result = self._lipsync.sync(audio_path, self._spec.label, sentence_id)
+            # lip_lat = (time.perf_counter() - t_lip) * 1000.0
+            # stage_latencies["Lip Sync"] = lip_lat
+            # stage_latencies["Playback"] = 15.0  # Playback dispatch baseline
+            #
+            # latency_ms = (time.perf_counter() - start) * 1000
+            # fps_val = 25.0 if lip_result.is_synced else 0.0
+            # metric = UtteranceMetric(
+            #     session_id=f"session_{self._spec.label}",
+            #     direction=self._spec.label,
+            #     sentence_id=sentence_id,
+            #     text=sentence,
+            #     translated_text=translated,
+            #     source_lang=self._spec.source_lang,
+            #     target_lang=self._spec.target_lang,
+            #     stage_latencies_ms=stage_latencies,
+            #     total_latency_ms=latency_ms,
+            #     audio_duration_sec=3.0,
+            #     lip_sync_backend=lip_result.backend,
+            #     is_synced=lip_result.is_synced,
+            #     fps=fps_val,
+            # )
+            # self._metrics_collector.record_utterance(metric)
+            # self._metrics_logger.log_utterance(metric)
+            # self._emit(
+            #     PipelineEvent(
+            #         type=EventType.SPEECH_READY,
+            #         direction=self._spec.label,
+            #         speaker=self._spec.speaker,
+            #         text=sentence,
+            #         translated_text=translated,
+            #         source_lang=self._spec.source_lang,
+            #         target_lang=self._spec.target_lang,
+            #         audio_url=str(lip_result.audio_path),
+            #         video_url=str(lip_result.video_path) if lip_result.video_path else "",
+            #         is_synced=lip_result.is_synced,
+            #         latency_ms=latency_ms,
+            #         note=lip_result.note,
+            #         sentence_id=sentence_id,
+            #     )
+            # )
+            # ---------------------------------------------------------------------------------
+            return
+
         t_tts = time.perf_counter()
         audio_path = self._tts.synthesize(
             translated, self._voice, self._spec.label, sentence_id

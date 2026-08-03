@@ -8,6 +8,29 @@ app:
   # Directory for generated TTS + lip-synced output.
   output_dir: "generated_speech"
 
+# AI Model directories (no hardcoded absolute paths)
+models:
+  root_dir: "models"
+  whisper_dir: "models/whisper"
+  nllb_dir: "models/nllb"
+  wav2lip_dir: "models/wav2lip"
+
+# Cache configuration to reduce translation & TTS latency
+cache:
+  enabled: true
+  dir: "cache"
+  translation_dir: "cache/translation"
+  audio_dir: "cache/audio"
+  ttl_seconds: 86400
+
+# Avatar management module configuration
+avatar:
+  dir: "voicebridge/avatar"
+  images_dir: "voicebridge/avatar/images"
+  videos_dir: "voicebridge/avatar/videos"
+  default_avatar: "speaker"
+  source_face: "assets/faces/speaker.mp4"
+
 logging:
   # DEBUG | INFO | WARNING | ERROR
   level: "INFO"
@@ -32,8 +55,8 @@ audio:
     min_segment_seconds: 0.4
 
 stt:
-  # One model is loaded PER DIRECTION (no shared global lock) so the two
-  # directions of a two-way call run in parallel.
+  # Active provider: "faster-whisper", "whisper-api", or "vosk"
+  provider: "faster-whisper"
   # Preferred device order; first that loads wins.
   device_preference: ["cuda", "cpu"]
   cuda:
@@ -79,27 +102,39 @@ buffer:
     - "bye"
 
 translation:
+  # Active primary provider (or backends fallback chain)
+  provider: "nllb"
   # Ordered list of backends to try. First success wins.
-  # Options: "google" (deep-translator), "argos" (offline).
-  backends: ["google", "argos"]
+  # Options: "nllb" (Meta NLLB-200 offline), "google" (deep-translator), "argos" (offline).
+  backends: ["nllb", "google", "argos"]
+  nllb:
+    model_name: "facebook/nllb-200-distilled-600M"
+    device: "cpu"
   retry:
     max_attempts: 3
     base_delay_seconds: 0.5
     max_delay_seconds: 4.0
 
 tts:
+  # Active provider: "edge-tts" or "coqui"
+  provider: "edge-tts"
   # edge-tts output format.
   output_format: "mp3"
 
 lipsync:
-  # Backend: "demo" (prerendered, viva-safe), "buffered" (real Wav2Lip on
-  # short segments, near-real-time), or "null" (audio-only passthrough).
+  # Active provider: "wav2lip", "buffered", "demo", or "null"
+  provider: "wav2lip"
+  # Backend fallback alias compatibility: "demo", "buffered", "wav2lip", or "null"
   backend: "demo"
   # Source face video/image for the talking head (relative to project root).
   source_face: "assets/faces/speaker.mp4"
+  wav2lip:
+    checkpoint: "models/wav2lip/wav2lip_gan.pth"
+    batch_size: 16
+    fps: 25
   buffered:
     # Path to the Wav2Lip checkpoint (user must download).
-    checkpoint: "assets/wav2lip/wav2lip_gan.pth"
+    checkpoint: "models/wav2lip/wav2lip_gan.pth"
     # Wav2Lip inference batch size (lower = less RAM on CPU).
     batch_size: 16
     fps: 25
@@ -120,7 +155,6 @@ metrics:
   dashboard:
     refresh_rate_sec: 0.5
 
-
 # Supported languages. Keyed by short id; add more freely.
 # translation_code = ISO code for NMT; edge_voice = edge-tts voice.
 languages:
@@ -128,26 +162,32 @@ languages:
     display_name: "English"
     translation_code: "en"
     edge_voice: "en-US-JennyNeural"
+    nllb_code: "eng_Latn"
   ar:
     display_name: "Arabic"
     translation_code: "ar"
     edge_voice: "ar-SA-ZariyahNeural"
+    nllb_code: "arb_Arab"
   ur:
     display_name: "Urdu"
     translation_code: "ur"
     edge_voice: "ur-PK-UzmaNeural"
+    nllb_code: "urd_Arab"
   hi:
     display_name: "Hindi"
     translation_code: "hi"
     edge_voice: "hi-IN-SwaraNeural"
+    nllb_code: "hin_Deva"
   fr:
     display_name: "French"
     translation_code: "fr"
     edge_voice: "fr-FR-DeniseNeural"
+    nllb_code: "fra_Latn"
   es:
     display_name: "Spanish"
     translation_code: "es"
     edge_voice: "es-ES-ElviraNeural"
+    nllb_code: "spa_Latn"
 
 # Default demo pairing (English <-> Arabic).
 defaults:

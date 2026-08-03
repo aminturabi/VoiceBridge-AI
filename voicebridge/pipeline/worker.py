@@ -26,10 +26,10 @@ from voicebridge.lipsync.manager import LipSyncManager
 from voicebridge.logging_conf import get_logger
 from voicebridge.pipeline.buffer import SentenceBuffer
 from voicebridge.pipeline.events import EventType, PipelineEvent
-from voicebridge.stt.engine import SttEngine
+from voicebridge.stt.manager import SttManager
 from voicebridge.translation.base import TranslationError
 from voicebridge.translation.manager import TranslationManager
-from voicebridge.tts.engine import TtsEngine
+from voicebridge.tts.manager import TtsManager
 
 from voicebridge.metrics.collector import MetricsCollector, StageTimer, UtteranceMetric
 from voicebridge.metrics.logger import StructuredMetricsLogger
@@ -78,7 +78,7 @@ class DirectionWorker:
         self._voice = config.language(spec.target_lang)["edge_voice"]
 
         # Per-direction STT engine (no shared model, no global lock).
-        self._stt = SttEngine(config, label=spec.label, source_lang=spec.source_lang)
+        self._stt = SttManager(config, label=spec.label, source_lang=spec.source_lang)
         self._buffer = SentenceBuffer(config)
 
         self._sentence_queue: "queue.Queue[str]" = queue.Queue()

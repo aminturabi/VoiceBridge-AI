@@ -418,3 +418,6 @@
 01:32:22 | INFO    | voicebridge.pipeline.worker | [AR->EN] Text-only translation for speaker 'other' (voice disabled)
 01:32:29 | INFO    | voicebridge.pipeline.worker | [AR->EN] Text-only translation for speaker 'other' (voice disabled)
 01:32:43 | INFO    | voicebridge.pipeline.orchestrator | Stopping pipeline...
+13:29:15 | INFO    | __main__ | Starting VoiceBridge AI on http://127.0.0.1:8000
+13:30:43 | INFO    | __main__ | Starting VoiceBridge AI on http://127.0.0.1:8000
+13:31:06 | INFO    | __main__ | Starting VoiceBridge AI on http://127.0.0.1:8000

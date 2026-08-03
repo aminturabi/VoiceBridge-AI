@@ -71,6 +71,20 @@ class Config:
             )
         return langs[lang_id]
 
+    # -- path helpers -------------------------------------------------------
+
+    @property
+    def models_dir(self) -> Path:
+        return self.path("models.root_dir", "models")
+
+    @property
+    def cache_dir(self) -> Path:
+        return self.path("cache.dir", "cache")
+
+    @property
+    def avatar_dir(self) -> Path:
+        return self.path("avatar.dir", "voicebridge/avatar")
+
     @property
     def raw(self) -> dict[str, Any]:
         return self._data

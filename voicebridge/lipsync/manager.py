@@ -1,10 +1,9 @@
-"""Lip-sync backend factory + fallback.
+"""Lip-sync backend factory + fallback manager.
 
-Builds the backend named in ``lipsync.backend``. If it is unavailable (e.g.
-``buffered`` selected but no Wav2Lip weights) it falls back down a safe chain
-so the pipeline always produces *something*:
+Builds the backend named in ``lipsync.provider`` or ``lipsync.backend``. If unavailable,
+falls back down a safe chain so the pipeline always produces output:
 
-    buffered -> demo -> null
+    wav2lip / buffered -> demo -> null
 """
 
 from __future__ import annotations
@@ -16,13 +15,15 @@ from voicebridge.lipsync.base import LipSyncBackend, LipSyncError, LipSyncResult
 from voicebridge.lipsync.buffered_backend import BufferedWav2LipBackend
 from voicebridge.lipsync.demo_backend import DemoBackend
 from voicebridge.lipsync.null_backend import NullBackend
+from voicebridge.lipsync.wav2lip_backend import Wav2LipBackend
 from voicebridge.logging_conf import get_logger
 
 logger = get_logger(__name__)
 
-_FALLBACK_ORDER = ["buffered", "demo", "null"]
+_FALLBACK_ORDER = ["wav2lip", "buffered", "demo", "null"]
 
 _BACKEND_REGISTRY = {
+    "wav2lip": Wav2LipBackend,
     "buffered": BufferedWav2LipBackend,
     "demo": DemoBackend,
     "null": NullBackend,
@@ -30,13 +31,13 @@ _BACKEND_REGISTRY = {
 
 
 class LipSyncManager:
-    """Selects a working lip-sync backend and runs sync requests."""
+    """Selects a working lip-sync backend and executes sync requests."""
 
     def __init__(self, config: Config):
         self._config = config
-        requested = config.get("lipsync.backend", "demo")
+        requested = config.get("lipsync.provider", config.get("lipsync.backend", "demo"))
         self._backend = self._select(requested)
-        logger.info("Lip-sync backend: %s", self._backend.name)
+        logger.info("Lip-sync backend selected: %s", self._backend.name)
 
     def _select(self, requested: str) -> LipSyncBackend:
         # Try the requested backend first, then the remaining fallback chain.
@@ -54,8 +55,8 @@ class LipSyncManager:
                         requested, name,
                     )
                 return backend
-        # NullBackend is always available, so we should never reach here.
-        logger.error("No lip-sync backend available; using null")
+
+        logger.error("No lip-sync backend available; using null fallback")
         return NullBackend(self._config)
 
     @property

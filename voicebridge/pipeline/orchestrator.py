@@ -21,7 +21,7 @@ from voicebridge.logging_conf import get_logger
 from voicebridge.pipeline.events import EventType, PipelineEvent
 from voicebridge.pipeline.worker import DirectionSpec, DirectionWorker
 from voicebridge.translation.manager import TranslationManager
-from voicebridge.tts.engine import TtsEngine
+from voicebridge.tts.manager import TtsManager
 
 logger = get_logger(__name__)
 
@@ -38,7 +38,7 @@ class Orchestrator:
 
         # Shared, thread-safe managers (built once).
         self._translation = TranslationManager(config)
-        self._tts = TtsEngine(config)
+        self._tts = TtsManager(config)
         self._lipsync = LipSyncManager(config)
 
         self._workers: list[DirectionWorker] = []

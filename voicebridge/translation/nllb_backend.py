@@ -33,6 +33,7 @@ class NllbBackend(TranslationBackend):
         self._model_name = "facebook/nllb-200-distilled-600M"
         self._device = -1  # CPU by default
         self._loaded = False
+        self._failed = False
 
         if config is not None:
             nllb_cfg = config.get("translation.nllb", {})
@@ -40,9 +41,9 @@ class NllbBackend(TranslationBackend):
             dev_str = nllb_cfg.get("device", "cpu")
             self._device = 0 if dev_str == "cuda" else -1
 
-        self._init_backend()
-
     def is_available(self) -> bool:
+        if self._failed:
+            return False
         try:
             import transformers  # noqa: F401
             import torch  # noqa: F401
@@ -50,34 +51,42 @@ class NllbBackend(TranslationBackend):
         except ImportError:
             return False
 
-    def _init_backend(self) -> None:
-        if not self.is_available():
-            logger.info("transformers or torch not installed; NLLB backend disabled.")
+    def _ensure_loaded(self) -> None:
+        if self._loaded or self._failed:
             return
 
-        try:
-            from transformers import AutoModelForSeq2SeqLM, AutoTokenizer, pipeline
+        with self._lock:
+            if self._loaded or self._failed:
+                return
 
-            model_path = self._model_name
-            if self._config is not None:
-                local_dir = self._config.path("models.nllb_dir", "models/nllb")
-                if (local_dir / "config.json").exists():
-                    model_path = str(local_dir)
+            if not self.is_available():
+                self._failed = True
+                return
 
-            logger.info("Loading NLLB model %r...", model_path)
-            tokenizer = AutoTokenizer.from_pretrained(model_path)
-            model = AutoModelForSeq2SeqLM.from_pretrained(model_path)
+            try:
+                from transformers import AutoModelForSeq2SeqLM, AutoTokenizer, pipeline
 
-            self._pipeline = pipeline(
-                "translation",
-                model=model,
-                tokenizer=tokenizer,
-                device=self._device,
-            )
-            self._loaded = True
-            logger.info("NLLB translation backend loaded successfully")
-        except Exception as error:  # noqa: BLE001
-            logger.warning("Could not initialize NLLB backend: %s", error)
+                model_path = self._model_name
+                if self._config is not None:
+                    local_dir = self._config.path("models.nllb_dir", "models/nllb")
+                    if (local_dir / "config.json").exists():
+                        model_path = str(local_dir)
+
+                logger.info("Loading NLLB model %r...", model_path)
+                tokenizer = AutoTokenizer.from_pretrained(model_path)
+                model = AutoModelForSeq2SeqLM.from_pretrained(model_path)
+
+                self._pipeline = pipeline(
+                    "translation",
+                    model=model,
+                    tokenizer=tokenizer,
+                    device=self._device,
+                )
+                self._loaded = True
+                logger.info("NLLB translation backend loaded successfully")
+            except Exception as error:  # noqa: BLE001
+                self._failed = True
+                logger.warning("Could not initialize NLLB backend: %s", error)
 
     def _get_nllb_code(self, lang: str) -> str:
         if self._config is not None:
@@ -90,8 +99,13 @@ class NllbBackend(TranslationBackend):
         return _NLLB_LANG_CODES.get(lang, f"{lang}_Latn")
 
     def translate(self, text: str, source: str, target: str) -> str:
-        if not self.is_available() or not self._loaded or self._pipeline is None:
-            raise TranslationError("NLLB backend is not initialized or dependencies missing")
+        if not self.is_available():
+            raise TranslationError("NLLB backend dependencies (transformers/torch) missing")
+
+        self._ensure_loaded()
+
+        if not self._loaded or self._pipeline is None:
+            raise TranslationError("NLLB backend model is not loaded")
 
         src_code = self._get_nllb_code(source)
         tgt_code = self._get_nllb_code(target)

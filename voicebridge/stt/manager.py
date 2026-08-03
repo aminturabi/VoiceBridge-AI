@@ -71,5 +71,5 @@ class SttManager:
     def model_size(self):
         return getattr(self._backend, "model_size", "unknown")
 
-    def transcribe(self, audio_source) -> Transcription:
-        return self._backend.transcribe(audio_source)
+    def transcribe(self, audio_source, language: str | None = None) -> Transcription:
+        return self._backend.transcribe(audio_source, language=language)

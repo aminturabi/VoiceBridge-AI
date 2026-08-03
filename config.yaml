@@ -60,13 +60,13 @@ stt:
   # Preferred device order; first that loads wins.
   device_preference: ["cuda", "cpu"]
   cuda:
-    model_size: "tiny"
+    model_size: "large-v3"
     compute_type: "float16"
   cpu:
-    model_size: "tiny"
+    model_size: "medium"
     compute_type: "int8"
   transcribe:
-    beam_size: 1
+    beam_size: 5
     temperature: 0.0
     condition_on_previous_text: false
     no_speech_threshold: 0.6
@@ -103,10 +103,10 @@ buffer:
 
 translation:
   # Active primary provider (or backends fallback chain)
-  provider: "nllb"
+  provider: "google"
   # Ordered list of backends to try. First success wins.
-  # Options: "nllb" (Meta NLLB-200 offline), "google" (deep-translator), "argos" (offline).
-  backends: ["nllb", "google", "argos"]
+  # Options: "google" (deep-translator), "argos" (offline), "nllb" (Meta NLLB-200 offline).
+  backends: ["google", "argos", "nllb"]
   nllb:
     model_name: "facebook/nllb-200-distilled-600M"
     device: "cpu"

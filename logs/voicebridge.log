@@ -421,3 +421,142 @@
 13:29:15 | INFO    | __main__ | Starting VoiceBridge AI on http://127.0.0.1:8000
 13:30:43 | INFO    | __main__ | Starting VoiceBridge AI on http://127.0.0.1:8000
 13:31:06 | INFO    | __main__ | Starting VoiceBridge AI on http://127.0.0.1:8000
+19:50:58 | INFO    | httpx | HTTP Request: GET http://testserver/api/info "HTTP/1.1 200 OK"
+19:50:58 | INFO    | httpx | HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+19:50:58 | INFO    | httpx | HTTP Request: POST http://testserver/api/stop "HTTP/1.1 200 OK"
+19:51:31 | INFO    | voicebridge.stt.faster_whisper_backend | [AR->EN] Loading Whisper 'tiny' on cuda (float16)...
+19:51:36 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+19:51:36 | WARNING | voicebridge.stt.faster_whisper_backend | [AR->EN] Could not load on cuda: CUDA failed with error CUDA driver version is insufficient for CUDA runtime version
+19:51:36 | INFO    | voicebridge.stt.faster_whisper_backend | [AR->EN] Loading Whisper 'tiny' on cpu (int8)...
+19:51:37 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+19:51:38 | INFO    | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 1146.9ms (device=cpu, cache_hit=False)
+19:51:38 | INFO    | voicebridge.stt.faster_whisper_backend | [AR->EN] Whisper ready on cpu (loaded in 1146.9ms)
+19:51:38 | INFO    | voicebridge.stt.manager | [AR->EN] Selected STT provider: faster-whisper
+19:51:38 | INFO    | voicebridge.pipeline.worker | [AR->EN] Text-only translation for speaker 'other' (voice disabled)
+19:51:38 | INFO    | voicebridge.translation.manager | Translation backend enabled: google
+19:51:39 | INFO    | voicebridge.translation.manager | Translation backend enabled: argos
+19:51:57 | INFO    | voicebridge.translation.nllb_backend | Loading NLLB model 'facebook/nllb-200-distilled-600M'...
+19:52:00 | INFO    | httpx | HTTP Request: HEAD https://huggingface.co/facebook/nllb-200-distilled-600M/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+19:52:00 | WARNING | huggingface_hub.utils._http | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+19:52:00 | INFO    | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/facebook/nllb-200-distilled-600M/f8d333a098d19b4fd9a8b18f94170487ad3f821d/config.json "HTTP/1.1 200 OK"
+19:52:01 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/facebook/nllb-200-distilled-600M/f8d333a098d19b4fd9a8b18f94170487ad3f821d/config.json "HTTP/1.1 200 OK"
+19:52:02 | INFO    | httpx | HTTP Request: HEAD https://huggingface.co/facebook/nllb-200-distilled-600M/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+19:52:03 | INFO    | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/facebook/nllb-200-distilled-600M/f8d333a098d19b4fd9a8b18f94170487ad3f821d/tokenizer_config.json "HTTP/1.1 200 OK"
+19:52:03 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/facebook/nllb-200-distilled-600M/f8d333a098d19b4fd9a8b18f94170487ad3f821d/tokenizer_config.json "HTTP/1.1 200 OK"
+19:52:04 | INFO    | httpx | HTTP Request: HEAD https://huggingface.co/facebook/nllb-200-distilled-600M/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+19:52:05 | INFO    | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/facebook/nllb-200-distilled-600M/f8d333a098d19b4fd9a8b18f94170487ad3f821d/tokenizer_config.json "HTTP/1.1 200 OK"
+19:52:05 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/facebook/nllb-200-distilled-600M/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+19:52:06 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/facebook/nllb-200-distilled-600M/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+19:52:06 | INFO    | httpx | HTTP Request: HEAD https://huggingface.co/facebook/nllb-200-distilled-600M/resolve/main/tokenizer.json "HTTP/1.1 302 Found"
+19:52:07 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/facebook/nllb-200-distilled-600M/xet-read-token/f8d333a098d19b4fd9a8b18f94170487ad3f821d "HTTP/1.1 200 OK"
+19:52:24 | INFO    | httpx | HTTP Request: HEAD https://huggingface.co/facebook/nllb-200-distilled-600M/resolve/main/tokenizer.model "HTTP/1.1 404 Not Found"
+19:52:24 | INFO    | httpx | HTTP Request: HEAD https://huggingface.co/facebook/nllb-200-distilled-600M/resolve/main/added_tokens.json "HTTP/1.1 404 Not Found"
+19:52:25 | INFO    | httpx | HTTP Request: HEAD https://huggingface.co/facebook/nllb-200-distilled-600M/resolve/main/special_tokens_map.json "HTTP/1.1 307 Temporary Redirect"
+19:52:25 | INFO    | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/facebook/nllb-200-distilled-600M/f8d333a098d19b4fd9a8b18f94170487ad3f821d/special_tokens_map.json "HTTP/1.1 200 OK"
+19:52:25 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/facebook/nllb-200-distilled-600M/f8d333a098d19b4fd9a8b18f94170487ad3f821d/special_tokens_map.json "HTTP/1.1 200 OK"
+19:52:26 | INFO    | httpx | HTTP Request: HEAD https://huggingface.co/facebook/nllb-200-distilled-600M/resolve/main/chat_template.jinja "HTTP/1.1 404 Not Found"
+19:52:33 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/facebook/nllb-200-distilled-600M "HTTP/1.1 200 OK"
+19:52:33 | INFO    | httpx | HTTP Request: HEAD https://huggingface.co/facebook/nllb-200-distilled-600M/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+19:52:33 | INFO    | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/facebook/nllb-200-distilled-600M/f8d333a098d19b4fd9a8b18f94170487ad3f821d/config.json "HTTP/1.1 200 OK"
+19:52:34 | INFO    | httpx | HTTP Request: HEAD https://huggingface.co/facebook/nllb-200-distilled-600M/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+19:52:34 | INFO    | httpx | HTTP Request: HEAD https://huggingface.co/facebook/nllb-200-distilled-600M/resolve/main/model.safetensors.index.json "HTTP/1.1 404 Not Found"
+19:52:35 | INFO    | httpx | HTTP Request: HEAD https://huggingface.co/facebook/nllb-200-distilled-600M/resolve/main/pytorch_model.bin "HTTP/1.1 302 Found"
+19:56:07 | INFO    | __main__ | Starting VoiceBridge AI on http://127.0.0.1:8000
+19:56:28 | INFO    | voicebridge.translation.nllb_backend | Loading NLLB model 'facebook/nllb-200-distilled-600M'...
+19:56:32 | INFO    | httpx | HTTP Request: HEAD https://huggingface.co/facebook/nllb-200-distilled-600M/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+19:56:32 | WARNING | huggingface_hub.utils._http | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+19:56:32 | INFO    | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/facebook/nllb-200-distilled-600M/f8d333a098d19b4fd9a8b18f94170487ad3f821d/config.json "HTTP/1.1 200 OK"
+19:56:33 | INFO    | httpx | HTTP Request: HEAD https://huggingface.co/facebook/nllb-200-distilled-600M/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+19:56:33 | INFO    | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/facebook/nllb-200-distilled-600M/f8d333a098d19b4fd9a8b18f94170487ad3f821d/tokenizer_config.json "HTTP/1.1 200 OK"
+19:56:34 | INFO    | httpx | HTTP Request: HEAD https://huggingface.co/facebook/nllb-200-distilled-600M/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+19:56:34 | INFO    | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/facebook/nllb-200-distilled-600M/f8d333a098d19b4fd9a8b18f94170487ad3f821d/tokenizer_config.json "HTTP/1.1 200 OK"
+19:56:35 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/facebook/nllb-200-distilled-600M/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+19:56:36 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/facebook/nllb-200-distilled-600M/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+19:56:42 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/facebook/nllb-200-distilled-600M "HTTP/1.1 200 OK"
+19:56:43 | INFO    | httpx | HTTP Request: HEAD https://huggingface.co/facebook/nllb-200-distilled-600M/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+19:56:44 | INFO    | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/facebook/nllb-200-distilled-600M/f8d333a098d19b4fd9a8b18f94170487ad3f821d/config.json "HTTP/1.1 200 OK"
+19:56:46 | INFO    | httpx | HTTP Request: HEAD https://huggingface.co/facebook/nllb-200-distilled-600M/resolve/main/pytorch_model.bin "HTTP/1.1 302 Found"
+19:59:23 | INFO    | httpx | HTTP Request: GET http://testserver/api/info "HTTP/1.1 200 OK"
+19:59:23 | INFO    | httpx | HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+19:59:23 | INFO    | httpx | HTTP Request: POST http://testserver/api/stop "HTTP/1.1 200 OK"
+20:00:10 | INFO    | voicebridge.stt.faster_whisper_backend | [AR->EN] Loading Whisper 'tiny' on cuda (float16)...
+20:00:12 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+20:00:13 | WARNING | voicebridge.stt.faster_whisper_backend | [AR->EN] Could not load on cuda: CUDA failed with error CUDA driver version is insufficient for CUDA runtime version
+20:00:13 | INFO    | voicebridge.stt.faster_whisper_backend | [AR->EN] Loading Whisper 'tiny' on cpu (int8)...
+20:00:14 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+20:00:14 | INFO    | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 1593.4ms (device=cpu, cache_hit=False)
+20:00:14 | INFO    | voicebridge.stt.faster_whisper_backend | [AR->EN] Whisper ready on cpu (loaded in 1593.4ms)
+20:00:14 | INFO    | voicebridge.stt.manager | [AR->EN] Selected STT provider: faster-whisper
+20:00:14 | INFO    | voicebridge.pipeline.worker | [AR->EN] Text-only translation for speaker 'other' (voice disabled)
+20:00:15 | INFO    | voicebridge.translation.manager | Translation backend enabled: google
+20:00:16 | INFO    | voicebridge.translation.manager | Translation backend enabled: argos
+20:00:16 | INFO    | voicebridge.translation.manager | Translation backend enabled: nllb
+20:00:18 | INFO    | voicebridge.tts.manager | TTS backend selected: edge-tts
+20:00:18 | INFO    | voicebridge.lipsync.wav2lip_backend | Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+20:00:18 | INFO    | voicebridge.lipsync.wav2lip_backend | Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+20:00:18 | WARNING | voicebridge.lipsync.manager | Requested lip-sync backend 'demo' unavailable; using 'null'
+20:00:18 | INFO    | voicebridge.lipsync.manager | Lip-sync backend selected: null
+20:00:18 | INFO    | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 1200.0ms (device=cpu, cache_hit=False)
+20:00:18 | INFO    | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 5.0ms (device=cpu, cache_hit=True)
+20:00:18 | INFO    | voicebridge.metrics.reporter | Exported Markdown report -> C:\Users\Amin Khan\AppData\Local\Temp\pytest-of-Amin Khan\pytest-21\test_performance_reporter0\report.md
+20:00:18 | INFO    | voicebridge.metrics.reporter | Exported JSON report -> C:\Users\Amin Khan\AppData\Local\Temp\pytest-of-Amin Khan\pytest-21\test_performance_reporter0\report.json
+20:00:18 | INFO    | voicebridge.metrics.reporter | Exported CSV report -> C:\Users\Amin Khan\AppData\Local\Temp\pytest-of-Amin Khan\pytest-21\test_performance_reporter0\report.csv
+20:00:29 | INFO    | __main__ | Starting VoiceBridge AI on http://127.0.0.1:8000
+20:00:36 | INFO    | voicebridge.translation.manager | Translation backend enabled: google
+20:00:38 | INFO    | voicebridge.translation.manager | Translation backend enabled: argos
+20:00:38 | INFO    | voicebridge.translation.manager | Translation backend enabled: nllb
+20:00:40 | INFO    | voicebridge.tts.manager | TTS backend selected: edge-tts
+20:00:40 | INFO    | voicebridge.lipsync.wav2lip_backend | Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+20:00:40 | INFO    | voicebridge.lipsync.wav2lip_backend | Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+20:00:40 | WARNING | voicebridge.lipsync.manager | Requested lip-sync backend 'wav2lip' unavailable; using 'null'
+20:00:40 | INFO    | voicebridge.lipsync.manager | Lip-sync backend selected: null
+20:00:40 | INFO    | voicebridge.stt.faster_whisper_backend | [EN->AR] Loading Whisper 'tiny' on cuda (float16)...
+20:00:42 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+20:00:42 | WARNING | voicebridge.stt.faster_whisper_backend | [EN->AR] Could not load on cuda: CUDA failed with error CUDA driver version is insufficient for CUDA runtime version
+20:00:42 | INFO    | voicebridge.stt.faster_whisper_backend | [EN->AR] Loading Whisper 'tiny' on cpu (int8)...
+20:00:43 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+20:00:44 | INFO    | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 1257.3ms (device=cpu, cache_hit=False)
+20:00:44 | INFO    | voicebridge.stt.faster_whisper_backend | [EN->AR] Whisper ready on cpu (loaded in 1257.3ms)
+20:00:44 | INFO    | voicebridge.stt.manager | [EN->AR] Selected STT provider: faster-whisper
+20:00:44 | INFO    | voicebridge.pipeline.orchestrator | Registered direction EN->AR (speaker=me, source=microphone)
+20:00:44 | INFO    | voicebridge.stt.faster_whisper_backend | [AR->EN] Loading Whisper 'tiny' on cuda (float16)...
+20:00:44 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+20:00:44 | WARNING | voicebridge.stt.faster_whisper_backend | [AR->EN] Could not load on cuda: CUDA failed with error CUDA driver version is insufficient for CUDA runtime version
+20:00:44 | INFO    | voicebridge.stt.faster_whisper_backend | [AR->EN] Loading Whisper 'tiny' on cpu (int8)...
+20:00:45 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-tiny/revision/main "HTTP/1.1 200 OK"
+20:00:45 | INFO    | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 1344.3ms (device=cpu, cache_hit=True)
+20:00:45 | INFO    | voicebridge.stt.faster_whisper_backend | [AR->EN] Whisper ready on cpu (loaded in 1344.3ms)
+20:00:45 | INFO    | voicebridge.stt.manager | [AR->EN] Selected STT provider: faster-whisper
+20:00:45 | INFO    | voicebridge.pipeline.orchestrator | Registered direction AR->EN (speaker=other, source=microphone)
+20:00:46 | INFO    | voicebridge.audio.capture | Microphone open (VAD chunking)
+20:00:46 | INFO    | voicebridge.audio.capture | Microphone open (VAD chunking)
+20:00:58 | INFO    | voicebridge.pipeline.worker | [AR->EN] Text-only translation for speaker 'other' (voice disabled)
+20:01:20 | INFO    | voicebridge.pipeline.worker | [AR->EN] Text-only translation for speaker 'other' (voice disabled)
+20:01:23 | INFO    | voicebridge.pipeline.worker | [AR->EN] Text-only translation for speaker 'other' (voice disabled)
+20:07:13 | INFO    | voicebridge.pipeline.worker | [AR->EN] Text-only translation for speaker 'other' (voice disabled)
+20:07:29 | INFO    | voicebridge.pipeline.worker | [AR->EN] Text-only translation for speaker 'other' (voice disabled)
+20:07:52 | INFO    | voicebridge.pipeline.worker | [AR->EN] Text-only translation for speaker 'other' (voice disabled)
+20:07:57 | INFO    | voicebridge.pipeline.worker | [AR->EN] Text-only translation for speaker 'other' (voice disabled)
+20:08:28 | INFO    | httpx | HTTP Request: GET http://testserver/api/info "HTTP/1.1 200 OK"
+20:08:28 | INFO    | httpx | HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+20:08:28 | INFO    | httpx | HTTP Request: POST http://testserver/api/stop "HTTP/1.1 200 OK"
+20:08:37 | INFO    | voicebridge.pipeline.worker | [AR->EN] Text-only translation for speaker 'other' (voice disabled)
+20:08:40 | INFO    | voicebridge.stt.faster_whisper_backend | [AR->EN] Loading Whisper 'large-v3' on cuda (float16)...
+20:08:42 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-large-v3/revision/main "HTTP/1.1 200 OK"
+20:08:43 | INFO    | httpx | HTTP Request: HEAD https://huggingface.co/Systran/faster-whisper-large-v3/resolve/edaa852ec7e145841d8ffdb056a99866b5f0a478/config.json "HTTP/1.1 307 Temporary Redirect"
+20:08:43 | WARNING | huggingface_hub.utils._http | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+20:08:43 | INFO    | voicebridge.pipeline.worker | [AR->EN] Text-only translation for speaker 'other' (voice disabled)
+20:08:44 | INFO    | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Systran/faster-whisper-large-v3/edaa852ec7e145841d8ffdb056a99866b5f0a478/config.json "HTTP/1.1 200 OK"
+20:08:45 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/Systran/faster-whisper-large-v3/edaa852ec7e145841d8ffdb056a99866b5f0a478/config.json "HTTP/1.1 200 OK"
+20:08:46 | INFO    | httpx | HTTP Request: HEAD https://huggingface.co/Systran/faster-whisper-large-v3/resolve/edaa852ec7e145841d8ffdb056a99866b5f0a478/vocabulary.json "HTTP/1.1 307 Temporary Redirect"
+20:08:46 | INFO    | httpx | HTTP Request: HEAD https://huggingface.co/Systran/faster-whisper-large-v3/resolve/edaa852ec7e145841d8ffdb056a99866b5f0a478/model.bin "HTTP/1.1 302 Found"
+20:08:46 | INFO    | httpx | HTTP Request: HEAD https://huggingface.co/Systran/faster-whisper-large-v3/resolve/edaa852ec7e145841d8ffdb056a99866b5f0a478/preprocessor_config.json "HTTP/1.1 307 Temporary Redirect"
+20:08:46 | INFO    | httpx | HTTP Request: HEAD https://huggingface.co/Systran/faster-whisper-large-v3/resolve/edaa852ec7e145841d8ffdb056a99866b5f0a478/tokenizer.json "HTTP/1.1 307 Temporary Redirect"
+20:08:46 | INFO    | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Systran/faster-whisper-large-v3/edaa852ec7e145841d8ffdb056a99866b5f0a478/vocabulary.json "HTTP/1.1 200 OK"
+20:08:46 | INFO    | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Systran/faster-whisper-large-v3/edaa852ec7e145841d8ffdb056a99866b5f0a478/preprocessor_config.json "HTTP/1.1 200 OK"
+20:08:46 | INFO    | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Systran/faster-whisper-large-v3/edaa852ec7e145841d8ffdb056a99866b5f0a478/tokenizer.json "HTTP/1.1 200 OK"
+20:08:46 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-large-v3/xet-read-token/edaa852ec7e145841d8ffdb056a99866b5f0a478 "HTTP/1.1 200 OK"
+20:08:47 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/Systran/faster-whisper-large-v3/edaa852ec7e145841d8ffdb056a99866b5f0a478/preprocessor_config.json "HTTP/1.1 200 OK"
+20:08:47 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/Systran/faster-whisper-large-v3/edaa852ec7e145841d8ffdb056a99866b5f0a478/vocabulary.json "HTTP/1.1 200 OK"
+20:08:47 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/Systran/faster-whisper-large-v3/edaa852ec7e145841d8ffdb056a99866b5f0a478/tokenizer.json "HTTP/1.1 200 OK"
+20:09:33 | INFO    | voicebridge.pipeline.orchestrator | Stopping pipeline...

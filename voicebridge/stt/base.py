@@ -30,5 +30,5 @@ class SttBackend(ABC):
         """Whether the backend is available (dependencies installed, models ready)."""
 
     @abstractmethod
-    def transcribe(self, audio_source: str | object) -> Transcription:
+    def transcribe(self, audio_source: str | object, language: str | None = None) -> Transcription:
         """Transcribe an audio file or array and return a :class:`Transcription`."""

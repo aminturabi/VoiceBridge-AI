@@ -99,14 +99,15 @@ class FasterWhisperBackend(SttBackend):
             self._label, preference, last_error
         )
 
-    def _raw_transcribe(self, audio_source):
+    def _raw_transcribe(self, audio_source, language: str | None = None):
         if not self._loaded or self.model is None:
             raise SttError(f"[{self._label}] FasterWhisper model is not loaded")
 
         opts = self._transcribe_opts
         kwargs = {}
-        if self._source_lang:
-            kwargs["language"] = self._source_lang
+        target_lang = language or self._source_lang
+        if target_lang:
+            kwargs["language"] = target_lang
 
         try:
             return self.model.transcribe(
@@ -134,10 +135,10 @@ class FasterWhisperBackend(SttBackend):
                 **kwargs,
             )
 
-    def transcribe(self, audio_source) -> Transcription:
+    def transcribe(self, audio_source, language: str | None = None) -> Transcription:
         from voicebridge.pipeline.text_utils import clean_text
 
-        segments, info = self._raw_transcribe(audio_source)
+        segments, info = self._raw_transcribe(audio_source, language=language)
         segment_list = list(segments)
 
         accepted: list[str] = []
@@ -148,7 +149,7 @@ class FasterWhisperBackend(SttBackend):
 
         return Transcription(
             text=clean_text(" ".join(accepted)),
-            language=getattr(info, "language", "unknown"),
+            language=getattr(info, "language", language or self._source_lang or "unknown"),
             reliable_segments=len(accepted),
             total_segments=len(segment_list),
         )

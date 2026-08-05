@@ -26,7 +26,7 @@ flowchart LR
         VAD --> STT[faster-whisper STT]
         STT --> BUF[Sentence buffer]
         BUF --> TR[Translation]
-        TR --> TTS[edge-tts TTS]
+        TR --> TTS[Microsoft Neural TTS]
         TTS --> LIP[Lip-sync backend]
         LIP --> EV[(PipelineEvent)]
     end
@@ -36,8 +36,8 @@ flowchart LR
     WS --> UI[Meeting UI]
 
     subgraph Shared["Shared managers"]
-        TRM[TranslationManager<br/>google -> argos]
-        TTSM[TtsEngine]
+        TRM[TranslationManager<br/>google -> nllb -> argos]
+        TTSM[TtsEngine<br/>Microsoft Neural TTS]
         LIPM[LipSyncManager<br/>buffered -> demo -> null]
     end
 
@@ -51,9 +51,9 @@ Key design points:
 - **Config-driven.** Every tunable lives in `config.yaml`, not in Python
   constants. Languages, voices, buffer thresholds, backend order, device
   preference — all editable without touching code.
-- **Layered fallbacks.** Translation tries Google (`deep-translator`) then
-  offline Argos. Lip sync tries real Wav2Lip, then a pre-rendered demo clip,
-  then audio-only passthrough. The pipeline always produces *something*.
+- **Layered fallbacks.** Translation tries Google (`deep-translator`), Meta NLLB-200,
+  then offline Argos. Lip sync tries real Wav2Lip, then pre-rendered demo clip,
+  then audio-only passthrough.
 - **Honest latency.** Each `speech_ready` event reports measured end-to-end
   latency and whether the output was genuinely lip-synced or a fallback.
 - **Thread/async bridge.** Pipeline stages run in plain threads; an event
@@ -66,11 +66,19 @@ Key design points:
 | `voicebridge.config` | Load `config.yaml`, dotted-path access, path/language helpers |
 | `voicebridge.audio` | Capture, Silero VAD segmentation, non-blocking playback |
 | `voicebridge.stt` | faster-whisper engine (per-direction) + reliability guards |
-| `voicebridge.translation` | Google + Argos backends behind a fallback manager |
-| `voicebridge.tts` | edge-tts synthesis |
+| `voicebridge.translation` | Google + Meta NLLB-200 + Argos backends behind fallback manager & Urdu post-processor |
+| `voicebridge.tts` | Microsoft Neural TTS synthesis engine |
 | `voicebridge.lipsync` | `buffered` / `demo` / `null` backends + fallback manager |
 | `voicebridge.pipeline` | Sentence buffer, direction worker, orchestrator, events |
 | `voicebridge.api` | FastAPI app, WebSocket broker, meeting UI |
+
+### Speech Synthesis & Browser Compatibility
+
+- **Cloud-Based Speech Synthesis**: VoiceBridge AI uses **Microsoft Neural TTS** for cloud speech generation.
+- **Browser Independent**: It operates independently of the client browser. No specific browser installation is required.
+- **Universal Browser Support**: Google Chrome, Mozilla Firefox, Microsoft Edge, Brave, Apple Safari, and any modern web browser are 100% supported.
+- **Playback Only**: The client browser is exclusively responsible for rendering the UI and executing standard HTML5 audio/video playback.
+
 
 ## Setup & Prerequisites
 

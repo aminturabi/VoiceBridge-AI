@@ -139,8 +139,10 @@ translation:
   # Active primary provider (or backends fallback chain)
   provider: "google"
   # Ordered list of backends to try. First success wins.
-  # Options: "google" (deep-translator), "argos" (offline), "nllb" (Meta NLLB-200 offline).
-  backends: ["google", "argos", "nllb"]
+  # Preferred fallback order: Google (online) -> Meta NLLB-200 (offline) -> Argos (offline fallback).
+  backends: ["google", "nllb", "argos"]
+  urdu_postprocessor:
+    enabled: true
   nllb:
     model_name: "facebook/nllb-200-distilled-600M"
     device: "cpu"
@@ -150,9 +152,10 @@ translation:
     max_delay_seconds: 4.0
 
 tts:
-  # Active provider: "edge-tts" or "coqui"
+  # Active provider: "edge-tts" (Microsoft Neural TTS) or "coqui"
   provider: "edge-tts"
-  # edge-tts output format.
+  # output format.
+
   output_format: "mp3"
 
 lipsync:

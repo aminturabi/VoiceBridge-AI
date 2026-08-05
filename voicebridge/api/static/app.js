@@ -40,6 +40,10 @@ function targetPanel(speaker) {
   return speaker === "me" ? "other" : "me";
 }
 
+function isUrduOrRtl(str) {
+  return /[\u0600-\u06FF]/.test(str || "");
+}
+
 function handleEvent(e) {
   switch (e.type) {
     case "status":
@@ -47,7 +51,15 @@ function handleEvent(e) {
       else setStatus("running", "running");
       break;
     case "transcript":
-      el(`caption-${e.speaker}`).textContent = e.text;
+      const capt = el(`caption-${e.speaker}`);
+      capt.textContent = e.text;
+      if (isUrduOrRtl(e.text)) {
+        capt.setAttribute("dir", "rtl");
+        capt.setAttribute("lang", "ur");
+      } else {
+        capt.removeAttribute("dir");
+        capt.removeAttribute("lang");
+      }
       break;
     case "translation":
       addLog(e, "translation");
@@ -68,19 +80,30 @@ function addLog(e, cls) {
   if (cls === "error") {
     li.innerHTML = `<span class="dir">${e.direction}</span> ${e.note || "error"}`;
   } else {
+    const isRtl = isUrduOrRtl(e.translated_text);
+    const rtlAttrs = isRtl ? 'dir="rtl" lang="ur" class="ur-text"' : '';
     const lat = e.latency_ms ? `<span class="lat">${Math.round(e.latency_ms)} ms</span>` : "";
     li.innerHTML =
       `<span class="dir">${e.direction}</span>` +
       `<span class="src">${escapeHtml(e.text)}</span> &rarr; ` +
-      `<span class="tgt">${escapeHtml(e.translated_text)}</span>${lat}`;
+      `<span class="tgt" ${rtlAttrs}>${escapeHtml(e.translated_text)}</span>${lat}`;
   }
   logEl.prepend(li);
 }
 
 function playSpeech(e) {
   const panel = targetPanel(e.speaker);
-  el(`caption-${panel}`).textContent = e.translated_text;
+  const captionEl = el(`caption-${panel}`);
+  captionEl.textContent = e.translated_text;
+  if (isUrduOrRtl(e.translated_text)) {
+    captionEl.setAttribute("dir", "rtl");
+    captionEl.setAttribute("lang", "ur");
+  } else {
+    captionEl.removeAttribute("dir");
+    captionEl.removeAttribute("lang");
+  }
   highlight(panel, true);
+
 
   const video = el(`video-${panel}`);
   if (e.is_synced && e.video_url) {

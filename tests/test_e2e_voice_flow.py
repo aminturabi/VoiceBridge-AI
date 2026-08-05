@@ -21,9 +21,16 @@ def test_e2e_sentence_processing_flow(monkeypatch):
     mock_tts = MagicMock()
     mock_tts.synthesize.return_value = "/tmp/fake_output.wav"
     
+    mock_lip_res = MagicMock()
+    mock_lip_res.audio_path = "/tmp/fake_output.wav"
+    mock_lip_res.video_path = "/tmp/fake_synced.mp4"
+    mock_lip_res.is_synced = True
+    mock_lip_res.backend = "demo"
+    mock_lip_res.note = "demo"
+
     mock_lipsync = MagicMock()
-    mock_lipsync.generate.return_value = "/tmp/fake_synced.mp4"
-    mock_lipsync.backend_name = "demo"
+    mock_lipsync.sync.return_value = mock_lip_res
+
     
     published_events = []
     
@@ -48,12 +55,18 @@ def test_e2e_sentence_processing_flow(monkeypatch):
     # Assert TTS called
     mock_tts.synthesize.assert_called_once()
     
-    # Assert events emitted (SPEECH_READY)
-    assert len(published_events) == 1
-    event = published_events[0]
-    assert event.type == EventType.SPEECH_READY
-    assert event.speaker == "me"
-    assert event.original_text == "مرحبا كيف حالك"
-    assert event.translated_text == "Hello, how are you?"
-    assert event.audio_url == "/tmp/fake_output.wav"
-    assert event.video_url == "/tmp/fake_synced.mp4"
+    # Assert events emitted (TRANSLATION and SPEECH_READY)
+    assert len(published_events) == 2
+    translation_event = published_events[0]
+    assert translation_event.type == EventType.TRANSLATION
+    assert translation_event.translated_text == "Hello, how are you?"
+
+    speech_event = published_events[1]
+    assert speech_event.type == EventType.SPEECH_READY
+    assert speech_event.speaker == "me"
+    assert speech_event.text == "مرحبا كيف حالك"
+
+    assert speech_event.translated_text == "Hello, how are you?"
+    assert speech_event.audio_url == "/tmp/fake_output.wav"
+    assert speech_event.video_url == "/tmp/fake_synced.mp4"
+

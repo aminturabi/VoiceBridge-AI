@@ -17,22 +17,24 @@ from voicebridge.translation.argos_backend import ArgosBackend
 from voicebridge.translation.base import TranslationBackend, TranslationError
 from voicebridge.translation.google_backend import GoogleBackend
 from voicebridge.translation.nllb_backend import NllbBackend
+from voicebridge.translation.urdu_postprocessor import UrduPostProcessor
 
 logger = get_logger(__name__)
 
 _BACKEND_REGISTRY = {
-    "nllb": NllbBackend,
     "google": GoogleBackend,
+    "nllb": NllbBackend,
     "argos": ArgosBackend,
 }
 
 
 class TranslationManager:
-    """Resilient multi-backend translator with caching support."""
+    """Resilient multi-backend translator with caching support and post-processing."""
 
     def __init__(self, config: Config):
         self._config = config
         self._cache = TranslationCache(config)
+        self._urdu_postprocessor = UrduPostProcessor(config)
 
         retry = config.get("translation.retry", {})
         self._max_attempts = int(retry.get("max_attempts", 3))
@@ -41,9 +43,9 @@ class TranslationManager:
 
         self._backends: list[TranslationBackend] = []
 
-        # Support primary 'provider' or 'backends' list in configuration
+        # Default preferred order: Google (online) -> Meta NLLB-200 (offline) -> Argos (offline fallback)
+        configured_backends = config.get("translation.backends", ["google", "nllb", "argos"])
         primary_provider = config.get("translation.provider", None)
-        configured_backends = config.get("translation.backends", ["nllb", "google", "argos"])
 
         backend_names = list(configured_backends)
         if primary_provider and primary_provider not in backend_names:
@@ -59,7 +61,6 @@ class TranslationManager:
                 continue
 
             try:
-                # Some backends accept config argument (like NllbBackend)
                 backend = backend_cls(config) if backend_cls is NllbBackend else backend_cls()
             except TypeError:
                 backend = backend_cls()
@@ -83,7 +84,7 @@ class TranslationManager:
         return delay + random.uniform(0, delay * 0.1)
 
     def translate(self, text: str, source: str, target: str) -> str:
-        """Translate, checking cache first, then trying backends with retry."""
+        """Translate, checking cache first, trying backends in fallback order, and post-processing."""
         if not text:
             return ""
         if source == target:
@@ -99,15 +100,22 @@ class TranslationManager:
         for backend in self._backends:
             for attempt in range(self._max_attempts):
                 try:
-                    result = backend.translate(text, source, target)
-                    if attempt or backend is not self._backends[0]:
-                        logger.info(
-                            "Translated via %s (attempt %d)", backend.name, attempt + 1
-                        )
+                    raw_result = backend.translate(text, source, target)
+                    
+                    # Apply Urdu post-processing if target is Urdu
+                    final_result = raw_result
+                    if target.lower() == "ur":
+                        final_result = self._urdu_postprocessor.process(raw_result, original_english=text)
+
+                    # Explicit logging of which translator handled the request
+                    logger.info(
+                        "Translated [%s->%s] via translator '%s' (attempt %d): %r",
+                        source, target, backend.name, attempt + 1, final_result
+                    )
 
                     # Store in cache
-                    self._cache.set(text, source, target, result)
-                    return result
+                    self._cache.set(text, source, target, final_result)
+                    return final_result
                 except TranslationError as error:
                     last_error = error
                     is_last_attempt = attempt == self._max_attempts - 1
@@ -128,3 +136,4 @@ class TranslationManager:
             f"All translation backends failed for {source}->{target}. "
             f"Last error: {last_error}"
         )
+

@@ -6,7 +6,7 @@ VoiceBridge AI provides real-time, bi-directional speech translation and lip-syn
 
 1. **Typed Pipeline Contracts**: Request, response, and error schemas for every stage with mandatory `trace_id` correlation.
 2. **Provider Interfaces**: Abstract provider contracts (`BaseSTT`, `BaseLLM`, `BaseTTS`, `BaseVAD`, `BasePlayback`).
-3. **Dependency Isolation**: Adapter layer insulating core business logic from specific vendor implementations (Whisper, Google, Argos, NLLB, Edge-TTS, Silero).
+3. **Dependency Isolation**: Adapter layer insulating core business logic from specific vendor implementations (Whisper, Google, Argos, NLLB, Microsoft Neural TTS, Silero).
 4. **Structured Telemetry**: Contextual tracing and metrics export (OpenTelemetry & Prometheus ready).
 5. **Centralized Configuration & Feature Flags**: Standardized configuration loader with feature flag toggles (`ENABLE_PIPELINE_CONTRACTS`, `ENABLE_NEW_INTERFACES`, `ENABLE_TRACING`).
 
@@ -42,7 +42,7 @@ flowchart TD
     subgraph PROVIDERS ["External / Concrete Providers"]
         WHISPER[faster-whisper / Vosk]
         GOOGLE[Google Translate / Argos / NLLB]
-        EDGE[Edge-TTS / Coqui]
+        EDGE[Microsoft Neural TTS / Coqui]
         SILERO[Silero VAD]
     end
 

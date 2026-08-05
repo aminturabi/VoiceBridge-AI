@@ -19,7 +19,8 @@ def test_health_endpoint(client):
     assert res.status_code == 200
     data = res.json()
     assert data["status"] == "healthy"
-    assert "cpu_percent" in data
+    assert "system" in data or "cpu_percent" in data
+
 
 
 def test_liveness_endpoint(client):

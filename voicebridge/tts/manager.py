@@ -16,6 +16,8 @@ logger = get_logger(__name__)
 
 _BACKEND_REGISTRY: dict[str, type[TtsBackend]] = {
     "edge-tts": EdgeTtsBackend,
+    "microsoft-tts": EdgeTtsBackend,
+    "microsoft-neural-tts": EdgeTtsBackend,
     "coqui": CoquiBackend,
 }
 
@@ -31,7 +33,9 @@ class TtsManager:
 
         requested = config.get("tts.provider", "edge-tts")
         self._backend = self._select_backend(requested)
-        logger.info("TTS backend selected: %s", self._backend.name)
+        display_name = getattr(self._backend, "display_name", self._backend.name)
+        logger.info("TTS backend selected: %s (%s)", display_name, self._backend.name)
+
 
     def _select_backend(self, requested: str) -> TtsBackend:
         cls = _BACKEND_REGISTRY.get(requested)

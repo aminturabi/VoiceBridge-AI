@@ -1042,3 +1042,403 @@ voicebridge.tts.base.TtsError: Edge-TTS synthesis failed: Cannot connect to host
 16:37:48 | INFO    | [f0d9fd1c-e331-462d-864e-b134b888c0e6] | voicebridge.pipeline.orchestrator | Registered direction UR->AR (speaker=me, source=microphone)
 16:37:48 | INFO    | [-] | voicebridge.audio.capture | Microphone open (VAD chunking)
 16:38:28 | INFO    | [a6b7da59-31d2-4c7f-9127-7865e7b43869] | voicebridge.pipeline.orchestrator | Stopping pipeline...
+16:52:12 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/info "HTTP/1.1 200 OK"
+16:52:12 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+16:52:12 | INFO    | [-] | httpx | HTTP Request: POST http://testserver/api/stop "HTTP/1.1 200 OK"
+16:52:12 | INFO    | [-] | voicebridge.pipeline.worker | [AR->EN] Text-only translation for speaker 'other' (voice disabled)
+16:52:12 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/health "HTTP/1.1 200 OK"
+16:52:12 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/health/liveness "HTTP/1.1 200 OK"
+16:52:12 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/health/readiness "HTTP/1.1 200 OK"
+16:52:12 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/info "HTTP/1.1 200 OK"
+16:52:12 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/info "HTTP/1.1 200 OK"
+16:52:12 | INFO    | [-] | httpx | HTTP Request: POST http://testserver/api/start "HTTP/1.1 422 Unprocessable Entity"
+16:52:12 | INFO    | [85ff799a-e838-4ade-b234-8bb4c263d2a2] | voicebridge.translation.manager | Translation backend enabled: google
+16:52:23 | INFO    | [85ff799a-e838-4ade-b234-8bb4c263d2a2] | voicebridge.translation.manager | Translation backend enabled: nllb
+16:52:25 | INFO    | [85ff799a-e838-4ade-b234-8bb4c263d2a2] | voicebridge.translation.manager | Translation backend enabled: argos
+16:52:26 | INFO    | [85ff799a-e838-4ade-b234-8bb4c263d2a2] | voicebridge.tts.manager | TTS backend selected: Microsoft Neural TTS (edge-tts)
+16:52:26 | INFO    | [85ff799a-e838-4ade-b234-8bb4c263d2a2] | voicebridge.lipsync.wav2lip_backend | Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+16:52:26 | INFO    | [85ff799a-e838-4ade-b234-8bb4c263d2a2] | voicebridge.lipsync.wav2lip_backend | Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+16:52:26 | WARNING | [85ff799a-e838-4ade-b234-8bb4c263d2a2] | voicebridge.lipsync.manager | Requested lip-sync backend 'wav2lip' unavailable; using 'null'
+16:52:26 | INFO    | [85ff799a-e838-4ade-b234-8bb4c263d2a2] | voicebridge.lipsync.manager | Lip-sync backend selected: null
+16:52:26 | INFO    | [85ff799a-e838-4ade-b234-8bb4c263d2a2] | voicebridge.stt.faster_whisper_backend | [EN->AR] Loading Whisper 'base' on cuda (float16)...
+16:52:28 | INFO    | [85ff799a-e838-4ade-b234-8bb4c263d2a2] | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-base/revision/main "HTTP/1.1 200 OK"
+16:52:28 | WARNING | [85ff799a-e838-4ade-b234-8bb4c263d2a2] | voicebridge.stt.faster_whisper_backend | [EN->AR] Could not load on cuda: CUDA failed with error CUDA driver version is insufficient for CUDA runtime version
+16:52:28 | INFO    | [85ff799a-e838-4ade-b234-8bb4c263d2a2] | voicebridge.stt.faster_whisper_backend | [EN->AR] Loading Whisper 'base' on cpu (int8)...
+16:52:28 | INFO    | [85ff799a-e838-4ade-b234-8bb4c263d2a2] | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-base/revision/main "HTTP/1.1 200 OK"
+16:52:29 | INFO    | [85ff799a-e838-4ade-b234-8bb4c263d2a2] | voicebridge.metrics.model_tracker | Model [stt/whisper_base_cpu] loaded in 1106.6ms (device=cpu, cache_hit=False)
+16:52:29 | INFO    | [85ff799a-e838-4ade-b234-8bb4c263d2a2] | voicebridge.stt.faster_whisper_backend | [EN->AR] Whisper ready on cpu (loaded in 1106.6ms)
+16:52:29 | INFO    | [85ff799a-e838-4ade-b234-8bb4c263d2a2] | voicebridge.stt.manager | [EN->AR] Selected STT provider: faster-whisper
+16:52:29 | INFO    | [85ff799a-e838-4ade-b234-8bb4c263d2a2] | voicebridge.pipeline.orchestrator | Registered direction EN->AR (speaker=me, source=wav)
+16:52:29 | INFO    | [-] | httpx | HTTP Request: POST http://testserver/api/start "HTTP/1.1 200 OK"
+16:52:29 | INFO    | [966e2d32-dbfe-43df-accd-d9533907a300] | voicebridge.pipeline.orchestrator | Stopping pipeline...
+16:52:29 | INFO    | [-] | voicebridge.audio.capture | Loaded WAV test_en.wav (16000 Hz, 74112 samples)
+16:52:29 | INFO    | [-] | httpx | HTTP Request: POST http://testserver/api/stop "HTTP/1.1 200 OK"
+16:52:29 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: google
+16:52:29 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: argos
+16:52:29 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: nllb
+16:52:29 | INFO    | [-] | voicebridge.tts.manager | TTS backend selected: Microsoft Neural TTS (edge-tts)
+16:52:29 | INFO    | [-] | voicebridge.lipsync.wav2lip_backend | Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+16:52:29 | INFO    | [-] | voicebridge.lipsync.wav2lip_backend | Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+16:52:29 | WARNING | [-] | voicebridge.lipsync.manager | Requested lip-sync backend 'demo' unavailable; using 'null'
+16:52:29 | INFO    | [-] | voicebridge.lipsync.manager | Lip-sync backend selected: null
+16:52:30 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: google
+16:52:30 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: nllb
+16:52:30 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: argos
+16:52:30 | INFO    | [-] | voicebridge.tts.manager | TTS backend selected: Microsoft Neural TTS (edge-tts)
+16:52:30 | INFO    | [-] | voicebridge.pipeline.async_pipeline | [AsyncPipeline] Starting 5 stage workers...
+16:52:30 | INFO    | [-] | voicebridge.pipeline.workers.base_worker | [VAD Worker] Started.
+16:52:30 | INFO    | [-] | voicebridge.pipeline.workers.base_worker | [STT Worker] Started.
+16:52:30 | INFO    | [-] | voicebridge.pipeline.workers.base_worker | [LLM Worker] Started.
+16:52:30 | INFO    | [-] | voicebridge.pipeline.workers.base_worker | [TTS Worker] Started.
+16:52:30 | INFO    | [-] | voicebridge.pipeline.workers.base_worker | [Playback Worker] Started.
+16:52:30 | INFO    | [-] | voicebridge.pipeline.async_pipeline | [AsyncPipeline] Stopping worker threads...
+16:52:30 | INFO    | [-] | voicebridge.pipeline.workers.base_worker | [LLM Worker] Stopped. Processed 0 items.
+16:52:30 | INFO    | [-] | voicebridge.pipeline.workers.base_worker | [VAD Worker] Stopped. Processed 0 items.
+16:52:30 | INFO    | [-] | voicebridge.pipeline.workers.base_worker | [TTS Worker] Stopped. Processed 0 items.
+16:52:30 | INFO    | [-] | voicebridge.pipeline.workers.base_worker | [STT Worker] Stopped. Processed 0 items.
+16:52:30 | INFO    | [-] | voicebridge.pipeline.workers.base_worker | [Playback Worker] Stopped. Processed 0 items.
+16:52:30 | INFO    | [-] | voicebridge.pipeline.async_queue | [stt_q Backpressure] Compacted partial transcript for trace_id=t3. Remaining queue size=1
+16:52:30 | WARNING | [-] | voicebridge.pipeline.async_queue | [item_q Backpressure] Queue full. Evicted oldest item (trace_id=unknown) to accept trace_id=20c27a66-08cf-4257-b306-4d1e248ddfed
+16:52:30 | ERROR   | [-] | voicebridge.resilience.circuit_breaker | [whisper CircuitBreaker] CLOSED -> OPEN (Failures=2 threshold=2, Error: fail 2) for trace_id=t-2
+16:52:30 | ERROR   | [-] | voicebridge.resilience.circuit_breaker | [whisper CircuitBreaker] CLOSED -> OPEN (Failures=1 threshold=1, Error: fail) for trace_id=t-1
+16:52:30 | INFO    | [-] | voicebridge.resilience.circuit_breaker | [whisper CircuitBreaker] t-2 -> HALF_OPEN (Testing recovery)
+16:52:30 | INFO    | [-] | voicebridge.resilience.circuit_breaker | [whisper CircuitBreaker] t-2 -> CLOSED (Recovered)
+16:52:31 | ERROR   | [-] | voicebridge.routing.fallback_chain | [test_llm FallbackChain] Provider primary failed (Primary network timeout) for trace_id=t-2. Trying next candidate...
+16:52:31 | WARNING | [-] | voicebridge.routing.fallback_chain | [test_llm FallbackChain] Failing over to candidate 2 (secondary) for trace_id=t-2
+16:52:31 | ERROR   | [-] | voicebridge.resilience.circuit_breaker | [primary CircuitBreaker] CLOSED -> OPEN (Failures=1 threshold=1, Error: Failed) for trace_id=t-0
+16:52:31 | ERROR   | [-] | voicebridge.routing.fallback_chain | [test_cb FallbackChain] Provider primary failed ([primary] Circuit is OPEN for trace_id=t-3) for trace_id=t-3. Trying next candidate...
+16:52:31 | WARNING | [-] | voicebridge.routing.fallback_chain | [test_cb FallbackChain] Failing over to candidate 2 (secondary) for trace_id=t-3
+16:52:31 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/health "HTTP/1.1 200 OK"
+16:52:31 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/health/liveness "HTTP/1.1 200 OK"
+16:52:31 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/health/readiness "HTTP/1.1 200 OK"
+16:52:31 | INFO    | [-] | voicebridge.benchmarks.load_tester | [LoadTester] Starting load test with 2 users (2 reqs/user)...
+16:52:31 | INFO    | [-] | voicebridge.routing.router | [ModelRouter] Selected STT provider 'faster-whisper' (Tier=balanced, Score=1.00)
+16:52:31 | INFO    | [-] | voicebridge.routing.router | [ModelRouter] Selected STT provider 'faster-whisper' (Tier=balanced, Score=1.00)
+16:52:31 | INFO    | [-] | voicebridge.routing.router | [ModelRouter] Selected STT provider 'faster-whisper' (Tier=balanced, Score=1.00)
+16:52:31 | INFO    | [-] | voicebridge.routing.router | [ModelRouter] Selected STT provider 'faster-whisper' (Tier=balanced, Score=1.00)
+16:52:31 | INFO    | [-] | voicebridge.benchmarks.load_tester | [LoadTester] Results: {'num_concurrent_users': 2, 'total_requests': 4, 'successful_requests': 4, 'failed_requests': 0, 'total_elapsed_sec': 0.03, 'throughput_req_per_sec': 159.05, 'latency_p50_ms': 11.53, 'latency_p95_ms': 12.55, 'latency_p99_ms': 12.66, 'error_rate_pct': 0.0}
+16:52:31 | INFO    | [-] | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 1200.0ms (device=cpu, cache_hit=False)
+16:52:31 | INFO    | [-] | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 5.0ms (device=cpu, cache_hit=True)
+16:52:31 | INFO    | [-] | voicebridge.metrics.reporter | Exported Markdown report -> C:\Users\Amin Khan\AppData\Local\Temp\pytest-of-Amin Khan\pytest-29\test_performance_reporter0\report.md
+16:52:31 | INFO    | [-] | voicebridge.metrics.reporter | Exported JSON report -> C:\Users\Amin Khan\AppData\Local\Temp\pytest-of-Amin Khan\pytest-29\test_performance_reporter0\report.json
+16:52:31 | INFO    | [-] | voicebridge.metrics.reporter | Exported CSV report -> C:\Users\Amin Khan\AppData\Local\Temp\pytest-of-Amin Khan\pytest-29\test_performance_reporter0\report.csv
+16:52:31 | INFO    | [-] | voicebridge.warmup | Model warm-up disabled via configuration (lazy loading enabled).
+16:52:31 | INFO    | [-] | voicebridge.warmup | Starting model warm-up phase...
+16:52:31 | INFO    | [-] | voicebridge.metrics.model_tracker | Model [vad/<MagicMock name='VadAdapter().name' id='2227245759632'>] loaded in 3.4ms (device=cpu, cache_hit=False)
+16:52:31 | INFO    | [-] | voicebridge.metrics.model_tracker | Model [stt/<MagicMock name='SttAdapter().name' id='2227272215504'>] loaded in 3.1ms (device=cpu, cache_hit=False)
+16:52:31 | INFO    | [-] | voicebridge.metrics.model_tracker | Model [llm/<MagicMock name='LlmAdapter().name' id='2227252366736'>] loaded in 3.3ms (device=cpu, cache_hit=False)
+16:52:31 | INFO    | [-] | voicebridge.metrics.model_tracker | Model [tts/<MagicMock name='TtsAdapter().name' id='2227272082512'>] loaded in 1.4ms (device=cpu, cache_hit=False)
+16:52:31 | INFO    | [-] | voicebridge.warmup | Model warm-up complete! Durations: {'vad': 3.3905000000231666, 'stt': 3.1456999995498336, 'llm': 3.270899999733956, 'tts': 1.4358999997057253}
+16:52:31 | INFO    | [-] | voicebridge.routing.router | [ModelRouter] Selected STT provider 'faster-whisper' (Tier=fast, Score=1.00)
+16:52:31 | INFO    | [-] | voicebridge.routing.router | [ModelRouter] Selected LLM provider 'google' (Tier=balanced, Score=1.00)
+16:52:31 | INFO    | [-] | voicebridge.routing.router | [ModelRouter] Selected LLM provider 'google' (Tier=fast, Score=1.00)
+16:52:31 | WARNING | [-] | voicebridge.telemetry.tracing | Trace telemetry-test-id Warning: Low audio volume
+16:52:31 | ERROR   | [-] | voicebridge.telemetry.tracing | [TTS] Trace error-trace-456 Error: Engine failure
+16:52:32 | INFO    | [-] | voicebridge.tts.manager | TTS backend selected: Microsoft Neural TTS (edge-tts)
+16:52:32 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: google
+16:52:32 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: nllb
+16:52:32 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: argos
+16:52:32 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: google
+16:52:32 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: nllb
+16:52:32 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: argos
+16:52:57 | INFO    | [-] | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-large-v3/xet-read-token/edaa852ec7e145841d8ffdb056a99866b5f0a478 "HTTP/1.1 200 OK"
+16:55:01 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/info "HTTP/1.1 200 OK"
+16:55:01 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+16:55:01 | INFO    | [-] | httpx | HTTP Request: POST http://testserver/api/stop "HTTP/1.1 200 OK"
+16:55:01 | INFO    | [-] | voicebridge.pipeline.worker | [AR->EN] Text-only translation for speaker 'other' (voice disabled)
+16:55:01 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/health "HTTP/1.1 200 OK"
+16:55:01 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/health/liveness "HTTP/1.1 200 OK"
+16:55:01 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/health/readiness "HTTP/1.1 200 OK"
+16:55:01 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/info "HTTP/1.1 200 OK"
+16:55:01 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/info "HTTP/1.1 200 OK"
+16:55:01 | INFO    | [-] | httpx | HTTP Request: POST http://testserver/api/start "HTTP/1.1 422 Unprocessable Entity"
+16:55:02 | INFO    | [fa105428-4158-413a-b23e-e19b0ebf7cbd] | voicebridge.translation.manager | Translation backend enabled: google
+16:55:11 | INFO    | [fa105428-4158-413a-b23e-e19b0ebf7cbd] | voicebridge.translation.manager | Translation backend enabled: nllb
+16:55:12 | INFO    | [fa105428-4158-413a-b23e-e19b0ebf7cbd] | voicebridge.translation.manager | Translation backend enabled: argos
+16:55:14 | INFO    | [fa105428-4158-413a-b23e-e19b0ebf7cbd] | voicebridge.tts.manager | TTS backend selected: Microsoft Neural TTS (edge-tts)
+16:55:14 | INFO    | [fa105428-4158-413a-b23e-e19b0ebf7cbd] | voicebridge.lipsync.wav2lip_backend | Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+16:55:14 | INFO    | [fa105428-4158-413a-b23e-e19b0ebf7cbd] | voicebridge.lipsync.wav2lip_backend | Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+16:55:14 | WARNING | [fa105428-4158-413a-b23e-e19b0ebf7cbd] | voicebridge.lipsync.manager | Requested lip-sync backend 'wav2lip' unavailable; using 'null'
+16:55:14 | INFO    | [fa105428-4158-413a-b23e-e19b0ebf7cbd] | voicebridge.lipsync.manager | Lip-sync backend selected: null
+16:55:14 | INFO    | [fa105428-4158-413a-b23e-e19b0ebf7cbd] | voicebridge.stt.faster_whisper_backend | [EN->AR] Loading Whisper 'base' on cuda (float16)...
+16:55:17 | INFO    | [fa105428-4158-413a-b23e-e19b0ebf7cbd] | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-base/revision/main "HTTP/1.1 200 OK"
+16:55:17 | WARNING | [fa105428-4158-413a-b23e-e19b0ebf7cbd] | voicebridge.stt.faster_whisper_backend | [EN->AR] Could not load on cuda: CUDA failed with error CUDA driver version is insufficient for CUDA runtime version
+16:55:17 | INFO    | [fa105428-4158-413a-b23e-e19b0ebf7cbd] | voicebridge.stt.faster_whisper_backend | [EN->AR] Loading Whisper 'base' on cpu (int8)...
+16:55:17 | INFO    | [fa105428-4158-413a-b23e-e19b0ebf7cbd] | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-base/revision/main "HTTP/1.1 200 OK"
+16:55:18 | INFO    | [fa105428-4158-413a-b23e-e19b0ebf7cbd] | voicebridge.metrics.model_tracker | Model [stt/whisper_base_cpu] loaded in 990.8ms (device=cpu, cache_hit=False)
+16:55:18 | INFO    | [fa105428-4158-413a-b23e-e19b0ebf7cbd] | voicebridge.stt.faster_whisper_backend | [EN->AR] Whisper ready on cpu (loaded in 990.8ms)
+16:55:18 | INFO    | [fa105428-4158-413a-b23e-e19b0ebf7cbd] | voicebridge.stt.manager | [EN->AR] Selected STT provider: faster-whisper
+16:55:18 | INFO    | [fa105428-4158-413a-b23e-e19b0ebf7cbd] | voicebridge.pipeline.orchestrator | Registered direction EN->AR (speaker=me, source=wav)
+16:55:18 | INFO    | [-] | voicebridge.audio.capture | Loaded WAV test_en.wav (16000 Hz, 74112 samples)
+16:55:18 | INFO    | [-] | httpx | HTTP Request: POST http://testserver/api/start "HTTP/1.1 200 OK"
+16:55:18 | INFO    | [e27683cc-ecf8-463a-9e86-3e561dfa4fe4] | voicebridge.pipeline.orchestrator | Stopping pipeline...
+16:55:19 | INFO    | [-] | httpx | HTTP Request: POST http://testserver/api/stop "HTTP/1.1 200 OK"
+16:55:19 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: google
+16:55:19 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: argos
+16:55:19 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: nllb
+16:55:19 | INFO    | [-] | voicebridge.tts.manager | TTS backend selected: Microsoft Neural TTS (edge-tts)
+16:55:19 | INFO    | [-] | voicebridge.lipsync.wav2lip_backend | Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+16:55:19 | INFO    | [-] | voicebridge.lipsync.wav2lip_backend | Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+16:55:19 | WARNING | [-] | voicebridge.lipsync.manager | Requested lip-sync backend 'demo' unavailable; using 'null'
+16:55:19 | INFO    | [-] | voicebridge.lipsync.manager | Lip-sync backend selected: null
+16:55:19 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: google
+16:55:19 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: nllb
+16:55:19 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: argos
+16:55:19 | INFO    | [-] | voicebridge.tts.manager | TTS backend selected: Microsoft Neural TTS (edge-tts)
+16:55:19 | INFO    | [-] | voicebridge.pipeline.async_pipeline | [AsyncPipeline] Starting 5 stage workers...
+16:55:19 | INFO    | [-] | voicebridge.pipeline.workers.base_worker | [VAD Worker] Started.
+16:55:19 | INFO    | [-] | voicebridge.pipeline.workers.base_worker | [STT Worker] Started.
+16:55:19 | INFO    | [-] | voicebridge.pipeline.workers.base_worker | [LLM Worker] Started.
+16:55:19 | INFO    | [-] | voicebridge.pipeline.workers.base_worker | [TTS Worker] Started.
+16:55:19 | INFO    | [-] | voicebridge.pipeline.workers.base_worker | [Playback Worker] Started.
+16:55:20 | INFO    | [-] | voicebridge.pipeline.async_pipeline | [AsyncPipeline] Stopping worker threads...
+16:55:20 | INFO    | [-] | voicebridge.pipeline.workers.base_worker | [VAD Worker] Stopped. Processed 0 items.
+16:55:20 | INFO    | [-] | voicebridge.pipeline.workers.base_worker | [STT Worker] Stopped. Processed 0 items.
+16:55:20 | INFO    | [-] | voicebridge.pipeline.workers.base_worker | [LLM Worker] Stopped. Processed 0 items.
+16:55:20 | INFO    | [-] | voicebridge.pipeline.workers.base_worker | [TTS Worker] Stopped. Processed 0 items.
+16:55:20 | INFO    | [-] | voicebridge.pipeline.workers.base_worker | [Playback Worker] Stopped. Processed 0 items.
+16:55:20 | INFO    | [-] | voicebridge.pipeline.async_queue | [stt_q Backpressure] Compacted partial transcript for trace_id=t3. Remaining queue size=1
+16:55:20 | WARNING | [-] | voicebridge.pipeline.async_queue | [item_q Backpressure] Queue full. Evicted oldest item (trace_id=unknown) to accept trace_id=6630e89d-f3a3-46f9-92d0-371afffb578b
+16:55:20 | ERROR   | [-] | voicebridge.resilience.circuit_breaker | [whisper CircuitBreaker] CLOSED -> OPEN (Failures=2 threshold=2, Error: fail 2) for trace_id=t-2
+16:55:20 | ERROR   | [-] | voicebridge.resilience.circuit_breaker | [whisper CircuitBreaker] CLOSED -> OPEN (Failures=1 threshold=1, Error: fail) for trace_id=t-1
+16:55:20 | INFO    | [-] | voicebridge.resilience.circuit_breaker | [whisper CircuitBreaker] t-2 -> HALF_OPEN (Testing recovery)
+16:55:20 | INFO    | [-] | voicebridge.resilience.circuit_breaker | [whisper CircuitBreaker] t-2 -> CLOSED (Recovered)
+16:55:20 | ERROR   | [-] | voicebridge.routing.fallback_chain | [test_llm FallbackChain] Provider primary failed (Primary network timeout) for trace_id=t-2. Trying next candidate...
+16:55:20 | WARNING | [-] | voicebridge.routing.fallback_chain | [test_llm FallbackChain] Failing over to candidate 2 (secondary) for trace_id=t-2
+16:55:20 | ERROR   | [-] | voicebridge.resilience.circuit_breaker | [primary CircuitBreaker] CLOSED -> OPEN (Failures=1 threshold=1, Error: Failed) for trace_id=t-0
+16:55:20 | ERROR   | [-] | voicebridge.routing.fallback_chain | [test_cb FallbackChain] Provider primary failed ([primary] Circuit is OPEN for trace_id=t-3) for trace_id=t-3. Trying next candidate...
+16:55:20 | WARNING | [-] | voicebridge.routing.fallback_chain | [test_cb FallbackChain] Failing over to candidate 2 (secondary) for trace_id=t-3
+16:55:20 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/health "HTTP/1.1 200 OK"
+16:55:20 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/health/liveness "HTTP/1.1 200 OK"
+16:55:20 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/health/readiness "HTTP/1.1 200 OK"
+16:55:20 | INFO    | [-] | voicebridge.benchmarks.load_tester | [LoadTester] Starting load test with 2 users (2 reqs/user)...
+16:55:20 | INFO    | [-] | voicebridge.routing.router | [ModelRouter] Selected STT provider 'faster-whisper' (Tier=balanced, Score=1.00)
+16:55:20 | INFO    | [-] | voicebridge.routing.router | [ModelRouter] Selected STT provider 'faster-whisper' (Tier=balanced, Score=1.00)
+16:55:20 | INFO    | [-] | voicebridge.routing.router | [ModelRouter] Selected STT provider 'faster-whisper' (Tier=balanced, Score=1.00)
+16:55:20 | INFO    | [-] | voicebridge.routing.router | [ModelRouter] Selected STT provider 'faster-whisper' (Tier=balanced, Score=1.00)
+16:55:20 | INFO    | [-] | voicebridge.benchmarks.load_tester | [LoadTester] Results: {'num_concurrent_users': 2, 'total_requests': 4, 'successful_requests': 4, 'failed_requests': 0, 'total_elapsed_sec': 0.03, 'throughput_req_per_sec': 153.79, 'latency_p50_ms': 11.59, 'latency_p95_ms': 13.02, 'latency_p99_ms': 13.17, 'error_rate_pct': 0.0}
+16:55:21 | INFO    | [-] | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 1200.0ms (device=cpu, cache_hit=False)
+16:55:21 | INFO    | [-] | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 5.0ms (device=cpu, cache_hit=True)
+16:55:21 | INFO    | [-] | voicebridge.metrics.reporter | Exported Markdown report -> C:\Users\Amin Khan\AppData\Local\Temp\pytest-of-Amin Khan\pytest-30\test_performance_reporter0\report.md
+16:55:21 | INFO    | [-] | voicebridge.metrics.reporter | Exported JSON report -> C:\Users\Amin Khan\AppData\Local\Temp\pytest-of-Amin Khan\pytest-30\test_performance_reporter0\report.json
+16:55:21 | INFO    | [-] | voicebridge.metrics.reporter | Exported CSV report -> C:\Users\Amin Khan\AppData\Local\Temp\pytest-of-Amin Khan\pytest-30\test_performance_reporter0\report.csv
+16:55:21 | INFO    | [-] | voicebridge.warmup | Model warm-up disabled via configuration (lazy loading enabled).
+16:55:21 | INFO    | [-] | voicebridge.warmup | Starting model warm-up phase...
+16:55:21 | INFO    | [-] | voicebridge.metrics.model_tracker | Model [vad/<MagicMock name='VadAdapter().name' id='1678794228752'>] loaded in 1.5ms (device=cpu, cache_hit=False)
+16:55:21 | INFO    | [-] | voicebridge.metrics.model_tracker | Model [stt/<MagicMock name='SttAdapter().name' id='1678727657232'>] loaded in 1.6ms (device=cpu, cache_hit=False)
+16:55:21 | INFO    | [-] | voicebridge.metrics.model_tracker | Model [llm/<MagicMock name='LlmAdapter().name' id='1678806021264'>] loaded in 2.3ms (device=cpu, cache_hit=False)
+16:55:21 | INFO    | [-] | voicebridge.metrics.model_tracker | Model [tts/<MagicMock name='TtsAdapter().name' id='1678741115216'>] loaded in 1.3ms (device=cpu, cache_hit=False)
+16:55:21 | INFO    | [-] | voicebridge.warmup | Model warm-up complete! Durations: {'vad': 1.530300000013085, 'stt': 1.6023000007407973, 'llm': 2.289099999870814, 'tts': 1.3355999999475898}
+16:55:21 | INFO    | [-] | voicebridge.routing.router | [ModelRouter] Selected STT provider 'faster-whisper' (Tier=fast, Score=1.00)
+16:55:21 | INFO    | [-] | voicebridge.routing.router | [ModelRouter] Selected LLM provider 'google' (Tier=balanced, Score=1.00)
+16:55:21 | INFO    | [-] | voicebridge.routing.router | [ModelRouter] Selected LLM provider 'google' (Tier=fast, Score=1.00)
+16:55:21 | WARNING | [-] | voicebridge.telemetry.tracing | Trace telemetry-test-id Warning: Low audio volume
+16:55:21 | ERROR   | [-] | voicebridge.telemetry.tracing | [TTS] Trace error-trace-456 Error: Engine failure
+16:55:21 | INFO    | [-] | voicebridge.tts.manager | TTS backend selected: Microsoft Neural TTS (edge-tts)
+16:55:21 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: google
+16:55:21 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: nllb
+16:55:21 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: argos
+16:55:21 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: google
+16:55:21 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: nllb
+16:55:21 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: argos
+16:55:25 | INFO    | [-] | voicebridge.translation.manager | Translated [en->ur] via translator 'google' (attempt 1): 'منفرد سلام 1785930921.736623'
+17:00:05 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/info "HTTP/1.1 200 OK"
+17:00:05 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+17:00:05 | INFO    | [-] | httpx | HTTP Request: POST http://testserver/api/stop "HTTP/1.1 200 OK"
+17:00:05 | INFO    | [-] | voicebridge.pipeline.worker | [AR->EN] Text-only translation for speaker 'other' (voice disabled)
+17:00:05 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/health "HTTP/1.1 200 OK"
+17:00:05 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/health/liveness "HTTP/1.1 200 OK"
+17:00:05 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/health/readiness "HTTP/1.1 200 OK"
+17:00:05 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/info "HTTP/1.1 200 OK"
+17:00:05 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/info "HTTP/1.1 200 OK"
+17:00:05 | INFO    | [-] | httpx | HTTP Request: POST http://testserver/api/start "HTTP/1.1 422 Unprocessable Entity"
+17:00:06 | INFO    | [61f5e6e7-732c-4379-a742-b1c3dfb5096e] | voicebridge.translation.manager | Translation backend enabled: google
+17:00:13 | INFO    | [61f5e6e7-732c-4379-a742-b1c3dfb5096e] | voicebridge.translation.manager | Translation backend enabled: nllb
+17:00:14 | INFO    | [61f5e6e7-732c-4379-a742-b1c3dfb5096e] | voicebridge.translation.manager | Translation backend enabled: argos
+17:00:15 | INFO    | [61f5e6e7-732c-4379-a742-b1c3dfb5096e] | voicebridge.tts.manager | TTS backend selected: Microsoft Neural TTS (edge-tts)
+17:00:15 | INFO    | [61f5e6e7-732c-4379-a742-b1c3dfb5096e] | voicebridge.lipsync.wav2lip_backend | Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+17:00:15 | INFO    | [61f5e6e7-732c-4379-a742-b1c3dfb5096e] | voicebridge.lipsync.wav2lip_backend | Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+17:00:15 | WARNING | [61f5e6e7-732c-4379-a742-b1c3dfb5096e] | voicebridge.lipsync.manager | Requested lip-sync backend 'wav2lip' unavailable; using 'null'
+17:00:15 | INFO    | [61f5e6e7-732c-4379-a742-b1c3dfb5096e] | voicebridge.lipsync.manager | Lip-sync backend selected: null
+17:00:16 | INFO    | [61f5e6e7-732c-4379-a742-b1c3dfb5096e] | voicebridge.stt.faster_whisper_backend | [EN->AR] Loading Whisper 'base' on cuda (float16)...
+17:00:18 | INFO    | [61f5e6e7-732c-4379-a742-b1c3dfb5096e] | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-base/revision/main "HTTP/1.1 200 OK"
+17:00:18 | WARNING | [61f5e6e7-732c-4379-a742-b1c3dfb5096e] | voicebridge.stt.faster_whisper_backend | [EN->AR] Could not load on cuda: CUDA failed with error CUDA driver version is insufficient for CUDA runtime version
+17:00:18 | INFO    | [61f5e6e7-732c-4379-a742-b1c3dfb5096e] | voicebridge.stt.faster_whisper_backend | [EN->AR] Loading Whisper 'base' on cpu (int8)...
+17:00:18 | INFO    | [61f5e6e7-732c-4379-a742-b1c3dfb5096e] | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-base/revision/main "HTTP/1.1 200 OK"
+17:00:19 | INFO    | [61f5e6e7-732c-4379-a742-b1c3dfb5096e] | voicebridge.metrics.model_tracker | Model [stt/whisper_base_cpu] loaded in 988.7ms (device=cpu, cache_hit=False)
+17:00:19 | INFO    | [61f5e6e7-732c-4379-a742-b1c3dfb5096e] | voicebridge.stt.faster_whisper_backend | [EN->AR] Whisper ready on cpu (loaded in 988.7ms)
+17:00:19 | INFO    | [61f5e6e7-732c-4379-a742-b1c3dfb5096e] | voicebridge.stt.manager | [EN->AR] Selected STT provider: faster-whisper
+17:00:19 | INFO    | [61f5e6e7-732c-4379-a742-b1c3dfb5096e] | voicebridge.pipeline.orchestrator | Registered direction EN->AR (speaker=me, source=wav)
+17:00:19 | INFO    | [-] | voicebridge.audio.capture | Loaded WAV test_en.wav (16000 Hz, 74112 samples)
+17:00:19 | INFO    | [-] | httpx | HTTP Request: POST http://testserver/api/start "HTTP/1.1 200 OK"
+17:00:19 | INFO    | [e3e29bc1-160c-4795-afad-81e2e30951c6] | voicebridge.pipeline.orchestrator | Stopping pipeline...
+17:00:20 | INFO    | [-] | httpx | HTTP Request: POST http://testserver/api/stop "HTTP/1.1 200 OK"
+17:00:20 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: google
+17:00:21 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: argos
+17:00:21 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: nllb
+17:00:21 | INFO    | [-] | voicebridge.tts.manager | TTS backend selected: Microsoft Neural TTS (edge-tts)
+17:00:21 | INFO    | [-] | voicebridge.lipsync.wav2lip_backend | Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+17:00:21 | INFO    | [-] | voicebridge.lipsync.wav2lip_backend | Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+17:00:21 | WARNING | [-] | voicebridge.lipsync.manager | Requested lip-sync backend 'demo' unavailable; using 'null'
+17:00:21 | INFO    | [-] | voicebridge.lipsync.manager | Lip-sync backend selected: null
+17:00:21 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: google
+17:00:21 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: nllb
+17:00:21 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: argos
+17:00:21 | INFO    | [-] | voicebridge.tts.manager | TTS backend selected: Microsoft Neural TTS (edge-tts)
+17:00:21 | INFO    | [-] | voicebridge.pipeline.async_pipeline | [AsyncPipeline] Starting 5 stage workers...
+17:00:21 | INFO    | [-] | voicebridge.pipeline.workers.base_worker | [VAD Worker] Started.
+17:00:21 | INFO    | [-] | voicebridge.pipeline.workers.base_worker | [STT Worker] Started.
+17:00:21 | INFO    | [-] | voicebridge.pipeline.workers.base_worker | [LLM Worker] Started.
+17:00:21 | INFO    | [-] | voicebridge.pipeline.workers.base_worker | [TTS Worker] Started.
+17:00:21 | INFO    | [-] | voicebridge.pipeline.workers.base_worker | [Playback Worker] Started.
+17:00:21 | INFO    | [-] | voicebridge.pipeline.async_pipeline | [AsyncPipeline] Stopping worker threads...
+17:00:21 | INFO    | [-] | voicebridge.pipeline.workers.base_worker | [VAD Worker] Stopped. Processed 0 items.
+17:00:21 | INFO    | [-] | voicebridge.pipeline.workers.base_worker | [STT Worker] Stopped. Processed 0 items.
+17:00:21 | INFO    | [-] | voicebridge.pipeline.workers.base_worker | [LLM Worker] Stopped. Processed 0 items.
+17:00:21 | INFO    | [-] | voicebridge.pipeline.workers.base_worker | [TTS Worker] Stopped. Processed 0 items.
+17:00:21 | INFO    | [-] | voicebridge.pipeline.workers.base_worker | [Playback Worker] Stopped. Processed 0 items.
+17:00:21 | INFO    | [-] | voicebridge.pipeline.async_queue | [stt_q Backpressure] Compacted partial transcript for trace_id=t3. Remaining queue size=1
+17:00:21 | WARNING | [-] | voicebridge.pipeline.async_queue | [item_q Backpressure] Queue full. Evicted oldest item (trace_id=unknown) to accept trace_id=8207ab35-6772-4048-b98a-75da44b93072
+17:00:21 | ERROR   | [-] | voicebridge.resilience.circuit_breaker | [whisper CircuitBreaker] CLOSED -> OPEN (Failures=2 threshold=2, Error: fail 2) for trace_id=t-2
+17:00:21 | ERROR   | [-] | voicebridge.resilience.circuit_breaker | [whisper CircuitBreaker] CLOSED -> OPEN (Failures=1 threshold=1, Error: fail) for trace_id=t-1
+17:00:21 | INFO    | [-] | voicebridge.resilience.circuit_breaker | [whisper CircuitBreaker] t-2 -> HALF_OPEN (Testing recovery)
+17:00:21 | INFO    | [-] | voicebridge.resilience.circuit_breaker | [whisper CircuitBreaker] t-2 -> CLOSED (Recovered)
+17:00:21 | ERROR   | [-] | voicebridge.routing.fallback_chain | [test_llm FallbackChain] Provider primary failed (Primary network timeout) for trace_id=t-2. Trying next candidate...
+17:00:21 | WARNING | [-] | voicebridge.routing.fallback_chain | [test_llm FallbackChain] Failing over to candidate 2 (secondary) for trace_id=t-2
+17:00:21 | ERROR   | [-] | voicebridge.resilience.circuit_breaker | [primary CircuitBreaker] CLOSED -> OPEN (Failures=1 threshold=1, Error: Failed) for trace_id=t-0
+17:00:21 | ERROR   | [-] | voicebridge.routing.fallback_chain | [test_cb FallbackChain] Provider primary failed ([primary] Circuit is OPEN for trace_id=t-3) for trace_id=t-3. Trying next candidate...
+17:00:21 | WARNING | [-] | voicebridge.routing.fallback_chain | [test_cb FallbackChain] Failing over to candidate 2 (secondary) for trace_id=t-3
+17:00:22 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/health "HTTP/1.1 200 OK"
+17:00:22 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/health/liveness "HTTP/1.1 200 OK"
+17:00:22 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/health/readiness "HTTP/1.1 200 OK"
+17:00:22 | INFO    | [-] | voicebridge.benchmarks.load_tester | [LoadTester] Starting load test with 2 users (2 reqs/user)...
+17:00:22 | INFO    | [-] | voicebridge.routing.router | [ModelRouter] Selected STT provider 'faster-whisper' (Tier=balanced, Score=1.00)
+17:00:22 | INFO    | [-] | voicebridge.routing.router | [ModelRouter] Selected STT provider 'faster-whisper' (Tier=balanced, Score=1.00)
+17:00:22 | INFO    | [-] | voicebridge.routing.router | [ModelRouter] Selected STT provider 'faster-whisper' (Tier=balanced, Score=1.00)
+17:00:22 | INFO    | [-] | voicebridge.routing.router | [ModelRouter] Selected STT provider 'faster-whisper' (Tier=balanced, Score=1.00)
+17:00:22 | INFO    | [-] | voicebridge.benchmarks.load_tester | [LoadTester] Results: {'num_concurrent_users': 2, 'total_requests': 4, 'successful_requests': 4, 'failed_requests': 0, 'total_elapsed_sec': 0.02, 'throughput_req_per_sec': 163.25, 'latency_p50_ms': 11.12, 'latency_p95_ms': 11.36, 'latency_p99_ms': 11.39, 'error_rate_pct': 0.0}
+17:00:22 | INFO    | [-] | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 1200.0ms (device=cpu, cache_hit=False)
+17:00:22 | INFO    | [-] | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 5.0ms (device=cpu, cache_hit=True)
+17:00:22 | INFO    | [-] | voicebridge.metrics.reporter | Exported Markdown report -> C:\Users\Amin Khan\AppData\Local\Temp\pytest-of-Amin Khan\pytest-31\test_performance_reporter0\report.md
+17:00:22 | INFO    | [-] | voicebridge.metrics.reporter | Exported JSON report -> C:\Users\Amin Khan\AppData\Local\Temp\pytest-of-Amin Khan\pytest-31\test_performance_reporter0\report.json
+17:00:22 | INFO    | [-] | voicebridge.metrics.reporter | Exported CSV report -> C:\Users\Amin Khan\AppData\Local\Temp\pytest-of-Amin Khan\pytest-31\test_performance_reporter0\report.csv
+17:00:22 | INFO    | [-] | voicebridge.warmup | Model warm-up disabled via configuration (lazy loading enabled).
+17:00:22 | INFO    | [-] | voicebridge.warmup | Starting model warm-up phase...
+17:00:22 | INFO    | [-] | voicebridge.metrics.model_tracker | Model [vad/<MagicMock name='VadAdapter().name' id='2207951899216'>] loaded in 1.4ms (device=cpu, cache_hit=False)
+17:00:22 | INFO    | [-] | voicebridge.metrics.model_tracker | Model [stt/<MagicMock name='SttAdapter().name' id='2207947270352'>] loaded in 1.5ms (device=cpu, cache_hit=False)
+17:00:22 | INFO    | [-] | voicebridge.metrics.model_tracker | Model [llm/<MagicMock name='LlmAdapter().name' id='2207951996112'>] loaded in 1.3ms (device=cpu, cache_hit=False)
+17:00:22 | INFO    | [-] | voicebridge.metrics.model_tracker | Model [tts/<MagicMock name='TtsAdapter().name' id='2207933485008'>] loaded in 1.3ms (device=cpu, cache_hit=False)
+17:00:22 | INFO    | [-] | voicebridge.warmup | Model warm-up complete! Durations: {'vad': 1.408600000104343, 'stt': 1.4551000003848458, 'llm': 1.3177999999243184, 'tts': 1.2553000005937065}
+17:00:22 | INFO    | [-] | voicebridge.routing.router | [ModelRouter] Selected STT provider 'faster-whisper' (Tier=fast, Score=1.00)
+17:00:22 | INFO    | [-] | voicebridge.routing.router | [ModelRouter] Selected LLM provider 'google' (Tier=balanced, Score=1.00)
+17:00:22 | INFO    | [-] | voicebridge.routing.router | [ModelRouter] Selected LLM provider 'google' (Tier=fast, Score=1.00)
+17:00:22 | WARNING | [-] | voicebridge.telemetry.tracing | Trace telemetry-test-id Warning: Low audio volume
+17:00:22 | ERROR   | [-] | voicebridge.telemetry.tracing | [TTS] Trace error-trace-456 Error: Engine failure
+17:00:22 | INFO    | [-] | voicebridge.tts.manager | TTS backend selected: Microsoft Neural TTS (edge-tts)
+17:00:22 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: google
+17:00:22 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: nllb
+17:00:22 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: argos
+17:00:22 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: google
+17:00:22 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: nllb
+17:00:22 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: argos
+17:00:24 | INFO    | [-] | voicebridge.translation.manager | Translated [en->ur] via translator 'google' (attempt 1): 'انوکھا سلام 1785931222.7845898'
+17:01:30 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/info "HTTP/1.1 200 OK"
+17:01:30 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+17:01:30 | INFO    | [-] | httpx | HTTP Request: POST http://testserver/api/stop "HTTP/1.1 200 OK"
+17:01:30 | INFO    | [-] | voicebridge.pipeline.worker | [AR->EN] Text-only translation for speaker 'other' (voice disabled)
+17:01:30 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/health "HTTP/1.1 200 OK"
+17:01:30 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/health/liveness "HTTP/1.1 200 OK"
+17:01:30 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/health/readiness "HTTP/1.1 200 OK"
+17:01:30 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/info "HTTP/1.1 200 OK"
+17:01:30 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/info "HTTP/1.1 200 OK"
+17:01:30 | INFO    | [-] | httpx | HTTP Request: POST http://testserver/api/start "HTTP/1.1 422 Unprocessable Entity"
+17:01:31 | INFO    | [325d6814-7908-40f2-8418-50bc90a857fb] | voicebridge.translation.manager | Translation backend enabled: google
+17:01:42 | INFO    | [325d6814-7908-40f2-8418-50bc90a857fb] | voicebridge.translation.manager | Translation backend enabled: nllb
+17:01:44 | INFO    | [325d6814-7908-40f2-8418-50bc90a857fb] | voicebridge.translation.manager | Translation backend enabled: argos
+17:01:46 | INFO    | [325d6814-7908-40f2-8418-50bc90a857fb] | voicebridge.tts.manager | TTS backend selected: Microsoft Neural TTS (edge-tts)
+17:01:46 | INFO    | [325d6814-7908-40f2-8418-50bc90a857fb] | voicebridge.lipsync.wav2lip_backend | Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+17:01:46 | INFO    | [325d6814-7908-40f2-8418-50bc90a857fb] | voicebridge.lipsync.wav2lip_backend | Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+17:01:46 | WARNING | [325d6814-7908-40f2-8418-50bc90a857fb] | voicebridge.lipsync.manager | Requested lip-sync backend 'wav2lip' unavailable; using 'null'
+17:01:46 | INFO    | [325d6814-7908-40f2-8418-50bc90a857fb] | voicebridge.lipsync.manager | Lip-sync backend selected: null
+17:01:46 | INFO    | [325d6814-7908-40f2-8418-50bc90a857fb] | voicebridge.stt.faster_whisper_backend | [EN->AR] Loading Whisper 'base' on cuda (float16)...
+17:01:48 | INFO    | [325d6814-7908-40f2-8418-50bc90a857fb] | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-base/revision/main "HTTP/1.1 200 OK"
+17:01:48 | WARNING | [325d6814-7908-40f2-8418-50bc90a857fb] | voicebridge.stt.faster_whisper_backend | [EN->AR] Could not load on cuda: CUDA failed with error CUDA driver version is insufficient for CUDA runtime version
+17:01:48 | INFO    | [325d6814-7908-40f2-8418-50bc90a857fb] | voicebridge.stt.faster_whisper_backend | [EN->AR] Loading Whisper 'base' on cpu (int8)...
+17:01:49 | INFO    | [325d6814-7908-40f2-8418-50bc90a857fb] | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-base/revision/main "HTTP/1.1 200 OK"
+17:01:50 | INFO    | [325d6814-7908-40f2-8418-50bc90a857fb] | voicebridge.metrics.model_tracker | Model [stt/whisper_base_cpu] loaded in 1341.9ms (device=cpu, cache_hit=False)
+17:01:50 | INFO    | [325d6814-7908-40f2-8418-50bc90a857fb] | voicebridge.stt.faster_whisper_backend | [EN->AR] Whisper ready on cpu (loaded in 1341.9ms)
+17:01:50 | INFO    | [325d6814-7908-40f2-8418-50bc90a857fb] | voicebridge.stt.manager | [EN->AR] Selected STT provider: faster-whisper
+17:01:50 | INFO    | [325d6814-7908-40f2-8418-50bc90a857fb] | voicebridge.pipeline.orchestrator | Registered direction EN->AR (speaker=me, source=wav)
+17:01:50 | INFO    | [-] | voicebridge.audio.capture | Loaded WAV test_en.wav (16000 Hz, 74112 samples)
+17:01:50 | INFO    | [-] | httpx | HTTP Request: POST http://testserver/api/start "HTTP/1.1 200 OK"
+17:01:50 | INFO    | [5e995e21-f748-4f05-b518-6316cf76456c] | voicebridge.pipeline.orchestrator | Stopping pipeline...
+17:01:53 | INFO    | [-] | httpx | HTTP Request: POST http://testserver/api/stop "HTTP/1.1 200 OK"
+17:01:53 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: google
+17:01:53 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: argos
+17:01:53 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: nllb
+17:01:53 | INFO    | [-] | voicebridge.tts.manager | TTS backend selected: Microsoft Neural TTS (edge-tts)
+17:01:53 | INFO    | [-] | voicebridge.lipsync.wav2lip_backend | Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+17:01:53 | INFO    | [-] | voicebridge.lipsync.wav2lip_backend | Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+17:01:53 | WARNING | [-] | voicebridge.lipsync.manager | Requested lip-sync backend 'demo' unavailable; using 'null'
+17:01:53 | INFO    | [-] | voicebridge.lipsync.manager | Lip-sync backend selected: null
+17:01:53 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: google
+17:01:53 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: nllb
+17:01:53 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: argos
+17:01:53 | INFO    | [-] | voicebridge.tts.manager | TTS backend selected: Microsoft Neural TTS (edge-tts)
+17:01:53 | INFO    | [-] | voicebridge.pipeline.async_pipeline | [AsyncPipeline] Starting 5 stage workers...
+17:01:53 | INFO    | [-] | voicebridge.pipeline.workers.base_worker | [VAD Worker] Started.
+17:01:53 | INFO    | [-] | voicebridge.pipeline.workers.base_worker | [STT Worker] Started.
+17:01:53 | INFO    | [-] | voicebridge.pipeline.workers.base_worker | [LLM Worker] Started.
+17:01:53 | INFO    | [-] | voicebridge.pipeline.workers.base_worker | [TTS Worker] Started.
+17:01:53 | INFO    | [-] | voicebridge.pipeline.workers.base_worker | [Playback Worker] Started.
+17:01:53 | INFO    | [-] | voicebridge.pipeline.async_pipeline | [AsyncPipeline] Stopping worker threads...
+17:01:53 | INFO    | [-] | voicebridge.pipeline.workers.base_worker | [VAD Worker] Stopped. Processed 0 items.
+17:01:53 | INFO    | [-] | voicebridge.pipeline.workers.base_worker | [STT Worker] Stopped. Processed 0 items.
+17:01:53 | INFO    | [-] | voicebridge.pipeline.workers.base_worker | [LLM Worker] Stopped. Processed 0 items.
+17:01:54 | INFO    | [-] | voicebridge.pipeline.workers.base_worker | [TTS Worker] Stopped. Processed 0 items.
+17:01:54 | INFO    | [-] | voicebridge.pipeline.workers.base_worker | [Playback Worker] Stopped. Processed 0 items.
+17:01:54 | INFO    | [-] | voicebridge.pipeline.async_queue | [stt_q Backpressure] Compacted partial transcript for trace_id=t3. Remaining queue size=1
+17:01:54 | WARNING | [-] | voicebridge.pipeline.async_queue | [item_q Backpressure] Queue full. Evicted oldest item (trace_id=unknown) to accept trace_id=944c363c-3449-4be6-b08c-ca5129c93601
+17:01:54 | ERROR   | [-] | voicebridge.resilience.circuit_breaker | [whisper CircuitBreaker] CLOSED -> OPEN (Failures=2 threshold=2, Error: fail 2) for trace_id=t-2
+17:01:54 | ERROR   | [-] | voicebridge.resilience.circuit_breaker | [whisper CircuitBreaker] CLOSED -> OPEN (Failures=1 threshold=1, Error: fail) for trace_id=t-1
+17:01:54 | INFO    | [-] | voicebridge.resilience.circuit_breaker | [whisper CircuitBreaker] t-2 -> HALF_OPEN (Testing recovery)
+17:01:54 | INFO    | [-] | voicebridge.resilience.circuit_breaker | [whisper CircuitBreaker] t-2 -> CLOSED (Recovered)
+17:01:54 | ERROR   | [-] | voicebridge.routing.fallback_chain | [test_llm FallbackChain] Provider primary failed (Primary network timeout) for trace_id=t-2. Trying next candidate...
+17:01:54 | WARNING | [-] | voicebridge.routing.fallback_chain | [test_llm FallbackChain] Failing over to candidate 2 (secondary) for trace_id=t-2
+17:01:54 | ERROR   | [-] | voicebridge.resilience.circuit_breaker | [primary CircuitBreaker] CLOSED -> OPEN (Failures=1 threshold=1, Error: Failed) for trace_id=t-0
+17:01:54 | ERROR   | [-] | voicebridge.routing.fallback_chain | [test_cb FallbackChain] Provider primary failed ([primary] Circuit is OPEN for trace_id=t-3) for trace_id=t-3. Trying next candidate...
+17:01:54 | WARNING | [-] | voicebridge.routing.fallback_chain | [test_cb FallbackChain] Failing over to candidate 2 (secondary) for trace_id=t-3
+17:01:54 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/health "HTTP/1.1 200 OK"
+17:01:54 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/health/liveness "HTTP/1.1 200 OK"
+17:01:54 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/health/readiness "HTTP/1.1 200 OK"
+17:01:55 | INFO    | [-] | voicebridge.benchmarks.load_tester | [LoadTester] Starting load test with 2 users (2 reqs/user)...
+17:01:55 | INFO    | [-] | voicebridge.routing.router | [ModelRouter] Selected STT provider 'faster-whisper' (Tier=balanced, Score=1.00)
+17:01:55 | INFO    | [-] | voicebridge.routing.router | [ModelRouter] Selected STT provider 'faster-whisper' (Tier=balanced, Score=1.00)
+17:01:55 | INFO    | [-] | voicebridge.routing.router | [ModelRouter] Selected STT provider 'faster-whisper' (Tier=balanced, Score=1.00)
+17:01:55 | INFO    | [-] | voicebridge.routing.router | [ModelRouter] Selected STT provider 'faster-whisper' (Tier=balanced, Score=1.00)
+17:01:55 | INFO    | [-] | voicebridge.benchmarks.load_tester | [LoadTester] Results: {'num_concurrent_users': 2, 'total_requests': 4, 'successful_requests': 4, 'failed_requests': 0, 'total_elapsed_sec': 0.03, 'throughput_req_per_sec': 122.49, 'latency_p50_ms': 14.41, 'latency_p95_ms': 17.56, 'latency_p99_ms': 17.89, 'error_rate_pct': 0.0}
+17:01:55 | INFO    | [-] | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 1200.0ms (device=cpu, cache_hit=False)
+17:01:55 | INFO    | [-] | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 5.0ms (device=cpu, cache_hit=True)
+17:01:55 | INFO    | [-] | voicebridge.metrics.reporter | Exported Markdown report -> C:\Users\Amin Khan\AppData\Local\Temp\pytest-of-Amin Khan\pytest-32\test_performance_reporter0\report.md
+17:01:55 | INFO    | [-] | voicebridge.metrics.reporter | Exported JSON report -> C:\Users\Amin Khan\AppData\Local\Temp\pytest-of-Amin Khan\pytest-32\test_performance_reporter0\report.json
+17:01:55 | INFO    | [-] | voicebridge.metrics.reporter | Exported CSV report -> C:\Users\Amin Khan\AppData\Local\Temp\pytest-of-Amin Khan\pytest-32\test_performance_reporter0\report.csv
+17:01:55 | INFO    | [-] | voicebridge.warmup | Model warm-up disabled via configuration (lazy loading enabled).
+17:01:55 | INFO    | [-] | voicebridge.warmup | Starting model warm-up phase...
+17:01:55 | INFO    | [-] | voicebridge.metrics.model_tracker | Model [vad/<MagicMock name='VadAdapter().name' id='2166980680528'>] loaded in 10.4ms (device=cpu, cache_hit=False)
+17:01:55 | INFO    | [-] | voicebridge.metrics.model_tracker | Model [stt/<MagicMock name='SttAdapter().name' id='2166980552976'>] loaded in 50.3ms (device=cpu, cache_hit=False)
+17:01:55 | INFO    | [-] | voicebridge.metrics.model_tracker | Model [llm/<MagicMock name='LlmAdapter().name' id='2166980340304'>] loaded in 9.6ms (device=cpu, cache_hit=False)
+17:01:55 | INFO    | [-] | voicebridge.metrics.model_tracker | Model [tts/<MagicMock name='TtsAdapter().name' id='2166918235984'>] loaded in 2.4ms (device=cpu, cache_hit=False)
+17:01:55 | INFO    | [-] | voicebridge.warmup | Model warm-up complete! Durations: {'vad': 10.390600000391714, 'stt': 50.29249999915919, 'llm': 9.558900000229187, 'tts': 2.4108999996315106}
+17:01:55 | INFO    | [-] | voicebridge.routing.router | [ModelRouter] Selected STT provider 'faster-whisper' (Tier=fast, Score=1.00)
+17:01:55 | INFO    | [-] | voicebridge.routing.router | [ModelRouter] Selected LLM provider 'google' (Tier=balanced, Score=1.00)
+17:01:55 | INFO    | [-] | voicebridge.routing.router | [ModelRouter] Selected LLM provider 'google' (Tier=fast, Score=1.00)
+17:01:55 | WARNING | [-] | voicebridge.telemetry.tracing | Trace telemetry-test-id Warning: Low audio volume
+17:01:55 | ERROR   | [-] | voicebridge.telemetry.tracing | [TTS] Trace error-trace-456 Error: Engine failure
+17:01:56 | INFO    | [-] | voicebridge.tts.manager | TTS backend selected: Microsoft Neural TTS (edge-tts)
+17:01:56 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: google
+17:01:56 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: nllb
+17:01:56 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: argos
+17:01:56 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: google
+17:01:56 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: nllb
+17:01:56 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: argos
+17:01:58 | INFO    | [-] | voicebridge.translation.manager | Translated [en->ur] via translator 'google' (attempt 1): 'منفرد سلام 1785931316.5886104'

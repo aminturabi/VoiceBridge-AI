@@ -15,9 +15,11 @@ logger = get_logger(__name__)
 
 
 class EdgeTtsBackend(TtsBackend):
-    """Edge-TTS provider backend."""
+    """Microsoft Neural TTS provider backend."""
 
     name: str = "edge-tts"
+    display_name: str = "Microsoft Neural TTS"
+
 
     def __init__(self, config: Config):
         self._config = config

@@ -82,6 +82,7 @@ def test_worker_speaker_other_text_only(monkeypatch):
     from voicebridge.config import load_config
 
     config = load_config()
+    monkeypatch.setattr("voicebridge.pipeline.worker.SttManager", MagicMock())
     spec = DirectionSpec(source_lang="ar", target_lang="en", speaker="other")
     mock_trans = MagicMock()
     mock_trans.translate.return_value = "hello"

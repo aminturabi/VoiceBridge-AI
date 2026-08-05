@@ -560,3 +560,41 @@
 20:08:47 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/Systran/faster-whisper-large-v3/edaa852ec7e145841d8ffdb056a99866b5f0a478/vocabulary.json "HTTP/1.1 200 OK"
 20:08:47 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/Systran/faster-whisper-large-v3/edaa852ec7e145841d8ffdb056a99866b5f0a478/tokenizer.json "HTTP/1.1 200 OK"
 20:09:33 | INFO    | voicebridge.pipeline.orchestrator | Stopping pipeline...
+14:45:49 | INFO    | httpx | HTTP Request: GET http://testserver/api/info "HTTP/1.1 200 OK"
+14:45:49 | INFO    | httpx | HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+14:45:49 | INFO    | httpx | HTTP Request: POST http://testserver/api/stop "HTTP/1.1 200 OK"
+14:46:29 | INFO    | voicebridge.stt.faster_whisper_backend | [AR->EN] Loading Whisper 'large-v3' on cuda (float16)...
+14:46:34 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-large-v3/revision/main "HTTP/1.1 200 OK"
+14:46:35 | INFO    | httpx | HTTP Request: HEAD https://huggingface.co/Systran/faster-whisper-large-v3/resolve/edaa852ec7e145841d8ffdb056a99866b5f0a478/model.bin "HTTP/1.1 302 Found"
+14:46:35 | WARNING | huggingface_hub.utils._http | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+14:46:36 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-large-v3/xet-read-token/edaa852ec7e145841d8ffdb056a99866b5f0a478 "HTTP/1.1 200 OK"
+14:53:23 | INFO    | httpx | HTTP Request: GET http://testserver/api/info "HTTP/1.1 200 OK"
+14:53:23 | INFO    | httpx | HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+14:53:23 | INFO    | httpx | HTTP Request: POST http://testserver/api/stop "HTTP/1.1 200 OK"
+14:53:29 | INFO    | voicebridge.stt.faster_whisper_backend | [AR->EN] Loading Whisper 'large-v3' on cuda (float16)...
+14:53:32 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-large-v3/revision/main "HTTP/1.1 200 OK"
+14:53:33 | INFO    | httpx | HTTP Request: HEAD https://huggingface.co/Systran/faster-whisper-large-v3/resolve/edaa852ec7e145841d8ffdb056a99866b5f0a478/model.bin "HTTP/1.1 302 Found"
+14:53:33 | WARNING | huggingface_hub.utils._http | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+14:55:38 | INFO    | httpx | HTTP Request: GET http://testserver/api/info "HTTP/1.1 200 OK"
+14:55:38 | INFO    | httpx | HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+14:55:38 | INFO    | httpx | HTTP Request: POST http://testserver/api/stop "HTTP/1.1 200 OK"
+14:55:38 | INFO    | voicebridge.pipeline.worker | [AR->EN] Text-only translation for speaker 'other' (voice disabled)
+14:55:53 | INFO    | httpx | HTTP Request: GET http://testserver/api/info "HTTP/1.1 200 OK"
+14:55:53 | INFO    | httpx | HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+14:55:53 | INFO    | httpx | HTTP Request: POST http://testserver/api/stop "HTTP/1.1 200 OK"
+14:55:53 | INFO    | voicebridge.pipeline.worker | [AR->EN] Text-only translation for speaker 'other' (voice disabled)
+14:55:53 | INFO    | voicebridge.translation.manager | Translation backend enabled: google
+14:56:01 | INFO    | voicebridge.translation.manager | Translation backend enabled: argos
+14:56:01 | INFO    | voicebridge.translation.manager | Translation backend enabled: nllb
+14:56:03 | INFO    | voicebridge.tts.manager | TTS backend selected: edge-tts
+14:56:03 | INFO    | voicebridge.lipsync.wav2lip_backend | Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+14:56:03 | INFO    | voicebridge.lipsync.wav2lip_backend | Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+14:56:03 | WARNING | voicebridge.lipsync.manager | Requested lip-sync backend 'demo' unavailable; using 'null'
+14:56:03 | INFO    | voicebridge.lipsync.manager | Lip-sync backend selected: null
+14:56:03 | INFO    | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 1200.0ms (device=cpu, cache_hit=False)
+14:56:03 | INFO    | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 5.0ms (device=cpu, cache_hit=True)
+14:56:03 | INFO    | voicebridge.metrics.reporter | Exported Markdown report -> C:\Users\Amin Khan\AppData\Local\Temp\pytest-of-Amin Khan\pytest-24\test_performance_reporter0\report.md
+14:56:03 | INFO    | voicebridge.metrics.reporter | Exported JSON report -> C:\Users\Amin Khan\AppData\Local\Temp\pytest-of-Amin Khan\pytest-24\test_performance_reporter0\report.json
+14:56:03 | INFO    | voicebridge.metrics.reporter | Exported CSV report -> C:\Users\Amin Khan\AppData\Local\Temp\pytest-of-Amin Khan\pytest-24\test_performance_reporter0\report.csv
+14:56:03 | WARNING | voicebridge.telemetry.tracing | Trace telemetry-test-id Warning: Low audio volume
+14:56:03 | ERROR   | voicebridge.telemetry.tracing | [TTS] Trace error-trace-456 Error: Engine failure

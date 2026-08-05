@@ -8,6 +8,11 @@ app:
   # Directory for generated TTS + lip-synced output.
   output_dir: "generated_speech"
 
+feature_flags:
+  enable_pipeline_contracts: true
+  enable_new_interfaces: true
+  enable_tracing: true
+
 # AI Model directories (no hardcoded absolute paths)
 models:
   root_dir: "models"

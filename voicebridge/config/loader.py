@@ -85,6 +85,28 @@ class Config:
     def avatar_dir(self) -> Path:
         return self.path("avatar.dir", "voicebridge/avatar")
 
+    # -- feature flag helpers -----------------------------------------------
+
+    def is_feature_enabled(self, flag_name: str, default: bool = True) -> bool:
+        """Check if a feature flag is enabled via config or env var override."""
+        env_var = f"VOICEBRIDGE_{flag_name.upper()}"
+        if env_var in os.environ:
+            val = os.environ[env_var].strip().lower()
+            return val in ("1", "true", "yes", "on")
+        return bool(self.get(f"feature_flags.{flag_name.lower()}", default))
+
+    @property
+    def enable_pipeline_contracts(self) -> bool:
+        return self.is_feature_enabled("ENABLE_PIPELINE_CONTRACTS", True)
+
+    @property
+    def enable_new_interfaces(self) -> bool:
+        return self.is_feature_enabled("ENABLE_NEW_INTERFACES", True)
+
+    @property
+    def enable_tracing(self) -> bool:
+        return self.is_feature_enabled("ENABLE_TRACING", True)
+
     @property
     def raw(self) -> dict[str, Any]:
         return self._data

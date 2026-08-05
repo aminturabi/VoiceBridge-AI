@@ -93,11 +93,12 @@ stt:
   # Preferred device order; first that loads wins.
   device_preference: ["cuda", "cpu"]
   cuda:
-    model_size: "large-v3"
+    model_size: "base"
     compute_type: "float16"
   cpu:
-    model_size: "medium"
+    model_size: "base"
     compute_type: "int8"
+
   transcribe:
     beam_size: 5
     temperature: 0.0

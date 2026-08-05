@@ -158,5 +158,28 @@ el("stopBtn").addEventListener("click", async () => {
   el("stopBtn").disabled = true;
 });
 
+// Light / Dark Theme toggle logic
+function applyTheme(theme) {
+  document.documentElement.setAttribute("data-theme", theme);
+  localStorage.setItem("theme", theme);
+  const themeBtn = el("themeToggle");
+  if (themeBtn) {
+    themeBtn.textContent = theme === "light" ? "🌙 Dark" : "☀️ Light";
+  }
+}
+
+const savedTheme = localStorage.getItem("theme") || "dark";
+applyTheme(savedTheme);
+
+const themeBtn = el("themeToggle");
+if (themeBtn) {
+  themeBtn.onclick = function() {
+    const current = document.documentElement.getAttribute("data-theme") || "dark";
+    applyTheme(current === "dark" ? "light" : "dark");
+  };
+}
+
 loadInfo();
 connectWs();
+
+

@@ -8,6 +8,7 @@ from pathlib import Path
 
 from voicebridge.config import Config
 from voicebridge.logging_conf import get_logger
+from voicebridge.resilience.retry import ExponentialBackoffRetry
 from voicebridge.tts.base import TtsBackend, TtsError
 
 logger = get_logger(__name__)
@@ -48,8 +49,15 @@ class EdgeTtsBackend(TtsBackend):
 
         out_path = self._output_path(direction, sentence_id)
         logger.debug("[%s] Edge-TTS -> %s (%s)", direction, out_path.name, voice)
-        try:
+        
+        retry_policy = ExponentialBackoffRetry(max_attempts=3, base_delay_sec=0.5, max_delay_sec=3.0)
+
+        def _do_synth() -> Path:
             asyncio.run(self._synthesize_async(text, voice, out_path))
             return out_path
+
+        try:
+            return retry_policy.execute(_do_synth, trace_id=f"{direction}:{sentence_id}")
         except Exception as error:  # noqa: BLE001
-            raise TtsError(f"Edge-TTS synthesis failed: {error}") from error
+            raise TtsError(f"Edge-TTS synthesis failed after retries: {error}") from error
+

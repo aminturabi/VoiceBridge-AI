@@ -748,3 +748,297 @@
 15:18:57 | INFO    | voicebridge.routing.router | [ModelRouter] Selected LLM provider 'google' (Tier=fast, Score=0.80)
 15:18:57 | WARNING | voicebridge.telemetry.tracing | Trace telemetry-test-id Warning: Low audio volume
 15:18:57 | ERROR   | voicebridge.telemetry.tracing | [TTS] Trace error-trace-456 Error: Engine failure
+15:51:19 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/info "HTTP/1.1 200 OK"
+15:51:19 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+15:51:19 | INFO    | [-] | httpx | HTTP Request: POST http://testserver/api/stop "HTTP/1.1 200 OK"
+15:51:19 | INFO    | [-] | voicebridge.pipeline.worker | [AR->EN] Text-only translation for speaker 'other' (voice disabled)
+15:51:20 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/health "HTTP/1.1 200 OK"
+15:51:20 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/health/liveness "HTTP/1.1 200 OK"
+15:51:20 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/health/readiness "HTTP/1.1 200 OK"
+15:51:20 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/info "HTTP/1.1 200 OK"
+15:51:20 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/info "HTTP/1.1 200 OK"
+15:51:20 | INFO    | [-] | httpx | HTTP Request: POST http://testserver/api/start "HTTP/1.1 422 Unprocessable Entity"
+15:51:21 | INFO    | [c276aed5-0233-4d6c-a90f-c4dfba8f82eb] | voicebridge.translation.manager | Translation backend enabled: google
+15:52:09 | INFO    | [c276aed5-0233-4d6c-a90f-c4dfba8f82eb] | voicebridge.translation.manager | Translation backend enabled: argos
+15:52:09 | INFO    | [c276aed5-0233-4d6c-a90f-c4dfba8f82eb] | voicebridge.translation.manager | Translation backend enabled: nllb
+15:52:13 | INFO    | [c276aed5-0233-4d6c-a90f-c4dfba8f82eb] | voicebridge.tts.manager | TTS backend selected: edge-tts
+15:52:13 | INFO    | [c276aed5-0233-4d6c-a90f-c4dfba8f82eb] | voicebridge.lipsync.wav2lip_backend | Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+15:52:13 | INFO    | [c276aed5-0233-4d6c-a90f-c4dfba8f82eb] | voicebridge.lipsync.wav2lip_backend | Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+15:52:13 | WARNING | [c276aed5-0233-4d6c-a90f-c4dfba8f82eb] | voicebridge.lipsync.manager | Requested lip-sync backend 'wav2lip' unavailable; using 'null'
+15:52:13 | INFO    | [c276aed5-0233-4d6c-a90f-c4dfba8f82eb] | voicebridge.lipsync.manager | Lip-sync backend selected: null
+15:52:19 | INFO    | [c276aed5-0233-4d6c-a90f-c4dfba8f82eb] | voicebridge.stt.faster_whisper_backend | [EN->AR] Loading Whisper 'large-v3' on cuda (float16)...
+15:52:21 | INFO    | [c276aed5-0233-4d6c-a90f-c4dfba8f82eb] | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-large-v3/revision/main "HTTP/1.1 200 OK"
+15:52:21 | INFO    | [-] | httpx | HTTP Request: HEAD https://huggingface.co/Systran/faster-whisper-large-v3/resolve/edaa852ec7e145841d8ffdb056a99866b5f0a478/model.bin "HTTP/1.1 302 Found"
+15:52:22 | INFO    | [-] | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-large-v3/xet-read-token/edaa852ec7e145841d8ffdb056a99866b5f0a478 "HTTP/1.1 200 OK"
+15:57:31 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/info "HTTP/1.1 200 OK"
+15:57:31 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+15:57:31 | INFO    | [-] | httpx | HTTP Request: POST http://testserver/api/stop "HTTP/1.1 200 OK"
+15:57:31 | INFO    | [-] | voicebridge.pipeline.worker | [AR->EN] Text-only translation for speaker 'other' (voice disabled)
+15:57:31 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/health "HTTP/1.1 200 OK"
+15:57:31 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/health/liveness "HTTP/1.1 200 OK"
+15:57:31 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/health/readiness "HTTP/1.1 200 OK"
+15:57:31 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/info "HTTP/1.1 200 OK"
+15:57:31 | INFO    | [-] | httpx | HTTP Request: GET http://testserver/api/info "HTTP/1.1 200 OK"
+15:57:31 | INFO    | [-] | httpx | HTTP Request: POST http://testserver/api/start "HTTP/1.1 422 Unprocessable Entity"
+15:57:32 | INFO    | [0056ef5f-6137-4395-9020-1e418e85fa0d] | voicebridge.translation.manager | Translation backend enabled: google
+15:57:46 | INFO    | [0056ef5f-6137-4395-9020-1e418e85fa0d] | voicebridge.translation.manager | Translation backend enabled: argos
+15:57:46 | INFO    | [0056ef5f-6137-4395-9020-1e418e85fa0d] | voicebridge.translation.manager | Translation backend enabled: nllb
+15:57:48 | INFO    | [0056ef5f-6137-4395-9020-1e418e85fa0d] | voicebridge.tts.manager | TTS backend selected: edge-tts
+15:57:48 | INFO    | [0056ef5f-6137-4395-9020-1e418e85fa0d] | voicebridge.lipsync.wav2lip_backend | Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+15:57:48 | INFO    | [0056ef5f-6137-4395-9020-1e418e85fa0d] | voicebridge.lipsync.wav2lip_backend | Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+15:57:48 | WARNING | [0056ef5f-6137-4395-9020-1e418e85fa0d] | voicebridge.lipsync.manager | Requested lip-sync backend 'wav2lip' unavailable; using 'null'
+15:57:48 | INFO    | [0056ef5f-6137-4395-9020-1e418e85fa0d] | voicebridge.lipsync.manager | Lip-sync backend selected: null
+15:57:48 | INFO    | [0056ef5f-6137-4395-9020-1e418e85fa0d] | voicebridge.stt.faster_whisper_backend | [EN->AR] Loading Whisper 'large-v3' on cuda (float16)...
+15:57:52 | INFO    | [0056ef5f-6137-4395-9020-1e418e85fa0d] | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-large-v3/revision/main "HTTP/1.1 200 OK"
+15:57:53 | INFO    | [-] | httpx | HTTP Request: HEAD https://huggingface.co/Systran/faster-whisper-large-v3/resolve/edaa852ec7e145841d8ffdb056a99866b5f0a478/model.bin "HTTP/1.1 302 Found"
+16:01:51 | INFO    | [-] | __main__ | Starting VoiceBridge AI on http://127.0.0.1:8000
+16:02:35 | INFO    | [aba142d7-655a-4317-9149-8f179e524ce5] | voicebridge.translation.manager | Translation backend enabled: google
+16:02:41 | INFO    | [aba142d7-655a-4317-9149-8f179e524ce5] | voicebridge.translation.manager | Translation backend enabled: argos
+16:02:41 | INFO    | [aba142d7-655a-4317-9149-8f179e524ce5] | voicebridge.translation.manager | Translation backend enabled: nllb
+16:02:44 | INFO    | [aba142d7-655a-4317-9149-8f179e524ce5] | voicebridge.tts.manager | TTS backend selected: edge-tts
+16:02:44 | INFO    | [aba142d7-655a-4317-9149-8f179e524ce5] | voicebridge.lipsync.wav2lip_backend | Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+16:02:44 | INFO    | [aba142d7-655a-4317-9149-8f179e524ce5] | voicebridge.lipsync.wav2lip_backend | Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+16:02:44 | WARNING | [aba142d7-655a-4317-9149-8f179e524ce5] | voicebridge.lipsync.manager | Requested lip-sync backend 'wav2lip' unavailable; using 'null'
+16:02:44 | INFO    | [aba142d7-655a-4317-9149-8f179e524ce5] | voicebridge.lipsync.manager | Lip-sync backend selected: null
+16:02:44 | INFO    | [aba142d7-655a-4317-9149-8f179e524ce5] | voicebridge.stt.faster_whisper_backend | [EN->AR] Loading Whisper 'large-v3' on cuda (float16)...
+16:02:47 | INFO    | [aba142d7-655a-4317-9149-8f179e524ce5] | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-large-v3/revision/main "HTTP/1.1 200 OK"
+16:02:47 | INFO    | [-] | httpx | HTTP Request: HEAD https://huggingface.co/Systran/faster-whisper-large-v3/resolve/edaa852ec7e145841d8ffdb056a99866b5f0a478/model.bin "HTTP/1.1 302 Found"
+16:02:47 | WARNING | [-] | huggingface_hub.utils._http | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+16:08:41 | INFO    | [-] | __main__ | Starting VoiceBridge AI on http://127.0.0.1:8000
+16:08:56 | INFO    | [c26c7aad-e002-422a-8436-a5923ee2c216] | voicebridge.translation.manager | Translation backend enabled: google
+16:09:02 | INFO    | [c26c7aad-e002-422a-8436-a5923ee2c216] | voicebridge.translation.manager | Translation backend enabled: argos
+16:09:02 | INFO    | [c26c7aad-e002-422a-8436-a5923ee2c216] | voicebridge.translation.manager | Translation backend enabled: nllb
+16:09:05 | INFO    | [c26c7aad-e002-422a-8436-a5923ee2c216] | voicebridge.tts.manager | TTS backend selected: edge-tts
+16:09:05 | INFO    | [c26c7aad-e002-422a-8436-a5923ee2c216] | voicebridge.lipsync.wav2lip_backend | Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+16:09:05 | INFO    | [c26c7aad-e002-422a-8436-a5923ee2c216] | voicebridge.lipsync.wav2lip_backend | Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+16:09:05 | WARNING | [c26c7aad-e002-422a-8436-a5923ee2c216] | voicebridge.lipsync.manager | Requested lip-sync backend 'wav2lip' unavailable; using 'null'
+16:09:05 | INFO    | [c26c7aad-e002-422a-8436-a5923ee2c216] | voicebridge.lipsync.manager | Lip-sync backend selected: null
+16:09:05 | INFO    | [c26c7aad-e002-422a-8436-a5923ee2c216] | voicebridge.stt.faster_whisper_backend | [EN->AR] Loading Whisper 'base' on cuda (float16)...
+16:09:08 | INFO    | [c26c7aad-e002-422a-8436-a5923ee2c216] | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-base/revision/main "HTTP/1.1 200 OK"
+16:09:08 | WARNING | [c26c7aad-e002-422a-8436-a5923ee2c216] | voicebridge.stt.faster_whisper_backend | [EN->AR] Could not load on cuda: CUDA failed with error CUDA driver version is insufficient for CUDA runtime version
+16:09:08 | INFO    | [c26c7aad-e002-422a-8436-a5923ee2c216] | voicebridge.stt.faster_whisper_backend | [EN->AR] Loading Whisper 'base' on cpu (int8)...
+16:09:08 | INFO    | [c26c7aad-e002-422a-8436-a5923ee2c216] | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-base/revision/main "HTTP/1.1 200 OK"
+16:09:10 | INFO    | [c26c7aad-e002-422a-8436-a5923ee2c216] | voicebridge.metrics.model_tracker | Model [stt/whisper_base_cpu] loaded in 2363.2ms (device=cpu, cache_hit=False)
+16:09:10 | INFO    | [c26c7aad-e002-422a-8436-a5923ee2c216] | voicebridge.stt.faster_whisper_backend | [EN->AR] Whisper ready on cpu (loaded in 2363.2ms)
+16:09:10 | INFO    | [c26c7aad-e002-422a-8436-a5923ee2c216] | voicebridge.stt.manager | [EN->AR] Selected STT provider: faster-whisper
+16:09:10 | INFO    | [c26c7aad-e002-422a-8436-a5923ee2c216] | voicebridge.pipeline.orchestrator | Registered direction EN->AR (speaker=me, source=microphone)
+16:09:10 | INFO    | [-] | voicebridge.audio.capture | Microphone open (VAD chunking)
+16:11:02 | ERROR   | [-] | voicebridge.pipeline.worker | [EN->AR] processing failed
+Traceback (most recent call last):
+  File "C:\Users\Amin Khan\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiohttp\connector.py", line 1310, in _wrap_create_connection
+    sock = await aiohappyeyeballs.start_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Amin Khan\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiohappyeyeballs\impl.py", line 73, in start_connection
+    sock = await _connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Amin Khan\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiohappyeyeballs\impl.py", line 208, in _connect_sock
+    await loop.sock_connect(sock, address)
+  File "C:\Users\Amin Khan\AppData\Local\Programs\Python\Python311\Lib\asyncio\proactor_events.py", line 726, in sock_connect
+    return await self._proactor.connect(sock, address)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+asyncio.exceptions.CancelledError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Amin Khan\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiohttp\client.py", line 742, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Amin Khan\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiohttp\connector.py", line 672, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Amin Khan\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiohttp\connector.py", line 1251, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Amin Khan\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiohttp\connector.py", line 1623, in _create_direct_connection
+    raise last_exc
+  File "C:\Users\Amin Khan\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiohttp\connector.py", line 1592, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Amin Khan\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiohttp\connector.py", line 1307, in _wrap_create_connection
+    async with ceil_timeout(
+  File "C:\Users\Amin Khan\AppData\Local\Programs\Python\Python311\Lib\asyncio\timeouts.py", line 111, in __aexit__
+    raise TimeoutError from exc_val
+TimeoutError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\VoiceBridge Ai\voicebridge\tts\edge_tts_backend.py", line 52, in synthesize
+    asyncio.run(self._synthesize_async(text, voice, out_path))
+  File "C:\Users\Amin Khan\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Amin Khan\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Amin Khan\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "D:\VoiceBridge Ai\voicebridge\tts\edge_tts_backend.py", line 43, in _synthesize_async
+    await communicate.save(str(out_path))
+  File "C:\Users\Amin Khan\AppData\Local\Programs\Python\Python311\Lib\site-packages\edge_tts\communicate.py", line 613, in save
+    async for message in self.stream():
+  File "C:\Users\Amin Khan\AppData\Local\Programs\Python\Python311\Lib\site-packages\edge_tts\communicate.py", line 588, in stream
+    async for message in self.__stream():
+  File "C:\Users\Amin Khan\AppData\Local\Programs\Python\Python311\Lib\site-packages\edge_tts\communicate.py", line 461, in __stream
+    async with aiohttp.ClientSession(
+  File "C:\Users\Amin Khan\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiohttp\client.py", line 1521, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Amin Khan\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiohttp\client.py", line 1087, in _ws_connect
+    resp = await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Amin Khan\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiohttp\client.py", line 788, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Amin Khan\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiohttp\client.py", line 746, in _connect_and_send_request
+    raise ConnectionTimeoutError(
+aiohttp.client_exceptions.ConnectionTimeoutError: Connection timeout to host wss://speech.platform.bing.com/consumer/speech/synthesize/readaloud/edge/v1?TrustedClientToken=6A5AA1D4EAFF4E9FB37E23D68491D6F4&ConnectionId=1119fc7af77948678513d2b699258aad&Sec-MS-GEC=E1A1BA3D6B7BF5C163473498637200742FC63C6F63C71FC7362A8A74FC4FEC19&Sec-MS-GEC-Version=1-143.0.3650.75
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\VoiceBridge Ai\voicebridge\pipeline\worker.py", line 191, in _process_loop
+    self._process_sentence(sentence)
+  File "D:\VoiceBridge Ai\voicebridge\pipeline\worker.py", line 284, in _process_sentence
+    audio_path = self._tts.synthesize(
+                 ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\VoiceBridge Ai\voicebridge\tts\manager.py", line 72, in synthesize
+    res_path = self._backend.synthesize(text, voice, direction, sentence_id)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\VoiceBridge Ai\voicebridge\tts\edge_tts_backend.py", line 55, in synthesize
+    raise TtsError(f"Edge-TTS synthesis failed: {error}") from error
+voicebridge.tts.base.TtsError: Edge-TTS synthesis failed: Connection timeout to host wss://speech.platform.bing.com/consumer/speech/synthesize/readaloud/edge/v1?TrustedClientToken=6A5AA1D4EAFF4E9FB37E23D68491D6F4&ConnectionId=1119fc7af77948678513d2b699258aad&Sec-MS-GEC=E1A1BA3D6B7BF5C163473498637200742FC63C6F63C71FC7362A8A74FC4FEC19&Sec-MS-GEC-Version=1-143.0.3650.75
+16:33:23 | ERROR   | [-] | voicebridge.pipeline.worker | [EN->AR] processing failed
+Traceback (most recent call last):
+  File "C:\Users\Amin Khan\AppData\Local\Programs\Python\Python311\Lib\asyncio\windows_events.py", line 494, in finish_recv
+    return ov.getresult()
+           ^^^^^^^^^^^^^^
+OSError: [WinError 64] The specified network name is no longer available
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Amin Khan\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiohttp\connector.py", line 1325, in _wrap_create_connection
+    return await self._loop.create_connection(*args, **kwargs, sock=sock)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Amin Khan\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 1112, in create_connection
+    transport, protocol = await self._create_connection_transport(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Amin Khan\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 1145, in _create_connection_transport
+    await waiter
+  File "C:\Users\Amin Khan\AppData\Local\Programs\Python\Python311\Lib\asyncio\proactor_events.py", line 286, in _loop_reading
+    length = fut.result()
+             ^^^^^^^^^^^^
+  File "C:\Users\Amin Khan\AppData\Local\Programs\Python\Python311\Lib\asyncio\windows_events.py", line 846, in _poll
+    value = callback(transferred, key, ov)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Amin Khan\AppData\Local\Programs\Python\Python311\Lib\asyncio\windows_events.py", line 498, in finish_recv
+    raise ConnectionResetError(*exc.args)
+ConnectionResetError: [WinError 64] The specified network name is no longer available
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\VoiceBridge Ai\voicebridge\tts\edge_tts_backend.py", line 52, in synthesize
+  File "C:\Users\Amin Khan\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Amin Khan\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Amin Khan\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "D:\VoiceBridge Ai\voicebridge\tts\edge_tts_backend.py", line 43, in _synthesize_async
+    communicate = edge_tts.Communicate(text, voice=voice)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Amin Khan\AppData\Local\Programs\Python\Python311\Lib\site-packages\edge_tts\communicate.py", line 613, in save
+    async for message in self.stream():
+  File "C:\Users\Amin Khan\AppData\Local\Programs\Python\Python311\Lib\site-packages\edge_tts\communicate.py", line 588, in stream
+    async for message in self.__stream():
+  File "C:\Users\Amin Khan\AppData\Local\Programs\Python\Python311\Lib\site-packages\edge_tts\communicate.py", line 461, in __stream
+    async with aiohttp.ClientSession(
+  File "C:\Users\Amin Khan\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiohttp\client.py", line 1521, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Amin Khan\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiohttp\client.py", line 1087, in _ws_connect
+    resp = await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Amin Khan\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiohttp\client.py", line 788, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Amin Khan\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiohttp\client.py", line 742, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Amin Khan\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiohttp\connector.py", line 672, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Amin Khan\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiohttp\connector.py", line 1251, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Amin Khan\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiohttp\connector.py", line 1623, in _create_direct_connection
+    raise last_exc
+  File "C:\Users\Amin Khan\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiohttp\connector.py", line 1592, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Amin Khan\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiohttp\connector.py", line 1333, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host speech.platform.bing.com:443 ssl:<ssl.SSLContext object at 0x000002704B0AE570> [The specified network name is no longer available]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\VoiceBridge Ai\voicebridge\pipeline\worker.py", line 191, in _process_loop
+    self._process_sentence(sentence)
+  File "D:\VoiceBridge Ai\voicebridge\pipeline\worker.py", line 284, in _process_sentence
+    audio_path = self._tts.synthesize(
+                 ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\VoiceBridge Ai\voicebridge\tts\manager.py", line 72, in synthesize
+    res_path = self._backend.synthesize(text, voice, direction, sentence_id)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\VoiceBridge Ai\voicebridge\tts\edge_tts_backend.py", line 55, in synthesize
+    def _do_synth() -> Path:
+        ^^^^^^^^^^^^^^^^^^^^^
+voicebridge.tts.base.TtsError: Edge-TTS synthesis failed: Cannot connect to host speech.platform.bing.com:443 ssl:<ssl.SSLContext object at 0x000002704B0AE570> [The specified network name is no longer available]
+16:34:45 | INFO    | [-] | voicebridge.pipeline.orchestrator | Stopping pipeline...
+16:35:08 | INFO    | [-] | __main__ | Starting VoiceBridge AI on http://127.0.0.1:8000
+16:35:51 | INFO    | [6b51c052-ef3f-45c3-8963-210dd4ead602] | voicebridge.translation.manager | Translation backend enabled: google
+16:35:54 | INFO    | [6b51c052-ef3f-45c3-8963-210dd4ead602] | voicebridge.translation.manager | Translation backend enabled: argos
+16:35:54 | INFO    | [6b51c052-ef3f-45c3-8963-210dd4ead602] | voicebridge.translation.manager | Translation backend enabled: nllb
+16:35:55 | INFO    | [6b51c052-ef3f-45c3-8963-210dd4ead602] | voicebridge.tts.manager | TTS backend selected: edge-tts
+16:35:55 | INFO    | [6b51c052-ef3f-45c3-8963-210dd4ead602] | voicebridge.lipsync.wav2lip_backend | Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+16:35:55 | INFO    | [6b51c052-ef3f-45c3-8963-210dd4ead602] | voicebridge.lipsync.wav2lip_backend | Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+16:35:55 | WARNING | [6b51c052-ef3f-45c3-8963-210dd4ead602] | voicebridge.lipsync.manager | Requested lip-sync backend 'wav2lip' unavailable; using 'null'
+16:35:55 | INFO    | [6b51c052-ef3f-45c3-8963-210dd4ead602] | voicebridge.lipsync.manager | Lip-sync backend selected: null
+16:35:55 | INFO    | [6b51c052-ef3f-45c3-8963-210dd4ead602] | voicebridge.stt.faster_whisper_backend | [EN->AR] Loading Whisper 'base' on cuda (float16)...
+16:35:58 | INFO    | [6b51c052-ef3f-45c3-8963-210dd4ead602] | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-base/revision/main "HTTP/1.1 200 OK"
+16:35:58 | WARNING | [6b51c052-ef3f-45c3-8963-210dd4ead602] | voicebridge.stt.faster_whisper_backend | [EN->AR] Could not load on cuda: CUDA failed with error CUDA driver version is insufficient for CUDA runtime version
+16:35:58 | INFO    | [6b51c052-ef3f-45c3-8963-210dd4ead602] | voicebridge.stt.faster_whisper_backend | [EN->AR] Loading Whisper 'base' on cpu (int8)...
+16:35:58 | INFO    | [6b51c052-ef3f-45c3-8963-210dd4ead602] | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-base/revision/main "HTTP/1.1 200 OK"
+16:35:59 | INFO    | [6b51c052-ef3f-45c3-8963-210dd4ead602] | voicebridge.metrics.model_tracker | Model [stt/whisper_base_cpu] loaded in 1682.1ms (device=cpu, cache_hit=False)
+16:35:59 | INFO    | [6b51c052-ef3f-45c3-8963-210dd4ead602] | voicebridge.stt.faster_whisper_backend | [EN->AR] Whisper ready on cpu (loaded in 1682.1ms)
+16:35:59 | INFO    | [6b51c052-ef3f-45c3-8963-210dd4ead602] | voicebridge.stt.manager | [EN->AR] Selected STT provider: faster-whisper
+16:35:59 | INFO    | [6b51c052-ef3f-45c3-8963-210dd4ead602] | voicebridge.pipeline.orchestrator | Registered direction EN->AR (speaker=me, source=microphone)
+16:36:00 | INFO    | [-] | voicebridge.audio.capture | Microphone open (VAD chunking)
+16:37:38 | INFO    | [51e304a5-7297-45b9-b1ad-c97a7f1f1b9d] | voicebridge.pipeline.orchestrator | Stopping pipeline...
+16:37:44 | INFO    | [f0d9fd1c-e331-462d-864e-b134b888c0e6] | voicebridge.translation.manager | Translation backend enabled: google
+16:37:44 | INFO    | [f0d9fd1c-e331-462d-864e-b134b888c0e6] | voicebridge.translation.manager | Translation backend enabled: argos
+16:37:44 | INFO    | [f0d9fd1c-e331-462d-864e-b134b888c0e6] | voicebridge.translation.manager | Translation backend enabled: nllb
+16:37:44 | INFO    | [f0d9fd1c-e331-462d-864e-b134b888c0e6] | voicebridge.tts.manager | TTS backend selected: edge-tts
+16:37:44 | INFO    | [f0d9fd1c-e331-462d-864e-b134b888c0e6] | voicebridge.lipsync.wav2lip_backend | Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+16:37:44 | INFO    | [f0d9fd1c-e331-462d-864e-b134b888c0e6] | voicebridge.lipsync.wav2lip_backend | Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+16:37:44 | WARNING | [f0d9fd1c-e331-462d-864e-b134b888c0e6] | voicebridge.lipsync.manager | Requested lip-sync backend 'wav2lip' unavailable; using 'null'
+16:37:44 | INFO    | [f0d9fd1c-e331-462d-864e-b134b888c0e6] | voicebridge.lipsync.manager | Lip-sync backend selected: null
+16:37:44 | INFO    | [f0d9fd1c-e331-462d-864e-b134b888c0e6] | voicebridge.stt.faster_whisper_backend | [UR->AR] Loading Whisper 'base' on cuda (float16)...
+16:37:47 | INFO    | [f0d9fd1c-e331-462d-864e-b134b888c0e6] | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-base/revision/main "HTTP/1.1 200 OK"
+16:37:47 | WARNING | [f0d9fd1c-e331-462d-864e-b134b888c0e6] | voicebridge.stt.faster_whisper_backend | [UR->AR] Could not load on cuda: CUDA failed with error CUDA driver version is insufficient for CUDA runtime version
+16:37:47 | INFO    | [f0d9fd1c-e331-462d-864e-b134b888c0e6] | voicebridge.stt.faster_whisper_backend | [UR->AR] Loading Whisper 'base' on cpu (int8)...
+16:37:47 | INFO    | [f0d9fd1c-e331-462d-864e-b134b888c0e6] | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-base/revision/main "HTTP/1.1 200 OK"
+16:37:48 | INFO    | [f0d9fd1c-e331-462d-864e-b134b888c0e6] | voicebridge.metrics.model_tracker | Model [stt/whisper_base_cpu] loaded in 1562.4ms (device=cpu, cache_hit=True)
+16:37:48 | INFO    | [f0d9fd1c-e331-462d-864e-b134b888c0e6] | voicebridge.stt.faster_whisper_backend | [UR->AR] Whisper ready on cpu (loaded in 1562.4ms)
+16:37:48 | INFO    | [f0d9fd1c-e331-462d-864e-b134b888c0e6] | voicebridge.stt.manager | [UR->AR] Selected STT provider: faster-whisper
+16:37:48 | INFO    | [f0d9fd1c-e331-462d-864e-b134b888c0e6] | voicebridge.pipeline.orchestrator | Registered direction UR->AR (speaker=me, source=microphone)
+16:37:48 | INFO    | [-] | voicebridge.audio.capture | Microphone open (VAD chunking)
+16:38:28 | INFO    | [a6b7da59-31d2-4c7f-9127-7865e7b43869] | voicebridge.pipeline.orchestrator | Stopping pipeline...

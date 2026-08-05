@@ -75,7 +75,8 @@ Key design points:
 ## Setup & Prerequisites
 
 ### 1. Prerequisites
-- **Python**: 3.10+
+- **Python**: 3.11+
+
 - **System Dependencies**: **FFmpeg** must be installed and available on your system `PATH` (required for audio decoding, format conversion, and Wav2Lip video/audio muxing).
   - *Windows*: Install via `winget install FFmpeg` or download from [ffmpeg.org](https://ffmpeg.org/).
   - *Linux*: `sudo apt install ffmpeg`

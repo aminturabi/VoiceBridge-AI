@@ -7,13 +7,21 @@ safe to call once at startup.
 
 from __future__ import annotations
 
+import contextvars
 import logging
 import sys
 from pathlib import Path
 
 _CONFIGURED = False
 
-_FORMAT = "%(asctime)s | %(levelname)-7s | %(name)s | %(message)s"
+request_id_ctx: contextvars.ContextVar[str] = contextvars.ContextVar("request_id", default="-")
+
+class RequestIDFilter(logging.Filter):
+    def filter(self, record: logging.LogRecord) -> bool:
+        record.request_id = request_id_ctx.get("-")
+        return True
+
+_FORMAT = "%(asctime)s | %(levelname)-7s | [%(request_id)s] | %(name)s | %(message)s"
 _DATEFMT = "%H:%M:%S"
 
 
@@ -38,10 +46,12 @@ def configure_logging(level: str = "INFO", log_file: str | Path | None = None) -
         return
 
     formatter = logging.Formatter(_FORMAT, datefmt=_DATEFMT)
+    req_filter = RequestIDFilter()
 
     console = logging.StreamHandler(stream=sys.stderr)
     console.setFormatter(formatter)
     console.setLevel(numeric_level)
+    console.addFilter(req_filter)
     root.addHandler(console)
 
     if log_file:
@@ -50,6 +60,7 @@ def configure_logging(level: str = "INFO", log_file: str | Path | None = None) -
         file_handler = logging.FileHandler(log_path, encoding="utf-8")
         file_handler.setFormatter(formatter)
         file_handler.setLevel(numeric_level)
+        file_handler.addFilter(req_filter)
         root.addHandler(file_handler)
 
     # Quiet down noisy third-party loggers.
@@ -62,3 +73,4 @@ def configure_logging(level: str = "INFO", log_file: str | Path | None = None) -
 def get_logger(name: str) -> logging.Logger:
     """Return a module logger. Callers use ``get_logger(__name__)``."""
     return logging.getLogger(name)
+

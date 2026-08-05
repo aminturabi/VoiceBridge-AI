@@ -22,9 +22,11 @@ import psutil
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
-from pydantic import BaseModel
 
 from voicebridge.api.broker import EventBroker
+from voicebridge.api.health import health_router
+from voicebridge.api.middleware import RequestTracingMiddleware, register_exception_handlers
+from voicebridge.api.security import StartCallSchema, rate_limiter
 from voicebridge.config import Config, load_config
 from voicebridge.logging_conf import configure_logging, get_logger
 from voicebridge.pipeline.orchestrator import Orchestrator
@@ -32,16 +34,6 @@ from voicebridge.pipeline.orchestrator import Orchestrator
 logger = get_logger(__name__)
 
 STATIC_DIR = Path(__file__).parent / "static"
-
-
-class StartRequest(BaseModel):
-    my_language: str | None = None
-    other_language: str | None = None
-    # "microphone" for a live call, or "wav" (with wav_path) for a demo.
-    source_kind: str = "microphone"
-    wav_path: str | None = None
-    # If true, register both directions (two-way call). Else one-way.
-    two_way: bool = True
 
 
 def create_app(config: Config | None = None) -> FastAPI:
@@ -62,6 +54,13 @@ def create_app(config: Config | None = None) -> FastAPI:
                 await asyncio.to_thread(orch.stop)
 
     app = FastAPI(title=config.get("app.name", "VoiceBridge AI"), lifespan=lifespan)
+
+    # Middleware & Exception Handlers
+    app.add_middleware(RequestTracingMiddleware)
+    register_exception_handlers(app)
+
+    # Health router inclusion
+    app.include_router(health_router)
 
     # Serve generated media (audio + lip-sync clips) so the UI can play them.
     output_dir = config.path("app.output_dir")
@@ -100,32 +99,14 @@ def create_app(config: Config | None = None) -> FastAPI:
         }
         return JSONResponse(data)
 
-    @app.get("/api/health")
-    async def health() -> JSONResponse:
-        from voicebridge.routing.health_checker import ProviderHealthMonitor
-        monitor = ProviderHealthMonitor.get_instance(config)
-        return JSONResponse({
-            "status": "healthy",
-            "cpu_percent": psutil.cpu_percent(),
-            "provider_latencies_ms": monitor.provider_latencies_ms,
-            "provider_errors": monitor.provider_errors,
-        })
-
-    @app.get("/api/health/liveness")
-    async def liveness() -> JSONResponse:
-        return JSONResponse({"status": "alive"})
-
-    @app.get("/api/health/readiness")
-    async def readiness() -> JSONResponse:
-        return JSONResponse({"status": "ready"})
-
     @app.post("/api/start")
-    async def start(req: StartRequest) -> JSONResponse:
+    async def start(req: StartCallSchema) -> JSONResponse:
         if state["orchestrator"] and state["orchestrator"].is_running:
             return JSONResponse({"error": "already running"}, status_code=409)
 
         my_lang = req.my_language or config.get("defaults.my_language", "en")
         other_lang = req.other_language or config.get("defaults.other_language", "ar")
+
 
         orch = Orchestrator(config, emit=broker.publish)
         # Direction 1: I speak my_lang -> other hears other_lang.

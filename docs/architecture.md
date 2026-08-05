@@ -95,6 +95,26 @@ Phase 2 connects independent stage workers (`VadWorker`, `SttWorker`, `LlmWorker
 
 ---
 
+## Phase 3 Intelligent Routing, Resilience & Fallback Architecture
+
+```mermaid
+flowchart TD
+    REQ[Stage Request] --> ROUTER[ModelRouter]
+    ROUTER --> |Score Candidates| HEALTH[ProviderHealthMonitor]
+    HEALTH -.-> |CPU/GPU & Latency| ROUTER
+    ROUTER --> |Ordered Candidates| CHAIN[FallbackChain]
+    CHAIN --> CB1[CircuitBreaker: Primary Provider]
+    CB1 --> |Success| RES[Response]
+    CB1 -.-> |Failed / OPEN| CB2[CircuitBreaker: Secondary Provider]
+    CB2 --> |Success| RES
+    CB2 -.-> |Failed / OPEN| CB3[Lightweight Local Model]
+    CB3 --> RES
+```
+
+Phase 3 introduces centralized provider routing scored against quality tiers (Fast, Balanced, High Quality), latency budgets, and live system health. Every provider call is protected by a `CircuitBreaker` (`CLOSED`, `OPEN`, `HALF_OPEN`) and executed through a `FallbackChain` to guarantee continuous availability.
+
+---
+
 ## Dependency Graph
 
 ```mermaid

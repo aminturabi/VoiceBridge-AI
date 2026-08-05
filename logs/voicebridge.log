@@ -642,3 +642,109 @@
 15:05:12 | INFO    | voicebridge.warmup | Model warm-up complete! Durations: {'vad': 1.5359000535681844, 'stt': 0.9113000705838203, 'llm': 0.8568000048398972, 'tts': 1.1670999228954315}
 15:05:12 | WARNING | voicebridge.telemetry.tracing | Trace telemetry-test-id Warning: Low audio volume
 15:05:12 | ERROR   | voicebridge.telemetry.tracing | [TTS] Trace error-trace-456 Error: Engine failure
+15:17:15 | INFO    | voicebridge.routing.router | [ModelRouter] Selected STT provider 'faster-whisper' (Tier=fast, Score=1.00)
+15:17:15 | INFO    | voicebridge.routing.router | [ModelRouter] Selected LLM provider 'google' (Tier=balanced, Score=1.00)
+15:17:15 | INFO    | voicebridge.routing.router | [ModelRouter] Selected LLM provider 'google' (Tier=fast, Score=1.00)
+15:17:15 | ERROR   | voicebridge.routing.fallback_chain | [test_llm FallbackChain] Provider primary failed (Primary network timeout) for trace_id=t-2. Trying next candidate...
+15:17:15 | WARNING | voicebridge.routing.fallback_chain | [test_llm FallbackChain] Failing over to candidate 2 (secondary) for trace_id=t-2
+15:17:15 | ERROR   | voicebridge.resilience.circuit_breaker | [primary CircuitBreaker] CLOSED -> OPEN (Failures=1 threshold=1, Error: Failed) for trace_id=t-0
+15:17:15 | ERROR   | voicebridge.routing.fallback_chain | [test_cb FallbackChain] Provider primary failed ([primary] Circuit is OPEN for trace_id=t-3) for trace_id=t-3. Trying next candidate...
+15:17:15 | WARNING | voicebridge.routing.fallback_chain | [test_cb FallbackChain] Failing over to candidate 2 (secondary) for trace_id=t-3
+15:17:15 | ERROR   | voicebridge.resilience.circuit_breaker | [whisper CircuitBreaker] CLOSED -> OPEN (Failures=2 threshold=2, Error: fail 2) for trace_id=t-2
+15:17:15 | ERROR   | voicebridge.resilience.circuit_breaker | [whisper CircuitBreaker] CLOSED -> OPEN (Failures=1 threshold=1, Error: fail) for trace_id=t-1
+15:17:15 | INFO    | voicebridge.resilience.circuit_breaker | [whisper CircuitBreaker] t-2 -> HALF_OPEN (Testing recovery)
+15:17:15 | INFO    | voicebridge.resilience.circuit_breaker | [whisper CircuitBreaker] t-2 -> CLOSED (Recovered)
+15:17:16 | INFO    | httpx | HTTP Request: GET http://testserver/api/health/liveness "HTTP/1.1 200 OK"
+15:17:16 | INFO    | httpx | HTTP Request: GET http://testserver/api/health/readiness "HTTP/1.1 200 OK"
+15:17:16 | INFO    | voicebridge.benchmarks.load_tester | [LoadTester] Starting load test with 2 users (2 reqs/user)...
+15:17:16 | INFO    | voicebridge.routing.router | [ModelRouter] Selected STT provider 'faster-whisper' (Tier=balanced, Score=1.00)
+15:17:16 | INFO    | voicebridge.routing.router | [ModelRouter] Selected STT provider 'faster-whisper' (Tier=balanced, Score=1.00)
+15:17:16 | INFO    | voicebridge.routing.router | [ModelRouter] Selected STT provider 'faster-whisper' (Tier=balanced, Score=1.00)
+15:17:16 | INFO    | voicebridge.routing.router | [ModelRouter] Selected STT provider 'faster-whisper' (Tier=balanced, Score=1.00)
+15:17:16 | INFO    | voicebridge.benchmarks.load_tester | [LoadTester] Results: {'num_concurrent_users': 2, 'total_requests': 4, 'successful_requests': 4, 'failed_requests': 0, 'total_elapsed_sec': 0.03, 'throughput_req_per_sec': 141.22, 'latency_p50_ms': 12.51, 'latency_p95_ms': 12.9, 'latency_p99_ms': 12.93, 'error_rate_pct': 0.0}
+15:18:14 | INFO    | voicebridge.routing.router | [ModelRouter] Selected STT provider 'faster-whisper' (Tier=fast, Score=1.00)
+15:18:14 | INFO    | voicebridge.routing.router | [ModelRouter] Selected LLM provider 'google' (Tier=balanced, Score=1.00)
+15:18:14 | INFO    | voicebridge.routing.router | [ModelRouter] Selected LLM provider 'google' (Tier=fast, Score=1.00)
+15:18:14 | ERROR   | voicebridge.routing.fallback_chain | [test_llm FallbackChain] Provider primary failed (Primary network timeout) for trace_id=t-2. Trying next candidate...
+15:18:14 | WARNING | voicebridge.routing.fallback_chain | [test_llm FallbackChain] Failing over to candidate 2 (secondary) for trace_id=t-2
+15:18:14 | ERROR   | voicebridge.resilience.circuit_breaker | [primary CircuitBreaker] CLOSED -> OPEN (Failures=1 threshold=1, Error: Failed) for trace_id=t-0
+15:18:14 | ERROR   | voicebridge.routing.fallback_chain | [test_cb FallbackChain] Provider primary failed ([primary] Circuit is OPEN for trace_id=t-3) for trace_id=t-3. Trying next candidate...
+15:18:14 | WARNING | voicebridge.routing.fallback_chain | [test_cb FallbackChain] Failing over to candidate 2 (secondary) for trace_id=t-3
+15:18:14 | ERROR   | voicebridge.resilience.circuit_breaker | [whisper CircuitBreaker] CLOSED -> OPEN (Failures=2 threshold=2, Error: fail 2) for trace_id=t-2
+15:18:14 | ERROR   | voicebridge.resilience.circuit_breaker | [whisper CircuitBreaker] CLOSED -> OPEN (Failures=1 threshold=1, Error: fail) for trace_id=t-1
+15:18:14 | INFO    | voicebridge.resilience.circuit_breaker | [whisper CircuitBreaker] t-2 -> HALF_OPEN (Testing recovery)
+15:18:14 | INFO    | voicebridge.resilience.circuit_breaker | [whisper CircuitBreaker] t-2 -> CLOSED (Recovered)
+15:18:14 | INFO    | httpx | HTTP Request: GET http://testserver/api/health "HTTP/1.1 200 OK"
+15:18:14 | INFO    | httpx | HTTP Request: GET http://testserver/api/health/liveness "HTTP/1.1 200 OK"
+15:18:14 | INFO    | httpx | HTTP Request: GET http://testserver/api/health/readiness "HTTP/1.1 200 OK"
+15:18:14 | INFO    | voicebridge.benchmarks.load_tester | [LoadTester] Starting load test with 2 users (2 reqs/user)...
+15:18:14 | INFO    | voicebridge.routing.router | [ModelRouter] Selected STT provider 'faster-whisper' (Tier=balanced, Score=1.00)
+15:18:14 | INFO    | voicebridge.routing.router | [ModelRouter] Selected STT provider 'faster-whisper' (Tier=balanced, Score=1.00)
+15:18:14 | INFO    | voicebridge.routing.router | [ModelRouter] Selected STT provider 'faster-whisper' (Tier=balanced, Score=1.00)
+15:18:14 | INFO    | voicebridge.routing.router | [ModelRouter] Selected STT provider 'faster-whisper' (Tier=balanced, Score=1.00)
+15:18:14 | INFO    | voicebridge.benchmarks.load_tester | [LoadTester] Results: {'num_concurrent_users': 2, 'total_requests': 4, 'successful_requests': 4, 'failed_requests': 0, 'total_elapsed_sec': 0.03, 'throughput_req_per_sec': 145.27, 'latency_p50_ms': 12.0, 'latency_p95_ms': 12.76, 'latency_p99_ms': 12.81, 'error_rate_pct': 0.0}
+15:18:41 | INFO    | httpx | HTTP Request: GET http://testserver/api/info "HTTP/1.1 200 OK"
+15:18:41 | INFO    | httpx | HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+15:18:41 | INFO    | httpx | HTTP Request: POST http://testserver/api/stop "HTTP/1.1 200 OK"
+15:18:42 | INFO    | voicebridge.pipeline.worker | [AR->EN] Text-only translation for speaker 'other' (voice disabled)
+15:18:42 | INFO    | voicebridge.translation.manager | Translation backend enabled: google
+15:18:54 | INFO    | voicebridge.translation.manager | Translation backend enabled: argos
+15:18:54 | INFO    | voicebridge.translation.manager | Translation backend enabled: nllb
+15:18:56 | INFO    | voicebridge.tts.manager | TTS backend selected: edge-tts
+15:18:56 | INFO    | voicebridge.lipsync.wav2lip_backend | Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+15:18:56 | INFO    | voicebridge.lipsync.wav2lip_backend | Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+15:18:56 | WARNING | voicebridge.lipsync.manager | Requested lip-sync backend 'demo' unavailable; using 'null'
+15:18:56 | INFO    | voicebridge.lipsync.manager | Lip-sync backend selected: null
+15:18:56 | INFO    | voicebridge.translation.manager | Translation backend enabled: nllb
+15:18:56 | INFO    | voicebridge.translation.manager | Translation backend enabled: google
+15:18:56 | INFO    | voicebridge.translation.manager | Translation backend enabled: argos
+15:18:56 | INFO    | voicebridge.tts.manager | TTS backend selected: edge-tts
+15:18:56 | INFO    | voicebridge.pipeline.async_pipeline | [AsyncPipeline] Starting 5 stage workers...
+15:18:56 | INFO    | voicebridge.pipeline.workers.base_worker | [VAD Worker] Started.
+15:18:56 | INFO    | voicebridge.pipeline.workers.base_worker | [STT Worker] Started.
+15:18:56 | INFO    | voicebridge.pipeline.workers.base_worker | [LLM Worker] Started.
+15:18:56 | INFO    | voicebridge.pipeline.workers.base_worker | [TTS Worker] Started.
+15:18:56 | INFO    | voicebridge.pipeline.workers.base_worker | [Playback Worker] Started.
+15:18:56 | INFO    | voicebridge.pipeline.async_pipeline | [AsyncPipeline] Stopping worker threads...
+15:18:56 | INFO    | voicebridge.pipeline.workers.base_worker | [VAD Worker] Stopped. Processed 0 items.
+15:18:56 | INFO    | voicebridge.pipeline.workers.base_worker | [LLM Worker] Stopped. Processed 0 items.
+15:18:56 | INFO    | voicebridge.pipeline.workers.base_worker | [TTS Worker] Stopped. Processed 0 items.
+15:18:57 | INFO    | voicebridge.pipeline.workers.base_worker | [Playback Worker] Stopped. Processed 0 items.
+15:18:57 | INFO    | voicebridge.pipeline.workers.base_worker | [STT Worker] Stopped. Processed 0 items.
+15:18:57 | INFO    | voicebridge.pipeline.async_queue | [stt_q Backpressure] Compacted partial transcript for trace_id=t3. Remaining queue size=1
+15:18:57 | WARNING | voicebridge.pipeline.async_queue | [item_q Backpressure] Queue full. Evicted oldest item (trace_id=unknown) to accept trace_id=9ab19441-2e83-4171-908b-c68905ee3e64
+15:18:57 | ERROR   | voicebridge.resilience.circuit_breaker | [whisper CircuitBreaker] CLOSED -> OPEN (Failures=2 threshold=2, Error: fail 2) for trace_id=t-2
+15:18:57 | ERROR   | voicebridge.resilience.circuit_breaker | [whisper CircuitBreaker] CLOSED -> OPEN (Failures=1 threshold=1, Error: fail) for trace_id=t-1
+15:18:57 | INFO    | voicebridge.resilience.circuit_breaker | [whisper CircuitBreaker] t-2 -> HALF_OPEN (Testing recovery)
+15:18:57 | INFO    | voicebridge.resilience.circuit_breaker | [whisper CircuitBreaker] t-2 -> CLOSED (Recovered)
+15:18:57 | ERROR   | voicebridge.routing.fallback_chain | [test_llm FallbackChain] Provider primary failed (Primary network timeout) for trace_id=t-2. Trying next candidate...
+15:18:57 | WARNING | voicebridge.routing.fallback_chain | [test_llm FallbackChain] Failing over to candidate 2 (secondary) for trace_id=t-2
+15:18:57 | ERROR   | voicebridge.resilience.circuit_breaker | [primary CircuitBreaker] CLOSED -> OPEN (Failures=1 threshold=1, Error: Failed) for trace_id=t-0
+15:18:57 | ERROR   | voicebridge.routing.fallback_chain | [test_cb FallbackChain] Provider primary failed ([primary] Circuit is OPEN for trace_id=t-3) for trace_id=t-3. Trying next candidate...
+15:18:57 | WARNING | voicebridge.routing.fallback_chain | [test_cb FallbackChain] Failing over to candidate 2 (secondary) for trace_id=t-3
+15:18:57 | INFO    | httpx | HTTP Request: GET http://testserver/api/health "HTTP/1.1 200 OK"
+15:18:57 | INFO    | httpx | HTTP Request: GET http://testserver/api/health/liveness "HTTP/1.1 200 OK"
+15:18:57 | INFO    | httpx | HTTP Request: GET http://testserver/api/health/readiness "HTTP/1.1 200 OK"
+15:18:57 | INFO    | voicebridge.benchmarks.load_tester | [LoadTester] Starting load test with 2 users (2 reqs/user)...
+15:18:57 | INFO    | voicebridge.routing.router | [ModelRouter] Selected STT provider 'faster-whisper' (Tier=balanced, Score=1.00)
+15:18:57 | INFO    | voicebridge.routing.router | [ModelRouter] Selected STT provider 'faster-whisper' (Tier=balanced, Score=1.00)
+15:18:57 | INFO    | voicebridge.routing.router | [ModelRouter] Selected STT provider 'faster-whisper' (Tier=balanced, Score=1.00)
+15:18:57 | INFO    | voicebridge.routing.router | [ModelRouter] Selected STT provider 'faster-whisper' (Tier=balanced, Score=1.00)
+15:18:57 | INFO    | voicebridge.benchmarks.load_tester | [LoadTester] Results: {'num_concurrent_users': 2, 'total_requests': 4, 'successful_requests': 4, 'failed_requests': 0, 'total_elapsed_sec': 0.03, 'throughput_req_per_sec': 150.79, 'latency_p50_ms': 11.98, 'latency_p95_ms': 12.92, 'latency_p99_ms': 13.04, 'error_rate_pct': 0.0}
+15:18:57 | INFO    | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 1200.0ms (device=cpu, cache_hit=False)
+15:18:57 | INFO    | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 5.0ms (device=cpu, cache_hit=True)
+15:18:57 | INFO    | voicebridge.metrics.reporter | Exported Markdown report -> C:\Users\Amin Khan\AppData\Local\Temp\pytest-of-Amin Khan\pytest-28\test_performance_reporter0\report.md
+15:18:57 | INFO    | voicebridge.metrics.reporter | Exported JSON report -> C:\Users\Amin Khan\AppData\Local\Temp\pytest-of-Amin Khan\pytest-28\test_performance_reporter0\report.json
+15:18:57 | INFO    | voicebridge.metrics.reporter | Exported CSV report -> C:\Users\Amin Khan\AppData\Local\Temp\pytest-of-Amin Khan\pytest-28\test_performance_reporter0\report.csv
+15:18:57 | INFO    | voicebridge.warmup | Model warm-up disabled via configuration (lazy loading enabled).
+15:18:57 | INFO    | voicebridge.warmup | Starting model warm-up phase...
+15:18:57 | INFO    | voicebridge.metrics.model_tracker | Model [vad/<MagicMock name='VadAdapter().name' id='1951654901584'>] loaded in 2.0ms (device=cpu, cache_hit=False)
+15:18:57 | INFO    | voicebridge.metrics.model_tracker | Model [stt/<MagicMock name='SttAdapter().name' id='1951700234960'>] loaded in 2.4ms (device=cpu, cache_hit=False)
+15:18:57 | INFO    | voicebridge.metrics.model_tracker | Model [llm/<MagicMock name='LlmAdapter().name' id='1951674457936'>] loaded in 0.9ms (device=cpu, cache_hit=False)
+15:18:57 | INFO    | voicebridge.metrics.model_tracker | Model [tts/<MagicMock name='TtsAdapter().name' id='1951678163472'>] loaded in 1.5ms (device=cpu, cache_hit=False)
+15:18:57 | INFO    | voicebridge.warmup | Model warm-up complete! Durations: {'vad': 1.9502999493852258, 'stt': 2.374500036239624, 'llm': 0.8862999966368079, 'tts': 1.5427999896928668}
+15:18:57 | INFO    | voicebridge.routing.router | [ModelRouter] Selected STT provider 'faster-whisper' (Tier=fast, Score=1.00)
+15:18:57 | INFO    | voicebridge.routing.router | [ModelRouter] Selected LLM provider 'google' (Tier=balanced, Score=1.00)
+15:18:57 | INFO    | voicebridge.routing.router | [ModelRouter] Selected LLM provider 'google' (Tier=fast, Score=0.80)
+15:18:57 | WARNING | voicebridge.telemetry.tracing | Trace telemetry-test-id Warning: Low audio volume
+15:18:57 | ERROR   | voicebridge.telemetry.tracing | [TTS] Trace error-trace-456 Error: Engine failure

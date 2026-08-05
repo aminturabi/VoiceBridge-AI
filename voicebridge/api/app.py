@@ -17,6 +17,7 @@ from __future__ import annotations
 import asyncio
 from contextlib import asynccontextmanager
 from pathlib import Path
+import psutil
 
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.responses import HTMLResponse, JSONResponse
@@ -98,6 +99,25 @@ def create_app(config: Config | None = None) -> FastAPI:
             "pipeline": orch.info if orch else {"running": False},
         }
         return JSONResponse(data)
+
+    @app.get("/api/health")
+    async def health() -> JSONResponse:
+        from voicebridge.routing.health_checker import ProviderHealthMonitor
+        monitor = ProviderHealthMonitor.get_instance(config)
+        return JSONResponse({
+            "status": "healthy",
+            "cpu_percent": psutil.cpu_percent(),
+            "provider_latencies_ms": monitor.provider_latencies_ms,
+            "provider_errors": monitor.provider_errors,
+        })
+
+    @app.get("/api/health/liveness")
+    async def liveness() -> JSONResponse:
+        return JSONResponse({"status": "alive"})
+
+    @app.get("/api/health/readiness")
+    async def readiness() -> JSONResponse:
+        return JSONResponse({"status": "ready"})
 
     @app.post("/api/start")
     async def start(req: StartRequest) -> JSONResponse:

@@ -16,6 +16,22 @@ feature_flags:
   enable_async_pipeline: true
   enable_backpressure: true
   enable_model_warmup: true
+  enable_intelligent_routing: true
+  enable_fallback_chains: true
+  enable_circuit_breaker: true
+  enable_rate_limiting: true
+
+routing:
+  default_tier: "balanced"  # fast | balanced | high_quality
+  latency_budget_ms: 1500.0
+
+resilience:
+  circuit_breaker:
+    failure_threshold: 3
+    recovery_timeout_sec: 10.0
+  rate_limiter:
+    requests_per_second: 50.0
+    burst_capacity: 100
 
 pipeline:
   queue_sizes:

@@ -123,6 +123,22 @@ class Config:
     def enable_model_warmup(self) -> bool:
         return self.is_feature_enabled("ENABLE_MODEL_WARMUP", True)
 
+    @property
+    def enable_intelligent_routing(self) -> bool:
+        return self.is_feature_enabled("ENABLE_INTELLIGENT_ROUTING", True)
+
+    @property
+    def enable_fallback_chains(self) -> bool:
+        return self.is_feature_enabled("ENABLE_FALLBACK_CHAINS", True)
+
+    @property
+    def enable_circuit_breaker(self) -> bool:
+        return self.is_feature_enabled("ENABLE_CIRCUIT_BREAKER", True)
+
+    @property
+    def enable_rate_limiting(self) -> bool:
+        return self.is_feature_enabled("ENABLE_RATE_LIMITING", True)
+
     def queue_size(self, stage_name: str, default: int = 10) -> int:
         """Return configured max queue size for a pipeline stage."""
         return int(self.get(f"pipeline.queue_sizes.{stage_name.lower()}", default))

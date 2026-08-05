@@ -12,6 +12,18 @@ feature_flags:
   enable_pipeline_contracts: true
   enable_new_interfaces: true
   enable_tracing: true
+  enable_streaming: true
+  enable_async_pipeline: true
+  enable_backpressure: true
+  enable_model_warmup: true
+
+pipeline:
+  queue_sizes:
+    vad: 20
+    stt: 10
+    llm: 10
+    tts: 10
+    playback: 20
 
 # AI Model directories (no hardcoded absolute paths)
 models:

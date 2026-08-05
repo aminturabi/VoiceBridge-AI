@@ -108,6 +108,26 @@ class Config:
         return self.is_feature_enabled("ENABLE_TRACING", True)
 
     @property
+    def enable_streaming(self) -> bool:
+        return self.is_feature_enabled("ENABLE_STREAMING", True)
+
+    @property
+    def enable_async_pipeline(self) -> bool:
+        return self.is_feature_enabled("ENABLE_ASYNC_PIPELINE", True)
+
+    @property
+    def enable_backpressure(self) -> bool:
+        return self.is_feature_enabled("ENABLE_BACKPRESSURE", True)
+
+    @property
+    def enable_model_warmup(self) -> bool:
+        return self.is_feature_enabled("ENABLE_MODEL_WARMUP", True)
+
+    def queue_size(self, stage_name: str, default: int = 10) -> int:
+        """Return configured max queue size for a pipeline stage."""
+        return int(self.get(f"pipeline.queue_sizes.{stage_name.lower()}", default))
+
+    @property
     def raw(self) -> dict[str, Any]:
         return self._data
 

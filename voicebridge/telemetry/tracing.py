@@ -60,11 +60,21 @@ class TelemetryTracker:
         self.warnings: list[str] = []
         self.start_time: float = time.perf_counter()
 
+        self.queue_depths: Dict[str, int] = {}
+        self.worker_utilization: Dict[str, float] = {}
+        self.audio_gen_speed_rtf: float = 0.0
+
     def record_stage_latency(self, stage_name: str, latency_ms: float) -> None:
         self.stage_latencies_ms[stage_name] = latency_ms
 
     def record_queue_wait(self, stage_name: str, wait_ms: float) -> None:
         self.queue_wait_times_ms[stage_name] = wait_ms
+
+    def record_queue_depth(self, queue_name: str, depth: int) -> None:
+        self.queue_depths[queue_name] = depth
+
+    def record_worker_utilization(self, worker_name: str, utilization_pct: float) -> None:
+        self.worker_utilization[worker_name] = utilization_pct
 
     def record_inference_time(self, model_name: str, inference_ms: float) -> None:
         self.model_inference_times_ms[model_name] = inference_ms
@@ -72,8 +82,11 @@ class TelemetryTracker:
     def add_tokens(self, count: int) -> None:
         self.tokens_generated += count
 
-    def set_audio_duration(self, duration_sec: float) -> None:
+    def set_audio_duration(self, duration_sec: float, gen_time_ms: float = 0.0) -> None:
         self.audio_duration_sec = duration_sec
+        if gen_time_ms > 0 and duration_sec > 0:
+            gen_sec = gen_time_ms / 1000.0
+            self.audio_gen_speed_rtf = round(gen_sec / duration_sec, 2)
 
     def record_error(self, stage_name: str, error_msg: str) -> None:
         self.errors[stage_name] = error_msg
@@ -98,10 +111,13 @@ class TelemetryTracker:
             "total_latency_ms": round(self.total_latency_ms, 2),
             "stage_latencies_ms": {k: round(v, 2) for k, v in self.stage_latencies_ms.items()},
             "queue_wait_times_ms": {k: round(v, 2) for k, v in self.queue_wait_times_ms.items()},
+            "queue_depths": self.queue_depths,
+            "worker_utilization_percent": self.worker_utilization,
             "model_inference_times_ms": {k: round(v, 2) for k, v in self.model_inference_times_ms.items()},
             "tokens_generated": self.tokens_generated,
             "tokens_per_sec": round(self.tokens_per_sec, 2),
             "audio_duration_sec": round(self.audio_duration_sec, 2),
+            "audio_gen_speed_rtf": self.audio_gen_speed_rtf,
             "errors": self.errors,
             "warnings": self.warnings,
         }

@@ -15,6 +15,7 @@ from enum import Enum
 
 class EventType(str, Enum):
     TRANSCRIPT = "transcript"      # recognized source text
+    PARTIAL_TRANSCRIPT = "partial_transcript"  # partial transcript
     TRANSLATION = "translation"    # translated target text
     SPEECH_READY = "speech_ready"  # TTS + lip-sync clip ready to play
     STATUS = "status"              # pipeline lifecycle / status message
@@ -38,6 +39,7 @@ class PipelineEvent:
     latency_ms: float = 0.0
     note: str = ""
     sentence_id: int = 0
+    trace_id: str = ""
     timestamp: float = field(default_factory=time.time)
 
     def to_dict(self) -> dict:

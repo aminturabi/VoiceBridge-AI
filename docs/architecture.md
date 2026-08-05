@@ -72,6 +72,29 @@ flowchart TD
 
 ---
 
+## Phase 2 Asynchronous Worker Queue Architecture
+
+```mermaid
+flowchart LR
+    MIC[Input Capture] --> |Audio Frames| VAD_W[VadWorker]
+    VAD_W --> |stt_queue| STT_W[SttWorker]
+    STT_W --> |llm_queue| LLM_W[LlmWorker]
+    LLM_W --> |tts_queue| TTS_W[TtsWorker]
+    TTS_W --> |playback_queue| PLAY_W[PlaybackWorker]
+    PLAY_W --> SPK[Audio Playback]
+
+    subgraph BACKPRESSURE ["Backpressure & Bounded Queues"]
+        stt_q[(stt_queue)]
+        llm_q[(llm_queue)]
+        tts_q[(tts_queue)]
+        pb_q[(playback_queue)]
+    end
+```
+
+Phase 2 connects independent stage workers (`VadWorker`, `SttWorker`, `LlmWorker`, `TtsWorker`, `PlaybackWorker`) using bounded async queues (`BoundedAsyncQueue`). When queues reach capacity under heavy load, backpressure logic compacts partial STT transcripts or evicts oldest items to prevent unbounded memory growth while logging overload events correlated with `trace_id`.
+
+---
+
 ## Dependency Graph
 
 ```mermaid

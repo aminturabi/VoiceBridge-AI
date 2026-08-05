@@ -598,3 +598,47 @@
 14:56:03 | INFO    | voicebridge.metrics.reporter | Exported CSV report -> C:\Users\Amin Khan\AppData\Local\Temp\pytest-of-Amin Khan\pytest-24\test_performance_reporter0\report.csv
 14:56:03 | WARNING | voicebridge.telemetry.tracing | Trace telemetry-test-id Warning: Low audio volume
 14:56:03 | ERROR   | voicebridge.telemetry.tracing | [TTS] Trace error-trace-456 Error: Engine failure
+15:04:58 | INFO    | httpx | HTTP Request: GET http://testserver/api/info "HTTP/1.1 200 OK"
+15:04:58 | INFO    | httpx | HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+15:04:58 | INFO    | httpx | HTTP Request: POST http://testserver/api/stop "HTTP/1.1 200 OK"
+15:04:58 | INFO    | voicebridge.pipeline.worker | [AR->EN] Text-only translation for speaker 'other' (voice disabled)
+15:04:58 | INFO    | voicebridge.translation.manager | Translation backend enabled: google
+15:05:09 | INFO    | voicebridge.translation.manager | Translation backend enabled: argos
+15:05:09 | INFO    | voicebridge.translation.manager | Translation backend enabled: nllb
+15:05:11 | INFO    | voicebridge.tts.manager | TTS backend selected: edge-tts
+15:05:11 | INFO    | voicebridge.lipsync.wav2lip_backend | Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+15:05:11 | INFO    | voicebridge.lipsync.wav2lip_backend | Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+15:05:11 | WARNING | voicebridge.lipsync.manager | Requested lip-sync backend 'demo' unavailable; using 'null'
+15:05:11 | INFO    | voicebridge.lipsync.manager | Lip-sync backend selected: null
+15:05:11 | INFO    | voicebridge.translation.manager | Translation backend enabled: nllb
+15:05:11 | INFO    | voicebridge.translation.manager | Translation backend enabled: google
+15:05:11 | INFO    | voicebridge.translation.manager | Translation backend enabled: argos
+15:05:11 | INFO    | voicebridge.tts.manager | TTS backend selected: edge-tts
+15:05:11 | INFO    | voicebridge.pipeline.async_pipeline | [AsyncPipeline] Starting 5 stage workers...
+15:05:11 | INFO    | voicebridge.pipeline.workers.base_worker | [VAD Worker] Started.
+15:05:11 | INFO    | voicebridge.pipeline.workers.base_worker | [STT Worker] Started.
+15:05:11 | INFO    | voicebridge.pipeline.workers.base_worker | [LLM Worker] Started.
+15:05:11 | INFO    | voicebridge.pipeline.workers.base_worker | [TTS Worker] Started.
+15:05:11 | INFO    | voicebridge.pipeline.workers.base_worker | [Playback Worker] Started.
+15:05:11 | INFO    | voicebridge.pipeline.async_pipeline | [AsyncPipeline] Stopping worker threads...
+15:05:11 | INFO    | voicebridge.pipeline.workers.base_worker | [VAD Worker] Stopped. Processed 0 items.
+15:05:11 | INFO    | voicebridge.pipeline.workers.base_worker | [Playback Worker] Stopped. Processed 0 items.
+15:05:12 | INFO    | voicebridge.pipeline.workers.base_worker | [LLM Worker] Stopped. Processed 0 items.
+15:05:12 | INFO    | voicebridge.pipeline.workers.base_worker | [STT Worker] Stopped. Processed 0 items.
+15:05:12 | INFO    | voicebridge.pipeline.workers.base_worker | [TTS Worker] Stopped. Processed 0 items.
+15:05:12 | INFO    | voicebridge.pipeline.async_queue | [stt_q Backpressure] Compacted partial transcript for trace_id=t3. Remaining queue size=1
+15:05:12 | WARNING | voicebridge.pipeline.async_queue | [item_q Backpressure] Queue full. Evicted oldest item (trace_id=unknown) to accept trace_id=d4ce386b-d83c-4c66-99d1-7f66f5c2f517
+15:05:12 | INFO    | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 1200.0ms (device=cpu, cache_hit=False)
+15:05:12 | INFO    | voicebridge.metrics.model_tracker | Model [stt/whisper_tiny_cpu] loaded in 5.0ms (device=cpu, cache_hit=True)
+15:05:12 | INFO    | voicebridge.metrics.reporter | Exported Markdown report -> C:\Users\Amin Khan\AppData\Local\Temp\pytest-of-Amin Khan\pytest-27\test_performance_reporter0\report.md
+15:05:12 | INFO    | voicebridge.metrics.reporter | Exported JSON report -> C:\Users\Amin Khan\AppData\Local\Temp\pytest-of-Amin Khan\pytest-27\test_performance_reporter0\report.json
+15:05:12 | INFO    | voicebridge.metrics.reporter | Exported CSV report -> C:\Users\Amin Khan\AppData\Local\Temp\pytest-of-Amin Khan\pytest-27\test_performance_reporter0\report.csv
+15:05:12 | INFO    | voicebridge.warmup | Model warm-up disabled via configuration (lazy loading enabled).
+15:05:12 | INFO    | voicebridge.warmup | Starting model warm-up phase...
+15:05:12 | INFO    | voicebridge.metrics.model_tracker | Model [vad/<MagicMock name='VadAdapter().name' id='2339169098064'>] loaded in 1.5ms (device=cpu, cache_hit=False)
+15:05:12 | INFO    | voicebridge.metrics.model_tracker | Model [stt/<MagicMock name='SttAdapter().name' id='2339168002768'>] loaded in 0.9ms (device=cpu, cache_hit=False)
+15:05:12 | INFO    | voicebridge.metrics.model_tracker | Model [llm/<MagicMock name='LlmAdapter().name' id='2339160915280'>] loaded in 0.9ms (device=cpu, cache_hit=False)
+15:05:12 | INFO    | voicebridge.metrics.model_tracker | Model [tts/<MagicMock name='TtsAdapter().name' id='2339169164688'>] loaded in 1.2ms (device=cpu, cache_hit=False)
+15:05:12 | INFO    | voicebridge.warmup | Model warm-up complete! Durations: {'vad': 1.5359000535681844, 'stt': 0.9113000705838203, 'llm': 0.8568000048398972, 'tts': 1.1670999228954315}
+15:05:12 | WARNING | voicebridge.telemetry.tracing | Trace telemetry-test-id Warning: Low audio volume
+15:05:12 | ERROR   | voicebridge.telemetry.tracing | [TTS] Trace error-trace-456 Error: Engine failure

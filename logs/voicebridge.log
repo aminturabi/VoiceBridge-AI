@@ -1442,3 +1442,26 @@ voicebridge.tts.base.TtsError: Edge-TTS synthesis failed: Cannot connect to host
 17:01:56 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: nllb
 17:01:56 | INFO    | [-] | voicebridge.translation.manager | Translation backend enabled: argos
 17:01:58 | INFO    | [-] | voicebridge.translation.manager | Translated [en->ur] via translator 'google' (attempt 1): 'منفرد سلام 1785931316.5886104'
+17:11:41 | INFO    | [-] | __main__ | Starting VoiceBridge AI on http://127.0.0.1:8000
+17:11:58 | INFO    | [c0553338-67d0-4251-bcf8-6569ffedb7c1] | voicebridge.translation.manager | Translation backend enabled: google
+17:12:00 | INFO    | [c0553338-67d0-4251-bcf8-6569ffedb7c1] | voicebridge.translation.manager | Translation backend enabled: nllb
+17:12:00 | INFO    | [c0553338-67d0-4251-bcf8-6569ffedb7c1] | voicebridge.translation.manager | Translation backend enabled: argos
+17:12:01 | INFO    | [c0553338-67d0-4251-bcf8-6569ffedb7c1] | voicebridge.tts.manager | TTS backend selected: Microsoft Neural TTS (edge-tts)
+17:12:01 | INFO    | [c0553338-67d0-4251-bcf8-6569ffedb7c1] | voicebridge.lipsync.wav2lip_backend | Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+17:12:01 | INFO    | [c0553338-67d0-4251-bcf8-6569ffedb7c1] | voicebridge.lipsync.wav2lip_backend | Wav2Lip unavailable; missing: Wav2Lip inference.py, checkpoint, source face
+17:12:01 | WARNING | [c0553338-67d0-4251-bcf8-6569ffedb7c1] | voicebridge.lipsync.manager | Requested lip-sync backend 'wav2lip' unavailable; using 'null'
+17:12:01 | INFO    | [c0553338-67d0-4251-bcf8-6569ffedb7c1] | voicebridge.lipsync.manager | Lip-sync backend selected: null
+17:12:02 | INFO    | [c0553338-67d0-4251-bcf8-6569ffedb7c1] | voicebridge.stt.faster_whisper_backend | [UR->AR] Loading Whisper 'base' on cuda (float16)...
+17:12:03 | INFO    | [c0553338-67d0-4251-bcf8-6569ffedb7c1] | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-base/revision/main "HTTP/1.1 200 OK"
+17:12:03 | WARNING | [c0553338-67d0-4251-bcf8-6569ffedb7c1] | voicebridge.stt.faster_whisper_backend | [UR->AR] Could not load on cuda: CUDA failed with error CUDA driver version is insufficient for CUDA runtime version
+17:12:03 | INFO    | [c0553338-67d0-4251-bcf8-6569ffedb7c1] | voicebridge.stt.faster_whisper_backend | [UR->AR] Loading Whisper 'base' on cpu (int8)...
+17:12:03 | INFO    | [c0553338-67d0-4251-bcf8-6569ffedb7c1] | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-base/revision/main "HTTP/1.1 200 OK"
+17:12:04 | INFO    | [c0553338-67d0-4251-bcf8-6569ffedb7c1] | voicebridge.metrics.model_tracker | Model [stt/whisper_base_cpu] loaded in 1026.7ms (device=cpu, cache_hit=False)
+17:12:04 | INFO    | [c0553338-67d0-4251-bcf8-6569ffedb7c1] | voicebridge.stt.faster_whisper_backend | [UR->AR] Whisper ready on cpu (loaded in 1026.7ms)
+17:12:04 | INFO    | [c0553338-67d0-4251-bcf8-6569ffedb7c1] | voicebridge.stt.manager | [UR->AR] Selected STT provider: faster-whisper
+17:12:04 | INFO    | [c0553338-67d0-4251-bcf8-6569ffedb7c1] | voicebridge.pipeline.orchestrator | Registered direction UR->AR (speaker=me, source=microphone)
+17:12:04 | INFO    | [-] | voicebridge.audio.capture | Microphone open (VAD chunking)
+17:12:17 | INFO    | [-] | voicebridge.translation.manager | Translated [ur->ar] via translator 'google' (attempt 1): 'وكانت آن أجاميل تقوم بكتاباته في ذلك الوقت'
+17:12:37 | INFO    | [-] | voicebridge.translation.manager | Translated [ur->ar] via translator 'google' (attempt 1): 'هناك خطأ ما في الكلب'
+17:12:48 | INFO    | [-] | voicebridge.translation.manager | Translated [ur->ar] via translator 'google' (attempt 1): 'هل يمكن أن تخبرني ما هو سعر هذا الكمبيوتر المحمول؟'
+17:13:24 | INFO    | [-] | voicebridge.translation.manager | Translated [ur->ar] via translator 'google' (attempt 1): 'آشا تاك هاي الآن أذهب'
